@@ -41,7 +41,7 @@ public class TESRAlchemyCircle extends TileEntitySpecialRenderer<TileAlchemyCirc
             //已激活-待机中
         } else if (tac.isActive()) {
             if (isPlayerInRange) {
-            	//渲染-工作-顶部的圈
+            	//渲染-工作-顶部的圈  
                 renderTeleportCircleTop(tac, partialTicks);
                 if (tac.isAtPosTopMiddleCircle) {
                 	//渲染-工作-底部的圈
