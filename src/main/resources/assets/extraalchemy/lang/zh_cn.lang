@@ -1,0 +1,17 @@
+#创造标签
+itemGroup.extraalchemy.creativeTab=更多炼金术
+
+#物品
+item.extraalchemy.coal_dust.name=碳粉
+item.extraalchemy.dagger.name=小匕首
+item.extraalchemy.blood_bottle.name=盛有血的小瓶
+#方块
+tile.extraalchemy.alchemy_circle.name=炼金法阵
+
+#工具提示
+tooltip.extraalchemy.coal_dust=用于构建炼金法阵的粉末
+tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的手指。
+tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
+
+#输出信息
+chat.extraalchemy.damageSource=%s 正在表演割腕自杀。来来来，再整个！

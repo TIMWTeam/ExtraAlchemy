@@ -1,0 +1,16 @@
+[
+{
+  "modid": "extraalchemy",
+  "name": "ExtraAlchemy",
+  "description": "This is mod 1.12.2.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["yichen_"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "extraalchemy:models/alchemy_circle/alchemy_circle0"
+  }
+}
