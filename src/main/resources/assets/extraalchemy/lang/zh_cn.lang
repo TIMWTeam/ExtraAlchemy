@@ -15,3 +15,8 @@ tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来
 
 #输出信息
 chat.extraalchemy.damageSource=%s 正在表演割腕自杀。来来来，再整个！
+
+#按键
+extraalchemy.key=额外的炼金术
+extraalchemy.useskill=使用技能
+

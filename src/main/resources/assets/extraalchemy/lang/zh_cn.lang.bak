@@ -11,7 +11,12 @@ tile.extraalchemy.alchemy_circle.name=炼金法阵
 #工具提示
 tooltip.extraalchemy.coal_dust=用于构建炼金法阵的粉末
 tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的手指。
-tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备好玻璃瓶来收集。
+tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
 
 #输出信息
 chat.extraalchemy.damageSource=%s 正在表演割腕自杀。来来来，再整个！
+
+#按键
+extraalchemy.key=额外的炼金术
+extraalchemy.useskill
+

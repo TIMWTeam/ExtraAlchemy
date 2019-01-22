@@ -18,8 +18,8 @@ import yichen.extraalchemy.proxy.CommonProxy;
 public class ExtraAlchemy{
 
 	public static final String MODID = "extraalchemy"; //mod_id
-	public static final String NAME = "ExtraAlchemy"; //modÃû×Ö
-	public static final String VERSION = "1.0.0"; //mod°æ±¾
+	public static final String NAME = "ExtraAlchemy"; //modï¿½ï¿½ï¿½ï¿½
+	public static final String VERSION = "1.0.0"; //modï¿½æ±¾
 	
 	@SidedProxy(clientSide = "yichen.extraalchemy.proxy.ClientProxy", 
             serverSide = "yichen.extraalchemy.proxy.CommonProxy")
@@ -38,19 +38,19 @@ public class ExtraAlchemy{
             return new ItemStack(ItemLoader.itemCoalDust);
         }
     };
-    //³õÊ¼»¯Ö®Ç°
+    //ï¿½ï¿½Ê¼ï¿½ï¿½Ö®Ç°
 	@EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         proxy.preInit(event);
     }
-	//³õÊ¼»¯½øÐÐÊ±
+	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
         proxy.init(event);
     }
-    //³õÊ¼»¯½áÊø
+    //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
