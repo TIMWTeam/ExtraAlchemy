@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks.alchemy_circle.tile;
+package yichen.extraalchemy.blocks.alchemy_array.tile;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -7,8 +7,8 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
-import yichen.extraalchemy.blocks.alchemy_circle.Counter;
-import yichen.extraalchemy.blocks.alchemy_circle.tile.base.TileEntityBase;
+import yichen.extraalchemy.blocks.alchemy_array.tile.base.TileEntityBase;
+import yichen.extraalchemy.util.Counter;
 import yichen.extraalchemy.util.alchemycircle.IAlchemyCircleMaster;
 import yichen.extraalchemy.util.alchemycircle.IAlchemyCircleSlave;
 

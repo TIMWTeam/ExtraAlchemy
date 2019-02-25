@@ -25,7 +25,7 @@ import yichen.extraalchemy.util.DamageSource;
 import yichen.extraalchemy.util.TextHelper;
 
 public class ItemDagger extends Item{
-	
+
 	public ItemDagger() {
 		this.setMaxStackSize(1);
 		this.setMaxDamage(64); 
@@ -42,23 +42,22 @@ public class ItemDagger extends Item{
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		new TextComponentString("����");
-		//��Ϊ�����
+		//不为假玩家
 		if (!(player instanceof FakePlayer)) {
-			//��Ϊ����ģʽ
+			//不为创造模式
 			if (!player.capabilities.isCreativeMode) {
 				stack.damageItem(1, player);
 				player.setActiveHand(hand);
-				player.attackEntityFrom(DamageSource.INSTANCE, 0.001F);
+				player.attackEntityFrom(DamageSource.SELF_HARM, 0.001F);
                 player.setHealth(Math.max(player.getHealth() - 4, 0.0001f));
                 if (player.getHealth() <= 0.001f) {
-                    player.onDeath(DamageSource.INSTANCE);
+                    player.onDeath(DamageSource.SELF_HARM);
                     player.setHealth(0);
                 }
 			}
-			//��ⱳ���Ƿ��в���ƿ
+			//获取玩家背包
 			ItemStack itemstack = this.findAmmo(player);
-			//�в���ƿ����Ѫƿ
+			//背包内有空瓶
 			if(!itemstack.isEmpty()) {
 				itemstack.shrink(1);
 				ItemStack bloodbottle = new ItemStack(ItemLoader.itembloodbottle);
@@ -67,7 +66,7 @@ public class ItemDagger extends Item{
 	    			player.dropItem(bloodbottle, true, false);
 	    		}
 			}
-			//û����ƿ���ڵ�������Ѫ��
+			//创造模式
 			else {
 				player.world.setBlockState(new BlockPos(player), BlockLoader.blockBloodstain.getDefaultState());
 			}

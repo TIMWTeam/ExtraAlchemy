@@ -4,10 +4,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import yichen.extraalchemy.event.EAClientEventHandler;
+import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.init.BlockLoader;
+import yichen.extraalchemy.init.CraftingLoader;
 import yichen.extraalchemy.init.ItemLoader;
-import yichen.extraalchemy.network.EANetworkHandler;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -24,12 +24,12 @@ public class CommonProxy {
 
 	
 	public void preInit(FMLPreInitializationEvent event) {
+		new ConfigLoader(event);
 		new ItemLoader(event);
 		new BlockLoader(event);
-		EANetworkHandler.init();
     }
 	public void init(FMLInitializationEvent event) {
-		EAClientEventHandler.init();
+		new CraftingLoader();
 	}
     public void postInit(FMLPostInitializationEvent event) {
 

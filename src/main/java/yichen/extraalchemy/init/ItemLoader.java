@@ -19,16 +19,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.items.ItemDagger;
+import yichen.extraalchemy.items.ItemAlchemyArrayTransmute;
 import yichen.extraalchemy.items.ItemBloodBottle;
 import yichen.extraalchemy.items.ItemCoalDust;
 
 public class ItemLoader {
 	public static List<Item> items;
 	
-	//·Ç±¾µØ»¯Ãû³Æ£¬langÎÄ¼þÄÚÊ¹ÓÃ
+	//ï¿½Ç±ï¿½ï¿½Ø»ï¿½ï¿½ï¿½ï¿½Æ£ï¿½langï¿½Ä¼ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
 	public static Item itemCoalDust = new ItemCoalDust().setUnlocalizedName(ExtraAlchemy.MODID +".coal_dust");
 	public static Item itemDagger = new ItemDagger().setUnlocalizedName(ExtraAlchemy.MODID +".dagger");
 	public static Item itembloodbottle = new ItemBloodBottle().setUnlocalizedName(ExtraAlchemy.MODID +".blood_bottle");
+	public static Item itemTransmuteDust = new ItemAlchemyArrayTransmute().setUnlocalizedName(ExtraAlchemy.MODID +".transmute_dust");
 
 
 	public ItemLoader(FMLPreInitializationEvent event)
@@ -36,8 +38,9 @@ public class ItemLoader {
 		register(itemCoalDust, "coal_dust");
 		register(itemDagger, "dagger");
 		register(itembloodbottle, "blood_bottle");
+		register(itemTransmuteDust, "transmute_dust");
     }
-    //×¢²áÎïÆ·ÌùÍ¼
+    //×¢ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½Í¼
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
@@ -46,13 +49,13 @@ public class ItemLoader {
         registerRender(itembloodbottle);
     }
 
-	//×¢²áÎïÆ·
+	//×¢ï¿½ï¿½ï¿½ï¿½Æ·
     private static void register(Item item, String name)
     {
     	ForgeRegistries.ITEMS.register(item.setRegistryName(name));
     }
     
-    //×¢²áÎïÆ·ÌùÍ¼
+    //×¢ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½Í¼
 	@SideOnly(Side.CLIENT)
 	public static void registerRender(Item item){
 		ModelResourceLocation model = new ModelResourceLocation(item.getRegistryName(), "inventory");

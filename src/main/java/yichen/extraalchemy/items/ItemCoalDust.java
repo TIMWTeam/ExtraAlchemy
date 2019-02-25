@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_circle.tile.TileAlchemyCircle;
+import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyCircle;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.util.TextHelper;
 
@@ -40,16 +40,10 @@ public class ItemCoalDust extends Item{
             if (!world.isRemote) {
                 EnumFacing rotation = EnumFacing.fromAngle(player.getRotationYawHead());
                 world.setBlockState(newPos, BlockLoader.blockAlchemyCircle.getDefaultState());
-                TileEntity tile = world.getTileEntity(newPos);
-                if (tile instanceof TileAlchemyCircle) {
-                    //((TileAlchemyArray) tile).setRotation(rotation);
-                }
                 stack.damageItem(1, player);
             }
-
             return EnumActionResult.SUCCESS;
         }
-
         return EnumActionResult.FAIL;
     }
 	

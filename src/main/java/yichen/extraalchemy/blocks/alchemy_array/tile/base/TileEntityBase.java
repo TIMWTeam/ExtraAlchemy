@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks.alchemy_circle.tile.base;
+package yichen.extraalchemy.blocks.alchemy_array.tile.base;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,18 +11,22 @@ import javax.annotation.Nullable;
 public abstract class TileEntityBase extends TileEntity {
 
     protected int ticksExisted = 0;
+    
     public void update() {
         if(ticksExisted == 0) {
             onFirstTick();
         }
         ticksExisted++;
     }
-
-    protected abstract void onFirstTick();
+    public void reSetTicksExisted() {
+    	ticksExisted = 0;
+    }
 
     public int getTicksExisted() {
         return ticksExisted;
     }
+
+    protected abstract void onFirstTick();
 
     public void readCustomNBT(NBTTagCompound compound) {
         ticksExisted = compound.getInteger("ticksExisted");
@@ -67,5 +71,11 @@ public abstract class TileEntityBase extends TileEntity {
     public void onDataPacket(NetworkManager manager, SPacketUpdateTileEntity packet) {
     	readFromNBT(packet.getNbtCompound());
     	readNetNBT(packet.getNbtCompound());
+    }
+    
+    public void markForUpdate() {
+        IBlockState thisState = world.getBlockState(pos);
+        world.notifyBlockUpdate(pos, thisState, thisState, 3);
+        markDirty();
     }
 }

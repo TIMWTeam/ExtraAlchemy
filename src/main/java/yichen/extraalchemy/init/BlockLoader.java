@@ -21,9 +21,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.blocks.BlockBloodstain;
-import yichen.extraalchemy.blocks.alchemy_circle.BlockAlchemyCircle;
-import yichen.extraalchemy.blocks.alchemy_circle.rander.TESRAlchemyCircle;
-import yichen.extraalchemy.blocks.alchemy_circle.tile.TileAlchemyCircle;
+import yichen.extraalchemy.blocks.alchemy_array.BlockAlchemyArrayTransmute;
+import yichen.extraalchemy.blocks.alchemy_array.BlockAlchemyCircle;
+import yichen.extraalchemy.blocks.alchemy_array.rander.TESRAlchemyArrayTransmute;
+import yichen.extraalchemy.blocks.alchemy_array.rander.TESRAlchemyCircle;
+import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
+import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyCircle;
 import yichen.extraalchemy.items.ItemCoalDust;
 
 
@@ -35,12 +38,14 @@ public class BlockLoader {
 
 	public static Block blockAlchemyCircle = new BlockAlchemyCircle().setUnlocalizedName(ExtraAlchemy.MODID +".alchemy_circle");
 	public static Block blockBloodstain = new BlockBloodstain().setUnlocalizedName(ExtraAlchemy.MODID +".bloodstain");
+	public static Block blockAlchemyArrayTransmute = new BlockAlchemyArrayTransmute().setUnlocalizedName(ExtraAlchemy.MODID +".alchemy_array_transmute");
 	
 	//调用注册方法
 	public BlockLoader(FMLPreInitializationEvent event)
     {
 		register(blockBloodstain,"bloodstain");
 		registerItemBlock(blockAlchemyCircle, "alchemy_circle");
+		registerItemBlock(blockAlchemyArrayTransmute, "alchemy_array_transmute");
         registerTileEntities();
         registerTESR();
     }
@@ -54,11 +59,13 @@ public class BlockLoader {
 	//注册实体
 	private static void registerTileEntities() {
         GameRegistry.registerTileEntity(TileAlchemyCircle.class, ExtraAlchemy.MODID + ":alchemy_circle");
+        GameRegistry.registerTileEntity(TileAlchemyArrayTransmute.class, ExtraAlchemy.MODID + ":alchemy_array_transmute");
     }
 	//注册特殊渲染
 	@SideOnly(Side.CLIENT)
     public static void registerTESR() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileAlchemyCircle.class, new TESRAlchemyCircle());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileAlchemyArrayTransmute.class, new TESRAlchemyArrayTransmute());
     }
 	//注册方块
 	private static void register(Block block, String name)

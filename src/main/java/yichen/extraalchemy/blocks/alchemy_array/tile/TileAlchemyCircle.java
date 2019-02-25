@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks.alchemy_circle.tile;
+package yichen.extraalchemy.blocks.alchemy_array.tile;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.Lists;
@@ -33,9 +33,9 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_circle.Counter;
-import yichen.extraalchemy.blocks.alchemy_circle.tile.base.TileEntityBase;
+import yichen.extraalchemy.blocks.alchemy_array.tile.base.TileEntityBase;
 import yichen.extraalchemy.init.ModFeatures;
+import yichen.extraalchemy.util.Counter;
 import yichen.extraalchemy.util.Vector3;
 import yichen.extraalchemy.util.alchemycircle.IAlchemyCircleMaster;
 

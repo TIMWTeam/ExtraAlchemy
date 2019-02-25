@@ -5,8 +5,16 @@ itemGroup.extraalchemy.creativeTab=更多炼金术
 item.extraalchemy.coal_dust.name=碳粉
 item.extraalchemy.dagger.name=小匕首
 item.extraalchemy.blood_bottle.name=盛有血的小瓶
+
+item.extraalchemy.transmute_dust.name=炼金嬗变
+
 #方块
+tile.extraalchemy.bloodstain.name=血迹
 tile.extraalchemy.alchemy_circle.name=炼金法阵
+tile.extraalchemy.alchemy_array_transmute.name=炼金嬗变
+
+#炼金阵
+tile.extraalchemy.bloodstain.name=血迹
 
 #工具提示
 tooltip.extraalchemy.coal_dust=用于构建炼金法阵的粉末
@@ -14,7 +22,7 @@ tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的
 tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
 
 #输出信息
-chat.extraalchemy.damageSource=%s 正在表演割腕自杀。来来来，再整个！
+death.attack.extraalchemy.self_harm=%s 正在表演割腕自杀。来来来，再整个！
 
 #按键
 extraalchemy.key=额外的炼金术

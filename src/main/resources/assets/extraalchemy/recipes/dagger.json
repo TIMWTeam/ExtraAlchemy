@@ -1,0 +1,16 @@
+{
+  "type": "forge:ore_shaped",
+  "result": {
+    "item": "extraalchemy:dagger"
+  },
+  "pattern": [
+    "  A",
+    "AB ",
+    "CA "
+  ],
+  "key": {
+    "A": { "type": "forge:ore_dict", "ore": "nuggetGold" },
+    "B": { "type": "forge:ore_dict", "ore": "ingotGold" },
+    "C": { "type": "forge:ore_dict", "ore": "stickWood" }
+  }
+}

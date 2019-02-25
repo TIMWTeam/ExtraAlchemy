@@ -5,7 +5,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
 public class DamageSource extends net.minecraft.util.DamageSource{
-	public static final DamageSource INSTANCE = new DamageSource();
+	
+	public static final DamageSource SELF_HARM = new DamageSource();
 
     public DamageSource() {
         super("YiChen_");
@@ -15,6 +16,6 @@ public class DamageSource extends net.minecraft.util.DamageSource{
 
     @Override
     public ITextComponent getDeathMessage(EntityLivingBase livingBase) {
-        return new TextComponentString(TextHelper.localizeEffect("chat.extraalchemy.damageSource", livingBase.getName()));
+        return new TextComponentString(TextHelper.localizeEffect("death.attack.extraalchemy.self_harm", livingBase.getName()));
     }
 }

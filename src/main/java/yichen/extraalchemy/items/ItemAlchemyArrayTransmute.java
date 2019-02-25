@@ -15,34 +15,35 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyCircle;
+import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.util.TextHelper;
 
-public class ItemBloodBottle extends Item{
-	public ItemBloodBottle() {
-		this.setMaxStackSize(1);
-		this.setMaxDamage(4); 
+public class ItemAlchemyArrayTransmute extends Item{
+	public ItemAlchemyArrayTransmute() {
+		this.setMaxStackSize(64);
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 	@Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-        tooltip.add(TextHelper.localizeEffect("tooltip.extraalchemy.coal_dust"));
+        tooltip.add(TextHelper.localizeEffect("tooltip.extraalchemy.transmute_dust"));
     }
 	
 	@Override
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos blockPos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItem(hand);
         BlockPos newPos = blockPos.offset(side);
+
         if (world.isAirBlock(newPos)) {
             if (!world.isRemote) {
-                world.setBlockState(newPos, BlockLoader.blockBloodstain.getDefaultState());
-                TileEntity tile = world.getTileEntity(newPos);
-                stack.damageItem(1, player);
+                world.setBlockState(newPos, BlockLoader.blockAlchemyArrayTransmute.getDefaultState());
+                stack.shrink(1);
             }
+
             return EnumActionResult.SUCCESS;
         }
+
         return EnumActionResult.FAIL;
     }
 	

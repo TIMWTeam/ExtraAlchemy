@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks.alchemy_circle;
+package yichen.extraalchemy.blocks.alchemy_array;
 
 import java.util.List;
 import java.util.Random;
@@ -15,6 +15,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -24,13 +26,13 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_circle.tile.TileAlchemyCircle;
+import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.init.ItemLoader;
 
-public class BlockAlchemyCircle extends Block{
+public class BlockAlchemyArrayTransmute extends Block{
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0, 0, 0, 1, 0.1, 1);
 	
-	public BlockAlchemyCircle() {
+	public BlockAlchemyArrayTransmute() {
         super(Material.CLOTH);
         this.setHardness(0);
         this.setLightOpacity(3);
@@ -41,7 +43,7 @@ public class BlockAlchemyCircle extends Block{
     public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean p_185477_7_) {
         // No-op
     }
-	//方块边框大小
+	//鏂瑰潡澶у皬
 	@Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return AABB;
@@ -52,62 +54,63 @@ public class BlockAlchemyCircle extends Block{
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT;
     }
-	//是否为普通方块
+	//鏄櫘閫氱珛鏂逛綋
 	@Override
     public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
         return false;
     }
-	//是否为完整方块
+	//鏄畬鏁寸珛鏂逛綋
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
     }
-    //是否会使玩家导致窒息
+    //鏄惁瀵艰嚧绐掓伅
     @Override
     public boolean causesSuffocation(IBlockState state) {
         return false;
     }
-    //是否为不透明方块
+    //鏄笉閫忔槑鏂瑰潡
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
-    //获取渲染类型
+    //鑾峰彇娓叉煋绫诲瀷
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.INVISIBLE;
     }
-    //存在实体
+    //鏄疶ileEntity
     @Override
     public boolean hasTileEntity(IBlockState state) {
         return true;
     }
-    //创造模式中键获取到的物品
+    //涓敭閫夊彇鑾峰緱鏂瑰潡
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-        return new ItemStack(ItemLoader.itemCoalDust);
+        return new ItemStack(ItemLoader.itemTransmuteDust);
     }
-    //破坏掉落
+    //鐮村潖鎺夎惤
     @Override
     public int quantityDropped(Random random) {
         return 0;
     }
-    //破坏方块
+    //鐮村潖鏂瑰潡
     @Override
-    public void breakBlock(World world, BlockPos blockPos, IBlockState blockState) {
-        TileAlchemyCircle alchemyArray = (TileAlchemyCircle) world.getTileEntity(blockPos);
-        if (alchemyArray != null) {
-        	 //内部物品掉落
-        }
-
-        super.breakBlock(world, blockPos, blockState);
+    public void breakBlock(World world, BlockPos pos, IBlockState blockState) {
+        TileAlchemyArrayTransmute transmute = (TileAlchemyArrayTransmute) world.getTileEntity(pos);
+        super.breakBlock(world, pos, blockState);
     }
-    //创建实体
+    //鍒涘缓TileEntity
     @Nullable
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileAlchemyCircle();
+        return new TileAlchemyArrayTransmute();
     }
-	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState blockState, EntityPlayer playerIn,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		
+		return super.onBlockActivated(world, pos, blockState, playerIn, hand, facing, hitX, hitY, hitZ);
+	}
 
 }

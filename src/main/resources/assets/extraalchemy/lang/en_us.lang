@@ -15,4 +15,4 @@ tooltip.extraalchemy.dagger1=Not a very sharp dagger, only pierce your fingers.
 tooltip.extraalchemy.dagger2=In order not to waste blood, it is best to prepare a glass bottle to collect.
 
 #printinfo
-chat.extraalchemy.damageSource=%s committed suicide by cutting the wrist.  :p
+death.attack.extraalchemy.self_harm=%s committed suicide by cutting the wrist.  :p
