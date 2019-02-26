@@ -1,6 +1,6 @@
 package yichen.extraalchemy;
 import org.apache.logging.log4j.Logger;
-
+import org.apache.logging.log4j.LogManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -18,8 +18,8 @@ import yichen.extraalchemy.proxy.CommonProxy;
 public class ExtraAlchemy{
 
 	public static final String MODID = "extraalchemy"; //mod_id
-	public static final String NAME = "ExtraAlchemy"; //mod����
-	public static final String VERSION = "1.0.0"; //mod�汾
+	public static final String NAME = "ExtraAlchemy"; //mod名称
+	public static final String VERSION = "1.0.0"; //mod版本
 	
 	@SidedProxy(clientSide = "yichen.extraalchemy.proxy.ClientProxy", 
             serverSide = "yichen.extraalchemy.proxy.CommonProxy")
@@ -29,7 +29,7 @@ public class ExtraAlchemy{
     public static ExtraAlchemy instance;
 	
     private Logger logger;
-
+    public static Logger log = LogManager.getLogger(NAME);
     
     public static final CreativeTabs TAB_base = new CreativeTabs(MODID + ".creativeTab") {
         @Override
@@ -38,19 +38,16 @@ public class ExtraAlchemy{
             return new ItemStack(ItemLoader.itemCoalDust);
         }
     };
-    //��ʼ��֮ǰ
 	@EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         proxy.preInit(event);
     }
-	//��ʼ������ʱ
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
         proxy.init(event);
     }
-    //��ʼ������
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {

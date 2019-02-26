@@ -51,7 +51,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
     //激活物品的ID
     private int entityIdActive = -1;
     //激活的物品
-    private Entity activeEntity = null;
+    public Entity activeEntity = null;
     //悬浮位置
     private Vector3 itemHoverPos;
     
@@ -67,6 +67,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
      		if (counter.value() >= (TICKS_ACTIVE/eff)) {
      			this.status = 2;
      		}
+     		//物品悬浮
      		floatItem();
  		}else if(status == 2) {
  			if(floatItem()) {
@@ -95,7 +96,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 			}
 		}else if(status == 0) {
 			if (getTicksExisted() % 20 == 0) {
-				AxisAlignedBB box = new AxisAlignedBB(0.2, -0.3, 0.2, 0.8, 0.3, 0.8).grow(1).offset(getPos());
+				AxisAlignedBB box = new AxisAlignedBB(0.3, -0.2, 0.3, 0.7, 0.2, 0.7).grow(1).offset(getPos());
 				List<EntityItem> unfilteredItems = world.getEntitiesWithinAABB(EntityItem.class, box);
 		        if(unfilteredItems.size() == 1) {
 		            EntityItem item = unfilteredItems.get(0);
@@ -165,18 +166,11 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 		super.readFromNBT(compound);
         this.status = compound.getInteger("status");
 
-        //this.upInventory.deserializeNBT(compound.getCompoundTag("UpInventory"));
-        //this.downInventory.deserializeNBT(compound.getCompoundTag("DownInventory"));
-        //this.burnTime = compound.getInteger("BurnTime");
     }
 	//写入NBT
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
-        //compound.setTag("UpInventory", this.upInventory.serializeNBT());
-        //compound.setTag("DownInventory", this.downInventory.serializeNBT());
-        //compound.setInteger("BurnTime", this.burnTime);
-    	
     	compound.setInteger("status", this.status);
         return super.writeToNBT(compound);
     }

@@ -38,7 +38,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyCircle;
 import yichen.extraalchemy.init.ItemLoader;
 
 public class BlockDust extends Block{

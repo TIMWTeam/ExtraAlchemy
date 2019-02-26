@@ -1,5 +1,6 @@
 package yichen.extraalchemy.blocks.alchemy_array;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
