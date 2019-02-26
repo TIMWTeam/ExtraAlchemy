@@ -28,6 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
+import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
 
 public class BlockAlchemyArrayTransmute extends Block{
@@ -88,7 +89,7 @@ public class BlockAlchemyArrayTransmute extends Block{
     //中键选取获得方块
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-        return new ItemStack(ItemLoader.itemTransmuteDust);
+        return new ItemStack(BlockLoader.blockAlchemyArrayTransmute);
     }
     //破坏掉落
     @Override

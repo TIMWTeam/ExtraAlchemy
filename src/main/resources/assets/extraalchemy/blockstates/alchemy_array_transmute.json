@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "alchemy_array_transmute" }
+        "normal": { "model": "extraalchemy:alchemy_array_transmute" }
     }
 }

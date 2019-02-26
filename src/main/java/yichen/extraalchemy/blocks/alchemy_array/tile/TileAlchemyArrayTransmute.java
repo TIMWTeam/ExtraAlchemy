@@ -96,7 +96,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 			}
 		}else if(status == 0) {
 			if (getTicksExisted() % 20 == 0) {
-				AxisAlignedBB box = new AxisAlignedBB(0.3, -0.2, 0.3, 0.7, 0.2, 0.7).grow(1).offset(getPos());
+				AxisAlignedBB box = new AxisAlignedBB(0.3, -0.2, 0.3, 0.7, 0.2, 0.7).grow(0.2).offset(getPos());
 				List<EntityItem> unfilteredItems = world.getEntitiesWithinAABB(EntityItem.class, box);
 		        if(unfilteredItems.size() == 1) {
 		            EntityItem item = unfilteredItems.get(0);

@@ -5,7 +5,7 @@ itemGroup.extraalchemy.creativeTab=更多炼金术
 item.extraalchemy.coal_dust.name=碳粉
 item.extraalchemy.dagger.name=小匕首
 item.extraalchemy.blood_bottle.name=盛有血的小瓶
-item.extraalchemy.transmute_dust.name=嬗变法阵媒介
+item.extraalchemy.transmute_dust.name=嬗变炼金阵媒介
 
 #方块
 tile.extraalchemy.bloodstain.name=血迹
@@ -16,6 +16,7 @@ tile.extraalchemy.alchemy_array_transmute.name=嬗变炼金阵
 tile.extraalchemy.bloodstain.name=血迹
 
 #工具提示
+tooltip.extraalchemy.blood_bottle=HP药瓶（雾
 tooltip.extraalchemy.transmute_dust=右击地面构成炼金阵
 tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的手指。
 tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
