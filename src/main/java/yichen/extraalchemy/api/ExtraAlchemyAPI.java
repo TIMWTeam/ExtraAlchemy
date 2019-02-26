@@ -25,8 +25,6 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 
-import yichen.extraalchemy.recipes.transmute.RecipeTransmute;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;

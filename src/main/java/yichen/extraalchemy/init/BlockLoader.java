@@ -49,6 +49,7 @@ public class BlockLoader {
     public static void registerRenders()
     {
 		registerRender(blockBloodstain);
+		registerRender(blockAlchemyArrayTransmute);
     }
 	//注册实体
 	private static void registerTileEntities() {

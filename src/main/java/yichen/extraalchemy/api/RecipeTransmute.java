@@ -1,4 +1,4 @@
-package yichen.extraalchemy.recipes.transmute;
+package yichen.extraalchemy.api;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -34,7 +34,6 @@ public class RecipeTransmute {
 					return true;
 			}
 		}
-
 		return false;
 	}
 

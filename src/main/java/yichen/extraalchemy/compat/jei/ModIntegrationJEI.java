@@ -25,10 +25,10 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
+import yichen.extraalchemy.api.RecipeTransmute;
 import yichen.extraalchemy.compat.jei.transmute.TransmuteRecipeCategory;
 import yichen.extraalchemy.compat.jei.transmute.TransmuteRecipeWrapper;
 import yichen.extraalchemy.init.BlockLoader;
-import yichen.extraalchemy.recipes.transmute.RecipeTransmute;
 
 
 @JEIPlugin
@@ -57,7 +57,4 @@ public class ModIntegrationJEI implements IModPlugin {
 
 	}
 	
-	
-	
-
 }

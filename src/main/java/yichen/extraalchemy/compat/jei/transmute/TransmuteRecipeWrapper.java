@@ -25,7 +25,7 @@ import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IStackHelper;
 import yichen.extraalchemy.compat.jei.ModIntegrationJEI;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.recipes.transmute.RecipeTransmute;
+import yichen.extraalchemy.api.RecipeTransmute;
 
 public class TransmuteRecipeWrapper implements IRecipeWrapper {
 

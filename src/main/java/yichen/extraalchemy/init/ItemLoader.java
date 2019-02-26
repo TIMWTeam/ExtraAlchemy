@@ -26,7 +26,6 @@ import yichen.extraalchemy.items.ItemCoalDust;
 public class ItemLoader {
 	public static List<Item> items;
 	
-	//�Ǳ��ػ����ƣ�lang�ļ���ʹ��
 	public static Item itemCoalDust = new ItemCoalDust().setUnlocalizedName(ExtraAlchemy.MODID +".coal_dust");
 	public static Item itemDagger = new ItemDagger().setUnlocalizedName(ExtraAlchemy.MODID +".dagger");
 	public static Item itembloodbottle = new ItemBloodBottle().setUnlocalizedName(ExtraAlchemy.MODID +".blood_bottle");
@@ -40,22 +39,23 @@ public class ItemLoader {
 		register(itembloodbottle, "blood_bottle");
 		register(itemTransmuteDust, "transmute_dust");
     }
-    //ע����Ʒ��ͼ
+    //注册贴图
 	@SideOnly(Side.CLIENT)
     public static void registerRenders()
     {
         registerRender(itemCoalDust);
         registerRender(itemDagger);
         registerRender(itembloodbottle);
+        registerRender(itemTransmuteDust);
     }
 
-	//ע����Ʒ
+	//注册物品
     private static void register(Item item, String name)
     {
     	ForgeRegistries.ITEMS.register(item.setRegistryName(name));
     }
     
-    //ע����Ʒ��ͼ
+    //注册贴图
 	@SideOnly(Side.CLIENT)
 	public static void registerRender(Item item){
 		ModelResourceLocation model = new ModelResourceLocation(item.getRegistryName(), "inventory");
