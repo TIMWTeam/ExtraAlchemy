@@ -186,9 +186,10 @@ public class TESRAlchemyArrayTransmute extends TileEntitySpecialRenderer<TileAlc
         GlStateManager.disableCull();
 
         GlStateManager.blendFunc(770, 1);
-        
-        float translate = 0.008F * (work.value() * eff) ;
-        float scale = 0.008F * (work.value() * eff);
+
+        float magnification = worktime/100;
+        float translate = 0.008F * ((work.value() * eff)/magnification);
+        float scale = 0.008F * ((work.value() * eff)/magnification);
         if(work.value() <= (worktime/4)) {
             GlStateManager.translate(0.5F, 0.33F, 0.5F);
             GlStateManager.translate(0, translate, 0);
@@ -238,8 +239,9 @@ public class TESRAlchemyArrayTransmute extends TileEntitySpecialRenderer<TileAlc
 
         GlStateManager.blendFunc(770, 1);
         
-        float translate = 0.008F * (work.value() * eff) ;
-        float scale = 0.008F * (work.value() * eff);
+        float magnification = worktime/100;
+        float translate = 0.008F * ((work.value() * eff)/magnification);
+        float scale = 0.008F * ((work.value() * eff)/magnification);
         if(work.value() <= (worktime/4)) {
             GlStateManager.translate(0.5F, 0.33F, 0.5F);
             GlStateManager.translate(0, -translate, 0);

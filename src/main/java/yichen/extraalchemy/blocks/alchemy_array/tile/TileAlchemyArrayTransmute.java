@@ -1,5 +1,6 @@
 package yichen.extraalchemy.blocks.alchemy_array.tile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -8,6 +9,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.common.hash.BloomFilter;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,6 +28,8 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import yichen.extraalchemy.api.ExtraAlchemyAPI;
+import yichen.extraalchemy.api.RecipeTransmute;
 import yichen.extraalchemy.blocks.alchemy_array.tile.base.TileEntityBase;
 import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.util.Counter;
@@ -52,6 +56,8 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
     private int entityIdActive = -1;
     //激活的物品
     public Entity activeEntity = null;
+    //配方
+    private RecipeTransmute RT = null;
     //悬浮位置
     private Vector3 itemHoverPos;
     
@@ -81,9 +87,8 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 					activeItem.shrink(1);
 					
 					//掉出加工物
-					ItemStack tunedStack = new ItemStack(Items.REDSTONE);
+					ItemStack tunedStack = RT.getOutput().copy();
 					dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), tunedStack);
-					
 					//重置工作时间
 					counterWork.set(0);
 					
@@ -98,9 +103,16 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 			if (getTicksExisted() % 20 == 0) {
 				AxisAlignedBB box = new AxisAlignedBB(0.3, -0.2, 0.3, 0.7, 0.2, 0.7).grow(0.2).offset(getPos());
 				List<EntityItem> unfilteredItems = world.getEntitiesWithinAABB(EntityItem.class, box);
-		        if(unfilteredItems.size() == 1) {
-		            EntityItem item = unfilteredItems.get(0);
-		            startWork(1, item);
+		        if(unfilteredItems.size() > 0) {
+		        	//验证是否有匹配配方
+		        	for (int i = 0; i < unfilteredItems.size(); i++) {
+			            EntityItem entityItem = unfilteredItems.get(i);
+			        	if(matchRecipe(entityItem)) {
+			        		EntityItem item = unfilteredItems.get(i);
+			        		startWork(1, item);
+			        		return;
+			        	}
+					}
 		        }
 			}
 		}else if (status == 3) {
@@ -134,21 +146,38 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
     	this.status = MathHelper.clamp(sta, 0, 4);
     	this.counterWork.set(0);
         switch (sta) {
-        case 0:
-        case 3:
-            this.entityIdActive = -1;
-            this.activeEntity = null;
-            break;
-        case 1:
-            this.entityIdActive = item.getEntityId();
-            this.activeEntity = item;
-            break;
-        default:
-            break;
-    }
-        
+	        case 0:
+	        case 3:
+	            this.entityIdActive = -1;
+	            this.activeEntity = null;
+	            this.RT = null;
+	            this.TICKS_TRANSMUTE=100;
+	            break;
+	        case 1:
+	            this.entityIdActive = item.getEntityId();
+	            this.activeEntity = item;
+	            break;
+	        default:
+	            break;
+        }
         markForUpdate();
     }
+    //验证物品的配方
+    public boolean matchRecipe(EntityItem item) {
+    	if( item.isDead || item.getItem().isEmpty())
+			return false;
+    	   	
+    	List<RecipeTransmute> matchingRecipes = new ArrayList<>();
+		for (RecipeTransmute recipe : ExtraAlchemyAPI.transmuteRecipes) {
+			if (recipe.matches(item.getItem())) {
+				RT=recipe;
+				TICKS_TRANSMUTE=recipe.getTime();
+				return true;
+			}
+		}
+		return false;
+    }
+    //物品掉出
     public EntityItem dropItem(World world, double x, double y, double z, ItemStack stack) {
         if (world.isRemote) return null;
         EntityItem ei = new EntityItem(world, x, y, z, stack);
@@ -159,6 +188,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
         ei.setDefaultPickupDelay();
         return ei;
     }
+    
 	//读取NBT
 	@Override
     public void readFromNBT(NBTTagCompound compound)

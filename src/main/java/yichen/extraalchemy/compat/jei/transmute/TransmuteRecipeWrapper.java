@@ -51,7 +51,7 @@ public class TransmuteRecipeWrapper implements IRecipeWrapper {
 		}
 		input = builder.build();
 		output = recipe.getOutput();
-		time = recipe.getManaToConsume();
+		time = recipe.getTime();
     }
     
     @Override

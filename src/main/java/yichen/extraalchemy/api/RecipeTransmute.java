@@ -53,7 +53,7 @@ public class RecipeTransmute {
 		return output;
 	}
 
-	public int getManaToConsume() {
+	public int getTime() {
 		return time;
 	}
 
