@@ -1,4 +1,4 @@
-package yichen.extraalchemy.items;
+package yichen.extraalchemy.base.items.block;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.util.TextHelper;
 

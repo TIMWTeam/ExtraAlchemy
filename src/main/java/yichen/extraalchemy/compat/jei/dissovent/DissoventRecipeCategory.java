@@ -1,4 +1,4 @@
-package yichen.extraalchemy.compat.jei.transmute;
+package yichen.extraalchemy.compat.jei.dissovent;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -21,16 +21,15 @@ import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.compat.jei.ModIntegrationJEI;
 import yichen.extraalchemy.init.BlockLoader;
 
-public class TransmuteRecipeCategory implements IRecipeCategory<TransmuteRecipeWrapper> {
+public class DissoventRecipeCategory implements IRecipeCategory<DissoventRecipeWrapper> {
 
-	public static final String UID = "extraalchemy.transmute";
+	public static final String UID = "extraalchemy.dissovent";
 	private final IDrawable background;
 	private final String localizedName;
 
-    public TransmuteRecipeCategory(IGuiHelper guiHelper) {
-		localizedName = I18n.format("extraalchemy.jei.transmute");
+    public DissoventRecipeCategory(IGuiHelper guiHelper) {
+		localizedName = I18n.format("extraalchemy.jei.dissovent");
 		background = guiHelper.drawableBuilder( new ResourceLocation(ExtraAlchemy.MODID, "textures/gui/recipetransmute.png"), 0, 0, 116, 54).build();
-		//overlay  = guiHelper.createDrawable(new ResourceLocation("extraalchemy", "textures/gui/recipeTransmute.png"), 0, 0, 116, 54);
     }
     @Nonnull
 	@Override
@@ -58,7 +57,7 @@ public class TransmuteRecipeCategory implements IRecipeCategory<TransmuteRecipeW
 
 
 	@Override
-	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull TransmuteRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients) {
+	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull DissoventRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients) {
 		IGuiItemStackGroup group = recipeLayout.getItemStacks();
         group.init(0, true, 18, 17);
         group.init(1, false, 94, 17);

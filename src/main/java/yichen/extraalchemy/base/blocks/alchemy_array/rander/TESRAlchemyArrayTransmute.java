@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks.alchemy_array.rander;
+package yichen.extraalchemy.base.blocks.alchemy_array.rander;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.util.Counter;
 

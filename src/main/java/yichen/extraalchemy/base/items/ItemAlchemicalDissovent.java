@@ -1,4 +1,4 @@
-package yichen.extraalchemy.items;
+package yichen.extraalchemy.base.items;
 
 import java.util.List;
 
@@ -25,39 +25,18 @@ import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.util.TextHelper;
 
-public class ItemBloodBottle extends Item{
-	public ItemBloodBottle() {
+public class ItemAlchemicalDissovent extends Item{
+	public ItemAlchemicalDissovent() {
 		this.setMaxStackSize(1);
-		this.setMaxDamage(3); 
+		this.setMaxDamage(32); 
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 
 	@Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-        tooltip.add(TextHelper.localizeEffect("tooltip.extraalchemy.blood_bottle"));
-    }
-	
-	@Override
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos blockPos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItem(hand);
         BlockPos newPos = blockPos.offset(side);
-        if (world.isAirBlock(newPos)) {
-            if (!world.isRemote) {
-                world.setBlockState(newPos, BlockLoader.blockBloodstain.getDefaultState());
-                TileEntity tile = world.getTileEntity(newPos);
-                	stack.damageItem(1, player);
-                	if(stack.isEmpty()) {
-                		ItemStack glass_bottle = new ItemStack(Items.GLASS_BOTTLE);
-        				if(!player.inventory.addItemStackToInventory(glass_bottle))
-        	    		{
-        	    			player.dropItem(glass_bottle, true, false);
-        	    		}
-                	}
-                
-            }
-            return EnumActionResult.SUCCESS;
-        }
+        stack.damageItem(1, player);
         return EnumActionResult.FAIL;
     }
 	@Nonnull
@@ -79,6 +58,6 @@ public class ItemBloodBottle extends Item{
 	@Nonnull
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.DRINK;
+		return EnumAction.BLOCK;
 	}
 }

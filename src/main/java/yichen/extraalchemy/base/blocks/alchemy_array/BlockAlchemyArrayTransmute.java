@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks.alchemy_array;
+package yichen.extraalchemy.base.blocks.alchemy_array;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,7 +27,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
 

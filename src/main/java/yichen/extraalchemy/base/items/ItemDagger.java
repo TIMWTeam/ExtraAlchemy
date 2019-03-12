@@ -1,4 +1,4 @@
-package yichen.extraalchemy.items;
+package yichen.extraalchemy.base.items;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
-import yichen.extraalchemy.util.DamageSource;
+import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
 import yichen.extraalchemy.util.TextHelper;
 
 public class ItemDagger extends Item{
@@ -48,10 +48,10 @@ public class ItemDagger extends Item{
 			if (!player.capabilities.isCreativeMode) {
 				stack.damageItem(1, player);
 				player.setActiveHand(hand);
-				player.attackEntityFrom(DamageSource.SELF_HARM, 0.001F);
+				player.attackEntityFrom(DamageSourceExtraAlchemy.SELF_HARM, 0.001F);
                 player.setHealth(Math.max(player.getHealth() - 4, 0.0001f));
                 if (player.getHealth() <= 0.001f) {
-                    player.onDeath(DamageSource.SELF_HARM);
+                    player.onDeath(DamageSourceExtraAlchemy.SELF_HARM);
                     player.setHealth(0);
                 }
 			}

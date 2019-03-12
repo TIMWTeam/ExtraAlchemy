@@ -7,16 +7,17 @@ import net.minecraftforge.oredict.OreDictionary;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class RecipeTransmute {
+public class RecipeDissovent {
 
 	private final ItemStack output;
 	private final Object input;
-	private final int time;
+	private final float chance;
 
-	public RecipeTransmute(ItemStack output, Object input, int time) {
+
+	public RecipeDissovent(ItemStack output, Object input, float chance) {
 		this.output = output;
 		this.input = input;
-		this.time = time;
+		this.chance = chance;
 	}
 
 	public boolean matches(ItemStack stack) {
@@ -41,8 +42,10 @@ public class RecipeTransmute {
 		return output;
 	}
 
-	public int getTime() {
-		return time;
+	public float getChance() {
+		return chance;
 	}
+
+
 
 }

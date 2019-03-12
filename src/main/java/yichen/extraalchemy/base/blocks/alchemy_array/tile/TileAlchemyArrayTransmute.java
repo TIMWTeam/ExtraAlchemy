@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks.alchemy_array.tile;
+package yichen.extraalchemy.base.blocks.alchemy_array.tile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
 import yichen.extraalchemy.api.RecipeTransmute;
-import yichen.extraalchemy.blocks.alchemy_array.tile.base.TileEntityBase;
+import yichen.extraalchemy.base.blocks.alchemy_array.tile.base.TileEntityBase;
 import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.util.Counter;
 import yichen.extraalchemy.util.Vector3;
@@ -89,14 +89,15 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 					//掉出加工物
 					ItemStack tunedStack = RT.getOutput().copy();
 					dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), tunedStack);
-					//重置工作时间
-					counterWork.set(0);
 					
 					//如果物品处理完毕则关闭炼金阵
 					if(activeItem.getCount() == 0) {
 						activeEntity.setDead();
 						startWork(3, null);
 					}
+					
+					//重置工作时间
+					counterWork.set(0);
 				}
 			}
 		}else if(status == 0) {

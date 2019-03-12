@@ -1,4 +1,4 @@
-package yichen.extraalchemy.compat.jei.transmute;
+package yichen.extraalchemy.compat.jei.dissovent;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
@@ -25,15 +25,15 @@ import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IStackHelper;
 import yichen.extraalchemy.compat.jei.ModIntegrationJEI;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.api.RecipeTransmute;
+import yichen.extraalchemy.api.RecipeDissovent;
 
-public class TransmuteRecipeWrapper implements IRecipeWrapper {
+public class DissoventRecipeWrapper implements IRecipeWrapper {
 
 	private final List<List<ItemStack>> input;
 	private final ItemStack output;
-	private final int time;
+	private final float chance;
 
-    public TransmuteRecipeWrapper(RecipeTransmute  recipe) {
+    public DissoventRecipeWrapper(RecipeDissovent  recipe) {
         
     	ImmutableList.Builder<List<ItemStack>> builder = ImmutableList.builder();
 
@@ -45,9 +45,9 @@ public class TransmuteRecipeWrapper implements IRecipeWrapper {
 
 		input = builder.build();
 		output = recipe.getOutput();
-		time = recipe.getTime();
+		chance = recipe.getChance();
     }
-    
+
     @Override
 	public void getIngredients(@Nonnull IIngredients ingredients) {
 		ingredients.setInputLists(VanillaTypes.ITEM, input);

@@ -1,4 +1,4 @@
-package yichen.extraalchemy.items;
+package yichen.extraalchemy.base.items;
 
 import java.util.List;
 

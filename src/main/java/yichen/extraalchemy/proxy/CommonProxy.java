@@ -8,6 +8,7 @@ import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.CraftingLoader;
 import yichen.extraalchemy.init.ItemLoader;
+import yichen.extraalchemy.recipes.ModDissoventRecipes;
 import yichen.extraalchemy.recipes.ModTransmuteRecipes;
 
 import com.google.common.collect.ImmutableMap;
@@ -33,6 +34,7 @@ public class CommonProxy {
 		new CraftingLoader();
 
 		ModTransmuteRecipes.init();
+		ModDissoventRecipes.init();
 	}
     public void postInit(FMLPostInitializationEvent event) {
 

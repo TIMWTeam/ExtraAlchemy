@@ -12,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -20,25 +22,31 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.blocks.BlockBloodstain;
-import yichen.extraalchemy.blocks.alchemy_array.BlockAlchemyArrayTransmute;
-import yichen.extraalchemy.blocks.alchemy_array.rander.TESRAlchemyArrayTransmute;
-import yichen.extraalchemy.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
-import yichen.extraalchemy.items.ItemCoalDust;
+import yichen.extraalchemy.base.blocks.BlockBloodstain;
+import yichen.extraalchemy.base.blocks.alchemy_array.BlockAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.rander.TESRAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent;
+import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent.FluidAlchemicalDissovent;
+import yichen.extraalchemy.base.items.ItemCoalDust;
 
 
 @Mod.EventBusSubscriber(modid = ExtraAlchemy.MODID)
 @GameRegistry.ObjectHolder(ExtraAlchemy.MODID)
 public class BlockLoader {
 
-	//public static final Block ALCHEMY_ARRAY = Blocks.AIR;
-
+	
 	public static Block blockBloodstain = new BlockBloodstain().setUnlocalizedName(ExtraAlchemy.MODID +".bloodstain");
 	public static Block blockAlchemyArrayTransmute = new BlockAlchemyArrayTransmute().setUnlocalizedName(ExtraAlchemy.MODID +".alchemy_array_transmute");
-	
+
+
 	//调用注册方法
 	public BlockLoader(FMLPreInitializationEvent event)
     {
+		FluidRegistry.registerFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
+		FluidRegistry.addBucketForFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
+		register(new BlockAlchemicalDissovent(),"alchemical_dissovent");
+
 		register(blockBloodstain,"bloodstain");
 		registerItemBlock(blockAlchemyArrayTransmute, "alchemy_array_transmute");
         registerTileEntities();

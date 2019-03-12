@@ -10,8 +10,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import yichen.extraalchemy.base.items.ItemCoalDust;
 import yichen.extraalchemy.init.ItemLoader;
-import yichen.extraalchemy.items.ItemCoalDust;
 import yichen.extraalchemy.proxy.CommonProxy;
 
 @Mod(modid = ExtraAlchemy.MODID, name = ExtraAlchemy.NAME, version = ExtraAlchemy.VERSION,acceptedMinecraftVersions = "1.12.2")

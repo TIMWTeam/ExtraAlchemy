@@ -6,11 +6,17 @@ item.extraalchemy.coal_dust.name=碳粉
 item.extraalchemy.dagger.name=小匕首
 item.extraalchemy.blood_bottle.name=盛有血的小瓶
 item.extraalchemy.transmute_dust.name=嬗变炼金阵媒介
+item.extraalchemy.life_essence.name=生命精华
+item.extraalchemy.item_alchemical_dissovent.name=小瓶溶金液
+
 
 #方块
 tile.extraalchemy.bloodstain.name=血迹
 tile.extraalchemy.alchemy_circle.name=炼金法阵
 tile.extraalchemy.alchemy_array_transmute.name=嬗变炼金阵
+
+#流体
+tile.extraalchemy.fluid.alchemical_dissovent.name=溶金液
 
 #炼金阵
 tile.extraalchemy.bloodstain.name=血迹
@@ -23,9 +29,11 @@ tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来
 
 #输出信息
 death.attack.extraalchemy.self_harm=%s 正在表演割腕自杀。来来来，再整个！
+death.attack.extraalchemy.dissolve=%s 在炼金时不甚被溶解了……
 
 #按键
 extraalchemy.key=更多炼金术
 
 #JEI
 extraalchemy.jei.transmute=嬗变
+extraalchemy.jei.dissovent=溶解

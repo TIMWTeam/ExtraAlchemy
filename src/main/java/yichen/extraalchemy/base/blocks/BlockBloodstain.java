@@ -1,4 +1,4 @@
-package yichen.extraalchemy.blocks;
+package yichen.extraalchemy.base.blocks;
 
 import java.util.List;
 import java.util.Locale;

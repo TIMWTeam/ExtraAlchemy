@@ -9,6 +9,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -18,10 +19,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.items.ItemDagger;
-import yichen.extraalchemy.items.ItemAlchemyArrayTransmute;
-import yichen.extraalchemy.items.ItemBloodBottle;
-import yichen.extraalchemy.items.ItemCoalDust;
+import yichen.extraalchemy.base.items.ItemAlchemicalDissovent;
+import yichen.extraalchemy.base.items.ItemBloodBottle;
+import yichen.extraalchemy.base.items.ItemCoalDust;
+import yichen.extraalchemy.base.items.ItemDagger;
+import yichen.extraalchemy.base.items.ItemLifeEssence;
+import yichen.extraalchemy.base.items.block.ItemAlchemyArrayTransmute;
 
 public class ItemLoader {
 	public static List<Item> items;
@@ -30,6 +33,8 @@ public class ItemLoader {
 	public static Item itemDagger = new ItemDagger().setUnlocalizedName(ExtraAlchemy.MODID +".dagger");
 	public static Item itembloodbottle = new ItemBloodBottle().setUnlocalizedName(ExtraAlchemy.MODID +".blood_bottle");
 	public static Item itemTransmuteDust = new ItemAlchemyArrayTransmute().setUnlocalizedName(ExtraAlchemy.MODID +".transmute_dust");
+	public static Item itemLifeEssence = new ItemLifeEssence().setUnlocalizedName(ExtraAlchemy.MODID +".life_essence");
+	public static Item itemAlchemicalDissovent = new ItemAlchemicalDissovent().setUnlocalizedName(ExtraAlchemy.MODID +".item_alchemical_dissovent");
 
 
 	public ItemLoader(FMLPreInitializationEvent event)
@@ -38,6 +43,8 @@ public class ItemLoader {
 		register(itemDagger, "dagger");
 		register(itembloodbottle, "blood_bottle");
 		register(itemTransmuteDust, "transmute_dust");
+		register(itemLifeEssence, "life_essence");
+		register(itemAlchemicalDissovent, "item_alchemical_dissovent");
     }
     //注册贴图
 	@SideOnly(Side.CLIENT)

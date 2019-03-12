@@ -37,6 +37,7 @@ import java.util.Set;
 public final class ExtraAlchemyAPI {
 
 	public static final List<RecipeTransmute> transmuteRecipes = new ArrayList<>();
+	public static final List<RecipeDissovent> dissoventRecipes = new ArrayList<>();
 	
 	/**
 	 * Registers a Transmute Recipe 
@@ -49,6 +50,20 @@ public final class ExtraAlchemyAPI {
 		Preconditions.checkArgument(time <= 10000);
 		RecipeTransmute recipe = new RecipeTransmute(output, input, time);
 		transmuteRecipes.add(recipe);
+		return recipe;
+	}
+
+	/**
+	 * Registers a Dissovent Recipe 
+	 * @param output The ItemStack to craft
+	 * @param input The input item, be it an ItemStack or an ore dictionary entry String.
+	 * @param chance The chance of obtaining a output. Don't go over 1!
+	 * @return The recipe created.
+	 */
+	public static RecipeDissovent registerDissoventRecipe(ItemStack output, Object input, float chance) {
+		Preconditions.checkArgument(chance <= 1);
+		RecipeDissovent recipe = new RecipeDissovent(output, input, chance);
+		dissoventRecipes.add(recipe);
 		return recipe;
 	}
 	
