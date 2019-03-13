@@ -16,7 +16,7 @@ tile.extraalchemy.alchemy_circle.name=炼金法阵
 tile.extraalchemy.alchemy_array_transmute.name=嬗变炼金阵
 
 #流体
-tile.extraalchemy.fluid.alchemical_dissovent=溶金液
+tile.extraalchemy.fluid.alchemical_dissovent.name=溶金液
 
 #炼金阵
 tile.extraalchemy.bloodstain.name=血迹
