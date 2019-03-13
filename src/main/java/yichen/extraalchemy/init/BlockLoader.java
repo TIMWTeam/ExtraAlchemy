@@ -6,17 +6,23 @@ import java.util.Objects;
 import com.google.common.collect.Lists;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -43,9 +49,10 @@ public class BlockLoader {
 	//调用注册方法
 	public BlockLoader(FMLPreInitializationEvent event)
     {
+
 		FluidRegistry.registerFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
 		FluidRegistry.addBucketForFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
-		register(new BlockAlchemicalDissovent(),"alchemical_dissovent");
+		registerFluid(new BlockAlchemicalDissovent(),"alchemical_dissovent");
 
 		register(blockBloodstain,"bloodstain");
 		registerItemBlock(blockAlchemyArrayTransmute, "alchemy_array_transmute");
@@ -79,6 +86,22 @@ public class BlockLoader {
 		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
 		ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
     }
+	//注册流体方块
+    public static void registerFluid(Block block, String name) {
+		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
+		registerFluidModels(block);
+    }
+    //注册流体贴图
+    @SideOnly(Side.CLIENT)
+    public static void registerFluidModels(Block block){
+        ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+                return new ModelResourceLocation(ExtraAlchemy.MODID, "fluid");
+            }
+        });
+    }
+    //注册方块贴图
     @SideOnly(Side.CLIENT)
     private static void registerRender(Block block)
     {
