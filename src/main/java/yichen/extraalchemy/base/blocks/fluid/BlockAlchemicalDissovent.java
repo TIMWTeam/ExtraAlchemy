@@ -56,42 +56,49 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
 	            EntityLivingBase entityliving = (EntityLivingBase) entityIn;
 	            entityliving.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 10, 0, true, true));
 	            entityliving.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 0, true, true));
+
 	            //受到伤害
-	            entityliving.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE, 0.001F);
-	            entityliving.setHealth(Math.max(entityliving.getHealth() - 2, 0.0001f));
-                if (entityliving.getHealth() <= 0.001f ) {
-                	entityliving.onDeath(DamageSourceExtraAlchemy.DISSOLVE);
-                	entityliving.setHealth(0);
-                }
                 //玩家10%几率、生物0.5%几率掉落生命源质
-	            if(d<=0.1 && entityIn instanceof EntityPlayer){
-	            	entityIn.dropItem(ItemLoader.itemLifeEssence,1);
-	            }else if (d<=0.005){
-	            	entityIn.dropItem(ItemLoader.itemLifeEssence,1);
-	            }
+	            if(entityIn instanceof EntityPlayer) {
+            		if( !((EntityPlayer) entityIn).isCreative()) 
+            			causeDamages(entityliving);
+            		if(d<=0.1) 
+    	            	entityIn.dropItem(ItemLoader.itemLifeEssence,1);
+            	}else {
+        			causeDamages(entityliving);
+        			if (d<=0.005)
+    	            	entityIn.dropItem(ItemLoader.itemLifeEssence,1);
+            	}
 	        } else if (entityIn instanceof EntityItem) {
 	        	((EntityItem) entityIn).setNoDespawn();
-	            ItemStack itemStack = ((EntityItem) entityIn).getItem();
-	            if (!itemStack.isEmpty()) {
-	                if (entityIn.getEntityWorld().isRemote) return;
-	                RecipeDissovent recipe = matchRecipe((EntityItem) entityIn);
-	                if(recipe != null) {
-		                if(d<=recipe.getChance() ){
-		                	itemStack.shrink(1);
-		                	ItemStack tunedStack = recipe.getOutput().copy();
-		                	EntityItem outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tunedStack);
-		                	worldIn.spawnEntity(outputItem);
-			            }
-	                }
-	                
-	            }
+	        	ItemStack itemStack = ((EntityItem) entityIn).getItem();
+	        	if (!itemStack.isEmpty()) {
+	        		if (entityIn.getEntityWorld().isRemote) return;
+	        		RecipeDissovent recipe = matchRecipe((EntityItem) entityIn);
+	        		if(recipe != null) {
+	        			if(d<=recipe.getChance() ){
+	        				itemStack.shrink(1);
+	        				ItemStack tunedStack = recipe.getOutput().copy();
+	        				EntityItem outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tunedStack);
+	        				worldIn.spawnEntity(outputItem);
+	        			}
+	        		}
+	        	}
 	        }
-            counter.clear();
+	        counter.clear();
         }else {
-     		counter.increment();
+        	counter.increment();
         }
-    }
-	
+	}
+	//对生物造成伤害
+	public void causeDamages(EntityLivingBase entityliving) {
+        entityliving.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE, 0.001F);
+        entityliving.setHealth(Math.max(entityliving.getHealth() - 2, 0.0001f));
+        if (entityliving.getHealth() <= 0.001f ) {
+        	entityliving.onDeath(DamageSourceExtraAlchemy.DISSOLVE);
+        	entityliving.setHealth(0);
+        }
+	}
 	//验证物品的配方
     public RecipeDissovent matchRecipe(EntityItem item) {
     	if( item.isDead || item.getItem().isEmpty())

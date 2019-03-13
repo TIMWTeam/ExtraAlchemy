@@ -82,22 +82,22 @@ public class BlockLoader {
     }
 	//注册方块及物品
 	private static void registerItemBlock(Block block, String name)
-    {
+	{
 		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
 		ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
-    }
+	}
 	//注册流体方块
-    public static void registerFluid(Block block, String name) {
+	public static void registerFluid(Block block, String name) {
 		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
-		registerFluidModels(block);
-    }
-    //注册流体贴图
-    @SideOnly(Side.CLIENT)
-    public static void registerFluidModels(Block block){
+		registerFluidModels(block,name);
+	}
+	//注册流体贴图
+	@SideOnly(Side.CLIENT)
+	public static void registerFluidModels(Block block, String name){
         ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
             @Override
             protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                return new ModelResourceLocation(ExtraAlchemy.MODID, "fluid");
+                return new ModelResourceLocation(ExtraAlchemy.MODID+":fluid", name);
             }
         });
     }

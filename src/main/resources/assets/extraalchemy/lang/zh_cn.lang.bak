@@ -4,10 +4,10 @@ itemGroup.extraalchemy.creativeTab=更多炼金术
 #物品
 item.extraalchemy.coal_dust.name=碳粉
 item.extraalchemy.dagger.name=小匕首
-item.extraalchemy.blood_bottle.name=盛有血的小瓶
+item.extraalchemy.blood_bottle.name=血瓶
 item.extraalchemy.transmute_dust.name=嬗变炼金阵媒介
 item.extraalchemy.life_essence.name=生命精华
-item.extraalchemy.item_alchemical_dissovent.name=小瓶溶金液
+item.extraalchemy.item_alchemical_dissovent.name=炼金溶剂
 
 
 #方块
@@ -16,7 +16,7 @@ tile.extraalchemy.alchemy_circle.name=炼金法阵
 tile.extraalchemy.alchemy_array_transmute.name=嬗变炼金阵
 
 #流体
-tile.extraalchemy.fluid.alchemical_dissovent.name=溶金液
+tile.extraalchemy.fluid.alchemical_dissovent.name=炼金溶液
 
 #炼金阵
 tile.extraalchemy.bloodstain.name=血迹
@@ -26,10 +26,11 @@ tooltip.extraalchemy.blood_bottle=这才不是HP瓶（雾
 tooltip.extraalchemy.transmute_dust=右击地面构成炼金阵
 tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的手指。
 tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
-
+tooltip.extraalchemy.alchemical_dissovent=俺寻思这东西是啥味道……
 #输出信息
 death.attack.extraalchemy.self_harm=%s 正在表演割腕自杀。来来来，再整个！
 death.attack.extraalchemy.dissolve=%s 在炼金时不甚被溶解了……
+death.attack.extraalchemy.dissolve2=%s 服下了炼金溶剂，从身体内部被溶解了。
 
 #按键
 extraalchemy.key=更多炼金术
