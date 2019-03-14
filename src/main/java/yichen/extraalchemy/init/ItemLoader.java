@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceFire;
+import yichen.extraalchemy.base.entity.EntityEssenceWater;
 import yichen.extraalchemy.base.entity.EntityEssenceWind;
 import yichen.extraalchemy.base.items.ItemAlchemicalDissovent;
 import yichen.extraalchemy.base.items.ItemBloodBottle;
@@ -88,7 +89,7 @@ public class ItemLoader {
 		int i = 0;
 		EntityRegistry.registerModEntity(makeName("essence_fire"), EntityEssenceFire.class, ExtraAlchemy.MODID+":essence_fire", i++, ExtraAlchemy.instance, 64, 10, true);
 		EntityRegistry.registerModEntity(makeName("essence_wind"), EntityEssenceWind.class, ExtraAlchemy.MODID+":essence_wind", i++, ExtraAlchemy.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(makeName("essence_water"), EntityEssenceWind.class, ExtraAlchemy.MODID+":essence_water", i++, ExtraAlchemy.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(makeName("essence_water"), EntityEssenceWater.class, ExtraAlchemy.MODID+":essence_water", i++, ExtraAlchemy.instance, 64, 10, true);
 	}
 	private static ResourceLocation makeName(String name) {
 		return new ResourceLocation(ExtraAlchemy.MODID, name);
