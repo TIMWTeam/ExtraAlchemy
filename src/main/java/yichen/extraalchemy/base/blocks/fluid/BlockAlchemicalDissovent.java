@@ -63,11 +63,11 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
             		if( !((EntityPlayer) entityIn).isCreative()) 
             			causeDamages(entityliving);
             		if(d<=0.1) 
-    	            	entityIn.dropItem(ItemLoader.itemLifeEssence,1);
+    	            	entityIn.dropItem(ItemLoader.itemEssenceLife,1);
             	}else {
         			causeDamages(entityliving);
         			if (d<=0.005)
-    	            	entityIn.dropItem(ItemLoader.itemLifeEssence,1);
+    	            	entityIn.dropItem(ItemLoader.itemEssenceLife,1);
             	}
 	        } else if (entityIn instanceof EntityItem) {
 	        	((EntityItem) entityIn).setNoDespawn();

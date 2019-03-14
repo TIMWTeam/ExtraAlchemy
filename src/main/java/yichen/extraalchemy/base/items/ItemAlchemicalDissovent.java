@@ -69,16 +69,8 @@ public class ItemAlchemicalDissovent extends Item{
 			ItemStack tunedStack = recipe.getOutput().copy();
 			EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tunedStack);
 			world.spawnEntity(outputItem);
+			return EnumActionResult.SUCCESS;
 		}
-		
-        
-        
-        
-        
-        
-        
-        
-        
         return EnumActionResult.FAIL;
     }
 
@@ -100,6 +92,12 @@ public class ItemAlchemicalDissovent extends Item{
 
 	@Nonnull
 	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
+		player.setActiveHand(hand);
+		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+	}
+	@Nonnull
+	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
 		living.onDeath(DamageSourceExtraAlchemy.DISSOLVE2);
 		living.setHealth(0);
@@ -107,7 +105,7 @@ public class ItemAlchemicalDissovent extends Item{
 	}
 	@Override
 	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-		return 200;
+		return 60;
 	}
 	@Nonnull
 	@Override

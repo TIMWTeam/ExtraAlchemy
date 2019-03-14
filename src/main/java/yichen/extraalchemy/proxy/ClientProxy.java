@@ -11,6 +11,7 @@ public class ClientProxy extends CommonProxy{
     public void preInit(FMLPreInitializationEvent event)
     {
         super.preInit(event);
+        //注册渲染
         ItemLoader.registerRenders();
         BlockLoader.registerRenders();
     }

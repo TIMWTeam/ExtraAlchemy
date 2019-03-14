@@ -6,9 +6,12 @@ item.extraalchemy.coal_dust.name=碳粉
 item.extraalchemy.dagger.name=小匕首
 item.extraalchemy.blood_bottle.name=血瓶
 item.extraalchemy.transmute_dust.name=嬗变炼金阵媒介
-item.extraalchemy.life_essence.name=生命精华
 item.extraalchemy.item_alchemical_dissovent.name=炼金溶剂
-
+item.extraalchemy.essence_life.name=生命精华
+item.extraalchemy.essence_earth.name=地之精华
+item.extraalchemy.essence_wind.name=风之精华
+item.extraalchemy.essence_water.name=水之精华
+item.extraalchemy.essence_fire.name=火之精华
 
 #方块
 tile.extraalchemy.bloodstain.name=血迹
@@ -26,7 +29,7 @@ tooltip.extraalchemy.blood_bottle=这才不是HP瓶（雾
 tooltip.extraalchemy.transmute_dust=右击地面构成炼金阵
 tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的手指。
 tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
-tooltip.extraalchemy.alchemical_dissovent=俺寻思这东西是啥味道……
+tooltip.extraalchemy.alchemical_dissovent=俺寻思这玩意味道咋样……
 #输出信息
 death.attack.extraalchemy.self_harm=%s 正在表演割腕自杀。来来来，再整个！
 death.attack.extraalchemy.dissolve=%s 在炼金时不甚被溶解了……

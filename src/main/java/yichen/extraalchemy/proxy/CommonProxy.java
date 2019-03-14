@@ -26,13 +26,14 @@ public class CommonProxy {
 
 	
 	public void preInit(FMLPreInitializationEvent event) {
+		//注册物品，方块等
 		new ConfigLoader(event);
 		new ItemLoader(event);
 		new BlockLoader(event);
     }
 	public void init(FMLInitializationEvent event) {
 		new CraftingLoader();
-
+		//注册合成表
 		ModTransmuteRecipes.init();
 		ModDissoventRecipes.init();
 	}
