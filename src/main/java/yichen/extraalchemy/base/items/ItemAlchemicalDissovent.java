@@ -99,7 +99,9 @@ public class ItemAlchemicalDissovent extends Item{
 	@Nonnull
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
-		living.onDeath(DamageSourceExtraAlchemy.DISSOLVE2);
+
+		living.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE_DRING, 0.001F);
+		living.onDeath(DamageSourceExtraAlchemy.DISSOLVE_DRING);
 		living.setHealth(0);
 		return new ItemStack(Items.GLASS_BOTTLE);
 	}

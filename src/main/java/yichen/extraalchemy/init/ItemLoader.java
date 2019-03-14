@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceFire;
+import yichen.extraalchemy.base.entity.EntityEssenceWind;
 import yichen.extraalchemy.base.items.ItemAlchemicalDissovent;
 import yichen.extraalchemy.base.items.ItemBloodBottle;
 import yichen.extraalchemy.base.items.ItemCoalDust;
@@ -34,6 +35,7 @@ import yichen.extraalchemy.base.items.ItemEssenceWind;
 import yichen.extraalchemy.base.items.block.ItemAlchemyArrayTransmute;
 
 public class ItemLoader {
+
 	public static List<Item> items;
 	
 	public static Item itemCoalDust = new ItemCoalDust().setUnlocalizedName(ExtraAlchemy.MODID +".coal_dust");
@@ -57,11 +59,12 @@ public class ItemLoader {
 		register(itemAlchemicalDissovent, "item_alchemical_dissovent");
 		register(itemEssenceLife, "essence_life");
 		register(itemEssenceEarth, "essence_earth");
-		register(itemEssenceWind, "essence_wind");
 		register(itemEssenceWater, "essence_water");
 		
-		int id = 0;
-		registerItemAndEntity(itemEssenceFire, "essence_fire", id);
+		register(itemEssenceWind, "essence_wind");
+		register(itemEssenceFire, "essence_fire");
+		
+		registerItemAndEntity();
     }
     //注册贴图
 	@SideOnly(Side.CLIENT)
@@ -79,12 +82,14 @@ public class ItemLoader {
         registerRender(itemEssenceWater);
         registerRender(itemEssenceFire);
     }
-	//注册物品及其投掷物实体
-	public static void registerItemAndEntity(Item item, String name, int id)
+	//注册实体投掷物贴图
+	public static void registerItemAndEntity()
     {
-		register(item, name);
-		EntityRegistry.registerModEntity(makeName(name), EntityEssenceFire.class, ExtraAlchemy.MODID+":"+name, id++, ExtraAlchemy.instance, 64, 10, true);
-    }
+		int i = 0;
+		EntityRegistry.registerModEntity(makeName("essence_fire"), EntityEssenceFire.class, ExtraAlchemy.MODID+":essence_fire", i++, ExtraAlchemy.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(makeName("essence_wind"), EntityEssenceWind.class, ExtraAlchemy.MODID+":essence_wind", i++, ExtraAlchemy.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(makeName("essence_water"), EntityEssenceWind.class, ExtraAlchemy.MODID+":essence_water", i++, ExtraAlchemy.instance, 64, 10, true);
+	}
 	private static ResourceLocation makeName(String name) {
 		return new ResourceLocation(ExtraAlchemy.MODID, name);
 	}

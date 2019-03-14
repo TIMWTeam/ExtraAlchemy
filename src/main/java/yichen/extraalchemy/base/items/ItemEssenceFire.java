@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,12 +27,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceFire;
 import yichen.extraalchemy.init.BlockLoader;
+import yichen.extraalchemy.util.ItemHelper;
 import yichen.extraalchemy.util.TextHelper;
 
 public class ItemEssenceFire extends Item{
 	public ItemEssenceFire() {
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags)
+	{
+		tooltip.add(TextHelper.localizeEffect("tooltip.extraalchemy.essence_fire"));
 	}
 	
 	@Override
@@ -63,20 +72,5 @@ public class ItemEssenceFire extends Item{
 			world.spawnEntity(fire);
 		}
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
-	}
-	@Nonnull
-	@Override
-	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
-
-		return stack;
-	}
-	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
-		return 20;
-	}
-	@Nonnull
-	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
-		return EnumAction.EAT;
 	}
 }

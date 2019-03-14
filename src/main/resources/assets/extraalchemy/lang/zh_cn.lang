@@ -30,10 +30,20 @@ tooltip.extraalchemy.transmute_dust=右击地面构成炼金阵
 tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的手指。
 tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
 tooltip.extraalchemy.alchemical_dissovent=俺寻思这玩意味道咋样……
+tooltip.extraalchemy.essence_earth.stone=模式：石头
+tooltip.extraalchemy.essence_earth.cobblestone=模式：圆石
+tooltip.extraalchemy.essence_earth.dirt=模式：泥土
+tooltip.extraalchemy.essence_earth.sand=模式：沙子
+tooltip.extraalchemy.essence_fire=潜行右键：放置岩浆
+tooltip.extraalchemy.essence_water=潜行右键：放置水源
+tooltip.extraalchemy.essence_wind=潜行右键：短暂悬浮
+
+
+
 #输出信息
 death.attack.extraalchemy.self_harm=%s 正在表演割腕自杀。来来来，再整个！
-death.attack.extraalchemy.dissolve=%s 在炼金时不甚被溶解了……
-death.attack.extraalchemy.dissolve2=%s 服下了炼金溶剂，从身体内部被溶解了。
+death.attack.extraalchemy.dissolve=%s 在炼金时不慎被溶解了……
+death.attack.extraalchemy.dissolve_dring=%s 服下了炼金溶剂，从身体内部被溶解了。
 
 #按键
 extraalchemy.key=更多炼金术
