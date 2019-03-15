@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "result": {"item": "extraalchemy:alchemy_array_transmute"},
+  "pattern": [
+    "AGB",
+    "GEG",
+    "CGD"
+  ],
+  "key": {
+    "E": { "item": "extraalchemy:blood_bottle"},
+    "G": { "type": "forge:ore_dict", "ore": "dustGold" },
+    "A": { "item": "extraalchemy:essence_earth" },
+    "B": { "item": "extraalchemy:essence_wind" },
+    "C": { "item": "extraalchemy:essence_water" },
+    "D": { "item": "extraalchemy:essence_fire" }
+  }
+}

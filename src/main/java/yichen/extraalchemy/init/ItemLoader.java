@@ -59,9 +59,9 @@ public class ItemLoader {
 		register(itemTransmuteDust, "transmute_dust");
 		register(itemAlchemicalDissovent, "item_alchemical_dissovent");
 		register(itemEssenceLife, "essence_life");
+		
 		register(itemEssenceEarth, "essence_earth");
 		register(itemEssenceWater, "essence_water");
-		
 		register(itemEssenceWind, "essence_wind");
 		register(itemEssenceFire, "essence_fire");
 		

@@ -16,10 +16,14 @@ public class ModTransmuteRecipes {
 
 public static List<RecipeTransmute> ironIngotRecipe;
 
+public static RecipeTransmute clayball;
+
 	public static void init() {
 		ironIngotRecipe = new ArrayList<>();
-		//ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.IRON_INGOT, 1), "ingotGlod", 200));
-		ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.IRON_INGOT, 1), new ItemStack(Items.GOLD_INGOT, 1), 100));
+		//ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.IRON_INGOT), "ingotGlod", 200));
+		ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.GOLD_INGOT), 100));
+		
+		clayball = ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.CLAY_BALL), new ItemStack(Blocks.DIRT), 100);
 		
 	}
 }

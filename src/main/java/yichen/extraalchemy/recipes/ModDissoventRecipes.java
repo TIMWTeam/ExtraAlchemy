@@ -18,7 +18,7 @@ public static List<RecipeDissovent> goldNuggetRecipe;
 	public static void init() {
 		goldNuggetRecipe = new ArrayList<>();
 		//ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.IRON_INGOT, 1), "ingotGlod", 200));
-		goldNuggetRecipe.add(ExtraAlchemyAPI.registerDissoventRecipe(new ItemStack(Items.GOLD_NUGGET, 1), new ItemStack(Blocks.COBBLESTONE, 1), 0.1f));
+		goldNuggetRecipe.add(ExtraAlchemyAPI.registerDissoventRecipe(new ItemStack(Items.GOLD_NUGGET), new ItemStack(Blocks.COBBLESTONE), 0.1f));
 		
 	}
 }
