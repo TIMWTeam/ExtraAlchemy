@@ -16,6 +16,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import yichen.extraalchemy.util.ItemHelper;
 
@@ -28,6 +29,7 @@ public class ItemEssenceEarth extends ItemDefault {
 
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> list, ITooltipFlag flags) {
+		list.add(I18n.format("tooltip.extraalchemy.essence.mode"));
 		if (stack.hasTagCompound()) {
 			states = ItemHelper.getOrCreateCompound(stack).getString("states");
 			list.add(I18n.format("tooltip.extraalchemy.essence_earth." + states));
@@ -95,6 +97,7 @@ public class ItemEssenceEarth extends ItemDefault {
 				states = "cobblestone";
 				break;
 			}
+			player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.extraalchemy.essence_earth." + states)));
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
 		}

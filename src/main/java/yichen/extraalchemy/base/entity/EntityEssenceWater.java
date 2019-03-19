@@ -42,7 +42,7 @@ public class EntityEssenceWater extends EntityThrowable{
 			double r = 0.1;
 			double m = 0.1;
 			for(int i = 0; i < 3; i++) {
-				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, posX + r * (Math.random() - 0.5), posY + r * (Math.random() - 0.5), posZ + r * (Math.random() - 0.5), m * (Math.random() - 0.5), m * (Math.random() - 0.5), m * (Math.random() - 0.5));
+				world.spawnParticle(EnumParticleTypes.WATER_SPLASH, posX + r * (Math.random() - 0.5), posY + r * (Math.random() - 0.5), posZ + r * (Math.random() - 0.5), m * (Math.random() - 0.5), m * (Math.random() - 0.5), m * (Math.random() - 0.5));
 			}
 		}
 	}
@@ -56,7 +56,7 @@ public class EntityEssenceWater extends EntityThrowable{
 				thrower.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, true, true));
 				//命中生物受到伤害  玩家恢复生命
 				result.entityHit.attackEntityFrom(thrower != null ? thrower instanceof EntityPlayer ? DamageSource.causeThrownDamage(this, thrower) : DamageSource.causeMobDamage(thrower) : DamageSource.GENERIC, 2);
-				thrower.setHealth(thrower.getHealth() + 2);
+				thrower.heal(2);
 			}
 			this.world.setEntityState(this, (byte)3);
 			setDead();
