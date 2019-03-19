@@ -2,6 +2,7 @@ package yichen.extraalchemy.base.items;
 
 import java.util.List;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,82 +25,75 @@ import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
 import yichen.extraalchemy.util.TextHelper;
 
-public class ItemDagger extends Item{
+public class ItemDagger extends Item {
 
 	public ItemDagger() {
 		this.setMaxStackSize(1);
-		this.setMaxDamage(64); 
+		this.setMaxDamage(64);
 		this.setFull3D();
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
+
 	@Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-        tooltip.add(TextHelper.localizeEffect("tooltip.extraalchemy.dagger1"));
-        tooltip.add(TextHelper.localizeEffect("tooltip.extraalchemy.dagger2"));
-    }
-	
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+		tooltip.add(I18n.format("tooltip.extraalchemy.dagger1"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.dagger2"));
+	}
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
-		//不为假玩家
+		// 不为假玩家
 		if (!(player instanceof FakePlayer)) {
-			//不为创造模式
+			// 不为创造模式
 			if (!player.capabilities.isCreativeMode) {
 				stack.damageItem(1, player);
 				player.setActiveHand(hand);
 				player.attackEntityFrom(DamageSourceExtraAlchemy.SELF_HARM, 0.001F);
-                player.setHealth(Math.max(player.getHealth() - 4, 0.0001f));
-                if (player.getHealth() <= 0.001f) {
-                    player.onDeath(DamageSourceExtraAlchemy.SELF_HARM);
-                    player.setHealth(0);
-                }
+				player.setHealth(Math.max(player.getHealth() - 4, 0.0001f));
+				if (player.getHealth() <= 0.001f) {
+					player.onDeath(DamageSourceExtraAlchemy.SELF_HARM);
+					player.setHealth(0);
+				}
 			}
-			//获取玩家背包
+			// 获取玩家背包
 			ItemStack itemstack = this.findAmmo(player);
-			//背包内有空瓶
-			if(!itemstack.isEmpty()) {
+			// 背包内有空瓶
+			if (!itemstack.isEmpty()) {
 				itemstack.shrink(1);
 				ItemStack bloodbottle = new ItemStack(ItemLoader.itembloodbottle);
-				if(!player.inventory.addItemStackToInventory(bloodbottle))
-	    		{
-	    			player.dropItem(bloodbottle, true, false);
-	    		}
+				if (!player.inventory.addItemStackToInventory(bloodbottle)) {
+					player.dropItem(bloodbottle, true, false);
+				}
 			}
-			//创造模式
+			// 创造模式
 			else {
 				player.world.setBlockState(new BlockPos(player), BlockLoader.blockBloodstain.getDefaultState());
 			}
 		}
 		return super.onItemRightClick(world, player, hand);
-        
-	}
-	private ItemStack findAmmo(EntityPlayer player)
-    {
-        if (this.isGlassBottle(player.getHeldItem(EnumHand.OFF_HAND)))
-        {
-            return player.getHeldItem(EnumHand.OFF_HAND);
-        }
-        else if (this.isGlassBottle(player.getHeldItem(EnumHand.MAIN_HAND)))
-        {
-            return player.getHeldItem(EnumHand.MAIN_HAND);
-        }
-        else
-        {
-            for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
-            {
-                ItemStack itemstack = player.inventory.getStackInSlot(i);
 
-                if (this.isGlassBottle(itemstack))
-                {
-                    return itemstack;
-                }
-            }
-            return ItemStack.EMPTY;
-        }
-    }
-	protected boolean isGlassBottle(ItemStack stack)
-    {
-        return stack.getItem() instanceof ItemGlassBottle;
-    }
+	}
+
+	private ItemStack findAmmo(EntityPlayer player) {
+		if (this.isGlassBottle(player.getHeldItem(EnumHand.OFF_HAND))) {
+			return player.getHeldItem(EnumHand.OFF_HAND);
+		} else if (this.isGlassBottle(player.getHeldItem(EnumHand.MAIN_HAND))) {
+			return player.getHeldItem(EnumHand.MAIN_HAND);
+		} else {
+			for (int i = 0; i < player.inventory.getSizeInventory(); ++i) {
+				ItemStack itemstack = player.inventory.getStackInSlot(i);
+
+				if (this.isGlassBottle(itemstack)) {
+					return itemstack;
+				}
+			}
+			return ItemStack.EMPTY;
+		}
+	}
+
+	protected boolean isGlassBottle(ItemStack stack) {
+		return stack.getItem() instanceof ItemGlassBottle;
+	}
 }

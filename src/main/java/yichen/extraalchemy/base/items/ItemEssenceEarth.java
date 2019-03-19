@@ -32,83 +32,89 @@ import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.util.ItemHelper;
 import yichen.extraalchemy.util.TextHelper;
 
-public class ItemEssenceEarth extends Item{
+public class ItemEssenceEarth extends Item {
 	private String states = null;
-	
+
 	public ItemEssenceEarth() {
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
-	
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, World world, List<String> list, ITooltipFlag flags)
-	{
-		if(stack.hasTagCompound())
-		{
+	public void addInformation(ItemStack stack, World world, List<String> list, ITooltipFlag flags) {
+		if (stack.hasTagCompound()) {
 			states = ItemHelper.getOrCreateCompound(stack).getString("states");
-			list.add(TextHelper.getFormattedText(I18n.format("tooltip.extraalchemy.essence_earth."+states)));
-		}else {
-			list.add(TextHelper.getFormattedText(I18n.format("tooltip.extraalchemy.essence_earth.stone")));
+			list.add(I18n.format("tooltip.extraalchemy.essence_earth." + states));
+		} else {
+			list.add(I18n.format("tooltip.extraalchemy.essence_earth.stone"));
 		}
 	}
 
 	@Override
-    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos blockPos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        ItemStack stack = player.getHeldItem(hand);
-        BlockPos newPos = blockPos.offset(side);
-		if(!player.isSneaking() && player.getHeldItem(hand).getCount() >= 8) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos blockPos, EnumHand hand,
+			EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
+		BlockPos newPos = blockPos.offset(side);
+		if (!player.isSneaking() && player.getHeldItem(hand).getCount() >= 8) {
 			if (world.isAirBlock(newPos)) {
-				if(!player.capabilities.isCreativeMode)
+				if (!player.capabilities.isCreativeMode)
 					player.getHeldItem(hand).shrink(8);
 				if (!world.isRemote) {
 					states = ItemHelper.getOrCreateCompound(stack).getString("states");
 					Block block = Blocks.AIR;
 					switch (states) {
-					case "stone":	
-						block = Blocks.STONE;break;
-					case "cobblestone":	
-						block = Blocks.COBBLESTONE;break;
-					case "dirt":	
-						block = Blocks.DIRT;break;
-					case "sand":	
-						block = Blocks.SAND;break;
+					case "stone":
+						block = Blocks.STONE;
+						break;
+					case "cobblestone":
+						block = Blocks.COBBLESTONE;
+						break;
+					case "dirt":
+						block = Blocks.DIRT;
+						break;
+					case "sand":
+						block = Blocks.SAND;
+						break;
 					default:
-						block = Blocks.STONE;break;
+						block = Blocks.STONE;
+						break;
 					}
-                	world.setBlockState(newPos, block.getDefaultState());
-	            return EnumActionResult.SUCCESS;
-				} 
+					world.setBlockState(newPos, block.getDefaultState());
+					return EnumActionResult.SUCCESS;
+				}
 			}
 		}
-        return EnumActionResult.FAIL;
-    }
-	
-	
+		return EnumActionResult.FAIL;
+	}
+
 	@Nonnull
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
-		
-		if(!world.isRemote && player.isSneaking())
-		{
+
+		if (!world.isRemote && player.isSneaking()) {
 			states = ItemHelper.getOrCreateCompound(player.getHeldItem(hand)).getString("states");
 			switch (states) {
 			case "stone":
-				states = "cobblestone";break;
+				states = "cobblestone";
+				break;
 			case "cobblestone":
-				states = "dirt";break;
+				states = "dirt";
+				break;
 			case "dirt":
-				states = "sand";break;
+				states = "sand";
+				break;
 			case "sand":
-				states = "stone";break;
+				states = "stone";
+				break;
 			default:
-				states = "cobblestone";break;
+				states = "cobblestone";
+				break;
 			}
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
 		}
-		
+
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
 }

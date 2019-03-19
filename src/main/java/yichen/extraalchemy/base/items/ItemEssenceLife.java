@@ -24,12 +24,11 @@ import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.util.TextHelper;
 
-public class ItemEssenceLife extends Item{
+public class ItemEssenceLife extends Item {
 	public ItemEssenceLife() {
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
-	
 
 	@Nonnull
 	@Override
@@ -37,6 +36,7 @@ public class ItemEssenceLife extends Item{
 		player.setActiveHand(hand);
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
+
 	@Nonnull
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
@@ -44,10 +44,12 @@ public class ItemEssenceLife extends Item{
 		stack.shrink(1);
 		return stack;
 	}
+
 	@Override
 	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
 		return 20;
 	}
+
 	@Nonnull
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {

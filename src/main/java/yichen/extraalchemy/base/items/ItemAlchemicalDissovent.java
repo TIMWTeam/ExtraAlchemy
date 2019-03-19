@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -32,61 +33,62 @@ import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
 import yichen.extraalchemy.util.TextHelper;
 
-public class ItemAlchemicalDissovent extends Item{
+public class ItemAlchemicalDissovent extends Item {
 	public ItemAlchemicalDissovent() {
 		this.setMaxStackSize(1);
-		this.setMaxDamage(32); 
+		this.setMaxDamage(32);
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 
 	@Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-        tooltip.add(TextHelper.localizeEffect("tooltip.extraalchemy.alchemical_dissovent"));
-    }
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+		tooltip.add(I18n.format("tooltip.extraalchemy.alchemical_dissovent"));
+	}
+
 	@Override
-    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (world.isRemote)
-		{
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side,
+			float hitX, float hitY, float hitZ) {
+		if (world.isRemote) {
 			return EnumActionResult.SUCCESS;
 		}
 		RayTraceResult rtr = getHitBlock(player);
-		if (rtr != null && rtr.getBlockPos() != null && !rtr.getBlockPos().equals(pos))
-		{
+		if (rtr != null && rtr.getBlockPos() != null && !rtr.getBlockPos().equals(pos)) {
 			pos = rtr.getBlockPos();
 			side = rtr.sideHit;
 		}
-		//获得注视方块
-		ItemStack hitblock = new ItemStack(world.getBlockState(pos).getBlock(),1);
+		// 获得注视方块
+		ItemStack hitblock = new ItemStack(world.getBlockState(pos).getBlock(), 1);
 		RecipeDissovent recipe = matchRecipe(hitblock);
-		if(recipe != null) {
-			//方块销毁
+		if (recipe != null) {
+			// 方块销毁
 			world.destroyBlock(pos, false);
-			//耐久减少
+			// 耐久减少
 			ItemStack stack = player.getHeldItem(hand);
-	        stack.damageItem(1, player);
-	        //生成掉落物
+			stack.damageItem(1, player);
+			// 生成掉落物
 			ItemStack tunedStack = recipe.getOutput().copy();
-			EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tunedStack);
+			EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+					tunedStack);
 			world.spawnEntity(outputItem);
 			return EnumActionResult.SUCCESS;
 		}
-        return EnumActionResult.FAIL;
-    }
+		return EnumActionResult.FAIL;
+	}
 
-	//验证物品的配方
-    public RecipeDissovent matchRecipe(ItemStack item) {    	   	
-    	List<RecipeDissovent> matchingRecipes = new ArrayList<>();
+	// 验证物品的配方
+	public RecipeDissovent matchRecipe(ItemStack item) {
+		List<RecipeDissovent> matchingRecipes = new ArrayList<>();
 		for (RecipeDissovent recipe : ExtraAlchemyAPI.dissoventRecipes) {
 			if (recipe.matches(item)) {
 				return recipe;
 			}
 		}
 		return null;
-    }
-    //获取玩家触及方块
-	public RayTraceResult getHitBlock(EntityPlayer player)
-	{
+	}
+
+	// 获取玩家触及方块
+	public RayTraceResult getHitBlock(EntityPlayer player) {
 		return rayTrace(player.getEntityWorld(), player, player.isSneaking());
 	}
 
@@ -96,6 +98,7 @@ public class ItemAlchemicalDissovent extends Item{
 		player.setActiveHand(hand);
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
+
 	@Nonnull
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
@@ -105,10 +108,12 @@ public class ItemAlchemicalDissovent extends Item{
 		living.setHealth(0);
 		return new ItemStack(Items.GLASS_BOTTLE);
 	}
+
 	@Override
 	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
 		return 60;
 	}
+
 	@Nonnull
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
