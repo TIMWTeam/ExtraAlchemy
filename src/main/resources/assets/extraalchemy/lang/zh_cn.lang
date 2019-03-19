@@ -1,17 +1,17 @@
 #创造标签
-itemGroup.extraalchemy.creativeTab=更多炼金术
+itemGroup.extraalchemy=更多炼金术
 
 #物品
-item.extraalchemy.coal_dust.name=碳粉
-item.extraalchemy.dagger.name=小匕首
-item.extraalchemy.blood_bottle.name=血瓶
-item.extraalchemy.transmute_dust.name=嬗变炼金阵媒介
-item.extraalchemy.item_alchemical_dissovent.name=炼金溶剂
-item.extraalchemy.essence_life.name=生命源质
-item.extraalchemy.essence_earth.name=地之本源
-item.extraalchemy.essence_wind.name=风之本源
-item.extraalchemy.essence_water.name=水之本源
-item.extraalchemy.essence_fire.name=火之本源
+item.CoalDust.name=碳粉
+item.Dagger.name=小匕首
+item.BloodBottle.name=血瓶
+item.TransmuteDust.name=嬗变炼金阵媒介
+item.AlchemicalDissovent.name=炼金溶剂
+item.EssenceLife.name=生命源质
+item.EssenceEarth.name=地之本源
+item.EssenceWind.name=风之本源
+item.EssenceWater.name=水之本源
+item.EssenceFire.name=火之本源
 
 #方块
 tile.extraalchemy.bloodstain.name=血迹

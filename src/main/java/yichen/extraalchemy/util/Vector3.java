@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  * This class is part of the Astral Sorcery Mod
- * The complete source code for this mod can be found on github.
+ * The complete source code for this mod can be found on GitHub.
  * Class: Vector3
  * Created by HellFirePvP
  * Date: 17.11.2015 / 18:40

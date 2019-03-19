@@ -9,7 +9,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -20,16 +19,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceWater;
 
-public class ItemEssenceWater extends Item {
+public class ItemEssenceWater extends ItemDefault {
 	public ItemEssenceWater() {
-		this.setMaxStackSize(64);
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
+		super("essence water");
 	}
 
-	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
 		tooltip.add(I18n.format("tooltip.extraalchemy.essence_water"));
@@ -52,7 +48,6 @@ public class ItemEssenceWater extends Item {
 		return EnumActionResult.FAIL;
 	}
 
-	@Nonnull
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
 		world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT,

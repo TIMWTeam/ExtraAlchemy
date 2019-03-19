@@ -6,15 +6,10 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -22,21 +17,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceFire;
-import yichen.extraalchemy.init.BlockLoader;
-import yichen.extraalchemy.util.ItemHelper;
-import yichen.extraalchemy.util.TextHelper;
 
-public class ItemEssenceFire extends Item {
+public class ItemEssenceFire extends ItemDefault {
 	public ItemEssenceFire() {
-		this.setMaxStackSize(64);
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
+		super("essence fire");
 	}
 
-	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
 		tooltip.add(I18n.format("tooltip.extraalchemy.essence_fire"));
@@ -52,14 +39,13 @@ public class ItemEssenceFire extends Item {
 				if (!player.capabilities.isCreativeMode)
 					player.getHeldItem(hand).shrink(8);
 				if (!world.isRemote)
-					world.setBlockState(newPos, Blocks.FLOWING_LAVA.getDefaultState());
+					world.setBlockState(newPos, Blocks.LAVA.getDefaultState());
 				return EnumActionResult.SUCCESS;
 			}
 		}
 		return EnumActionResult.FAIL;
 	}
 
-	@Nonnull
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
 

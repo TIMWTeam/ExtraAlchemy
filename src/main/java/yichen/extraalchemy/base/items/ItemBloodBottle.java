@@ -10,7 +10,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
@@ -21,16 +20,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.init.BlockLoader;
-import yichen.extraalchemy.init.ItemLoader;
-import yichen.extraalchemy.util.TextHelper;
 
-public class ItemBloodBottle extends Item {
+public class ItemBloodBottle extends ItemDefault {
 	public ItemBloodBottle() {
+		super("blood bottle");
 		this.setMaxStackSize(1);
 		this.setMaxDamage(3);
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 
 	@Override

@@ -5,9 +5,7 @@ import java.util.List;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -15,15 +13,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.init.BlockLoader;
-import yichen.extraalchemy.util.TextHelper;
 
-public class ItemCoalDust extends Item {
+public class ItemCoalDust extends ItemDefault {
 	public ItemCoalDust() {
-		this.setMaxStackSize(64);
-		this.setMaxDamage(4); // Allows for 5 uses
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
+		super("coal dust");
+		this.setMaxDamage(4);
 	}
 
 	@Override

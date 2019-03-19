@@ -4,34 +4,26 @@ import java.util.List;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemGlassBottle;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
-import yichen.extraalchemy.util.TextHelper;
 
-public class ItemDagger extends Item {
+public class ItemDagger extends ItemDefault {
 
 	public ItemDagger() {
+		super("dagger");
 		this.setMaxStackSize(1);
-		this.setMaxDamage(64);
 		this.setFull3D();
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 
 	@Override

@@ -9,7 +9,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
@@ -19,13 +18,11 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceWind;
 
-public class ItemEssenceWind extends Item {
+public class ItemEssenceWind extends ItemDefault {
 	public ItemEssenceWind() {
-		this.setMaxStackSize(64);
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
+		super("essence wind");
 	}
 
 	@SideOnly(Side.CLIENT)

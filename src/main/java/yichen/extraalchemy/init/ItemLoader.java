@@ -1,6 +1,5 @@
 package yichen.extraalchemy.init;
 
-
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -38,78 +37,80 @@ import yichen.extraalchemy.base.items.block.ItemAlchemyArrayTransmute;
 public class ItemLoader {
 
 	public static List<Item> items;
-	
-	public static Item itemCoalDust = new ItemCoalDust().setUnlocalizedName(ExtraAlchemy.MODID +".coal_dust");
-	public static Item itemDagger = new ItemDagger().setUnlocalizedName(ExtraAlchemy.MODID +".dagger");
-	public static Item itembloodbottle = new ItemBloodBottle().setUnlocalizedName(ExtraAlchemy.MODID +".blood_bottle");
-	public static Item itemTransmuteDust = new ItemAlchemyArrayTransmute().setUnlocalizedName(ExtraAlchemy.MODID +".transmute_dust");
-	public static Item itemAlchemicalDissovent = new ItemAlchemicalDissovent().setUnlocalizedName(ExtraAlchemy.MODID +".item_alchemical_dissovent");
-	public static Item itemEssenceLife = new ItemEssenceLife().setUnlocalizedName(ExtraAlchemy.MODID +".essence_life");
-	public static Item itemEssenceEarth = new ItemEssenceEarth().setUnlocalizedName(ExtraAlchemy.MODID +".essence_earth");
-	public static Item itemEssenceWind = new ItemEssenceWind().setUnlocalizedName(ExtraAlchemy.MODID +".essence_wind");
-	public static Item itemEssenceWater = new ItemEssenceWater().setUnlocalizedName(ExtraAlchemy.MODID +".essence_water");
-	public static Item itemEssenceFire = new ItemEssenceFire().setUnlocalizedName(ExtraAlchemy.MODID +".essence_fire");
 
+	public static final Item itemCoalDust = new ItemCoalDust();
+	public static final Item itemDagger = new ItemDagger();
+	public static final Item itembloodbottle = new ItemBloodBottle();
+	public static final Item itemTransmuteDust = new ItemAlchemyArrayTransmute();
+	public static final Item itemAlchemicalDissovent = new ItemAlchemicalDissovent();
+	public static final Item itemEssenceLife = new ItemEssenceLife();
+	public static final Item itemEssenceEarth = new ItemEssenceEarth();
+	public static final Item itemEssenceWind = new ItemEssenceWind();
+	public static final Item itemEssenceWater = new ItemEssenceWater();
+	public static final Item itemEssenceFire = new ItemEssenceFire();
 
-	public ItemLoader(FMLPreInitializationEvent event)
-    {
-		register(itemCoalDust, "coal_dust");
-		register(itemDagger, "dagger");
-		register(itembloodbottle, "blood_bottle");
-		register(itemTransmuteDust, "transmute_dust");
-		register(itemAlchemicalDissovent, "item_alchemical_dissovent");
-		register(itemEssenceLife, "essence_life");
-		
-		register(itemEssenceEarth, "essence_earth");
-		register(itemEssenceWater, "essence_water");
-		register(itemEssenceWind, "essence_wind");
-		register(itemEssenceFire, "essence_fire");
-		
+	public ItemLoader(FMLPreInitializationEvent event) {
+		register(itemCoalDust);
+		register(itemDagger);
+		register(itembloodbottle);
+		register(itemTransmuteDust);
+		register(itemAlchemicalDissovent);
+		register(itemEssenceLife);
+
+		register(itemEssenceEarth);
+		register(itemEssenceWater);
+		register(itemEssenceWind);
+		register(itemEssenceFire);
+
 		registerItemAndEntity();
-    }
-    //注册贴图
-	@SideOnly(Side.CLIENT)
-    public static void registerRenders()
-    {
-        registerRender(itemCoalDust);
-        registerRender(itemDagger);
-        registerRender(itembloodbottle);
-        registerRender(itemTransmuteDust);
-
-        registerRender(itemAlchemicalDissovent);
-        registerRender(itemEssenceLife);
-        registerRender(itemEssenceEarth);
-        registerRender(itemEssenceWind);
-        registerRender(itemEssenceWater);
-        registerRender(itemEssenceFire);
-    }
-	//注册实体投掷物贴图
-	public static void registerItemAndEntity()
-    {
-		int i = 0;
-		EntityRegistry.registerModEntity(makeName("essence_fire"), EntityEssenceFire.class, ExtraAlchemy.MODID+":essence_fire", i++, ExtraAlchemy.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(makeName("essence_wind"), EntityEssenceWind.class, ExtraAlchemy.MODID+":essence_wind", i++, ExtraAlchemy.instance, 64, 10, true);
-		EntityRegistry.registerModEntity(makeName("essence_water"), EntityEssenceWater.class, ExtraAlchemy.MODID+":essence_water", i++, ExtraAlchemy.instance, 64, 10, true);
 	}
+
+	// 注册贴图
+	@SideOnly(Side.CLIENT)
+	public static void registerRenders() {
+		registerRender(itemCoalDust);
+		registerRender(itemDagger);
+		registerRender(itembloodbottle);
+		registerRender(itemTransmuteDust);
+
+		registerRender(itemAlchemicalDissovent);
+		registerRender(itemEssenceLife);
+		registerRender(itemEssenceEarth);
+		registerRender(itemEssenceWind);
+		registerRender(itemEssenceWater);
+		registerRender(itemEssenceFire);
+	}
+
+	// 注册实体投掷物贴图
+	public static void registerItemAndEntity() {
+		int i = 0;
+		EntityRegistry.registerModEntity(makeName("essence_fire"), EntityEssenceFire.class,
+				ExtraAlchemy.MODID + ":essence_fire", i++, ExtraAlchemy.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(makeName("essence_wind"), EntityEssenceWind.class,
+				ExtraAlchemy.MODID + ":essence_wind", i++, ExtraAlchemy.instance, 64, 10, true);
+		EntityRegistry.registerModEntity(makeName("essence_water"), EntityEssenceWater.class,
+				ExtraAlchemy.MODID + ":essence_water", i++, ExtraAlchemy.instance, 64, 10, true);
+	}
+
 	private static ResourceLocation makeName(String name) {
 		return new ResourceLocation(ExtraAlchemy.MODID, name);
 	}
 
-	//注册物品
-    private static void register(Item item, String name)
-    {
-    	ForgeRegistries.ITEMS.register(item.setRegistryName(name));
-    }
+	// 注册物品
+	private static void register(Item item) {
+		ForgeRegistries.ITEMS.register(item);
+	}
 
-    //注册贴图
+	// 注册贴图
 	@SideOnly(Side.CLIENT)
-	public static void registerRender(Item item){
-        registerRender(item, 0);
+	public static void registerRender(Item item) {
+		registerRender(item, 0);
 	}
+
 	@SideOnly(Side.CLIENT)
-	public static void registerRender(Item item,int meta){
+	public static void registerRender(Item item, int meta) {
 		ModelResourceLocation model = new ModelResourceLocation(item.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(item, meta, model);
+		ModelLoader.setCustomModelResourceLocation(item, meta, model);
 	}
-	
+
 }

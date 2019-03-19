@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,9 +12,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -25,19 +22,15 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
 import yichen.extraalchemy.api.RecipeDissovent;
-import yichen.extraalchemy.init.BlockLoader;
-import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
-import yichen.extraalchemy.util.TextHelper;
 
-public class ItemAlchemicalDissovent extends Item {
+public class ItemAlchemicalDissovent extends ItemDefault {
 	public ItemAlchemicalDissovent() {
+		super("alchemical dissovent");
 		this.setMaxStackSize(1);
 		this.setMaxDamage(32);
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 
 	@Override
@@ -92,14 +85,12 @@ public class ItemAlchemicalDissovent extends Item {
 		return rayTrace(player.getEntityWorld(), player, player.isSneaking());
 	}
 
-	@Nonnull
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
 		player.setActiveHand(hand);
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
 
-	@Nonnull
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
 
@@ -114,7 +105,6 @@ public class ItemAlchemicalDissovent extends Item {
 		return 60;
 	}
 
-	@Nonnull
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
 		return EnumAction.DRINK;

@@ -18,9 +18,9 @@ import yichen.extraalchemy.proxy.CommonProxy;
 @Mod(modid = ExtraAlchemy.MODID, name = ExtraAlchemy.NAME, version = ExtraAlchemy.VERSION, acceptedMinecraftVersions = "1.12.2")
 public class ExtraAlchemy {
 
-	public static final String MODID = "extraalchemy"; // mod_id
-	public static final String NAME = "ExtraAlchemy"; // mod名称
-	public static final String VERSION = "1.0.0"; // mod版本
+	public static final String MODID = "extraalchemy";
+	public static final String NAME = "ExtraAlchemy";
+	public static final String VERSION = "1.0.0";
 
 	@SidedProxy(clientSide = "yichen.extraalchemy.proxy.ClientProxy", serverSide = "yichen.extraalchemy.proxy.CommonProxy")
 	public static CommonProxy proxy;

@@ -36,83 +36,84 @@ import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent;
 import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent.FluidAlchemicalDissovent;
 import yichen.extraalchemy.base.items.ItemCoalDust;
 
-
 @Mod.EventBusSubscriber(modid = ExtraAlchemy.MODID)
 @GameRegistry.ObjectHolder(ExtraAlchemy.MODID)
 public class BlockLoader {
 
-	
-	public static Block blockBloodstain = new BlockBloodstain().setUnlocalizedName(ExtraAlchemy.MODID +".bloodstain");
-	public static Block blockAlchemyArrayTransmute = new BlockAlchemyArrayTransmute().setUnlocalizedName(ExtraAlchemy.MODID +".alchemy_array_transmute");
+	public static Block blockBloodstain = new BlockBloodstain().setUnlocalizedName(ExtraAlchemy.MODID + ".bloodstain");
+	public static Block blockAlchemyArrayTransmute = new BlockAlchemyArrayTransmute()
+			.setUnlocalizedName(ExtraAlchemy.MODID + ".alchemy_array_transmute");
 
-
-	//调用注册方法
-	public BlockLoader(FMLPreInitializationEvent event)
-    {
+	// 调用注册方法
+	public BlockLoader(FMLPreInitializationEvent event) {
 
 		FluidRegistry.registerFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
 		FluidRegistry.addBucketForFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
-		registerFluid(new BlockAlchemicalDissovent(),"alchemical_dissovent");
+		registerFluid(new BlockAlchemicalDissovent(), "alchemical_dissovent");
 
-		register(blockBloodstain,"bloodstain");
+		register(blockBloodstain, "bloodstain");
 		registerItemBlock(blockAlchemyArrayTransmute, "alchemy_array_transmute");
-        registerTileEntities();
-        registerTESR();
-    }
-	//注册渲染贴图
+		registerTileEntities();
+		registerTESR();
+	}
+
+	// 注册渲染贴图
 	@SideOnly(Side.CLIENT)
-    public static void registerRenders()
-    {
+	public static void registerRenders() {
 		registerRender(blockBloodstain);
 		registerRender(blockAlchemyArrayTransmute);
-    }
-	//注册实体
+	}
+
+	// 注册实体
 	private static void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileAlchemyArrayTransmute.class, ExtraAlchemy.MODID + ":alchemy_array_transmute");
-    }
-	//注册特殊渲染
+		GameRegistry.registerTileEntity(TileAlchemyArrayTransmute.class,
+				ExtraAlchemy.MODID + ":alchemy_array_transmute");
+	}
+
+	// 注册特殊渲染
 	@SideOnly(Side.CLIENT)
-    public static void registerTESR() {
+	public static void registerTESR() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileAlchemyArrayTransmute.class, new TESRAlchemyArrayTransmute());
-    }
-	//注册方块
-	private static void register(Block block, String name)
-    {
+	}
+
+	// 注册方块
+	private static void register(Block block, String name) {
 		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
-    }
-	//注册方块及物品
-	private static void registerItemBlock(Block block, String name)
-	{
+	}
+
+	// 注册方块及物品
+	private static void registerItemBlock(Block block, String name) {
 		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
 		ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
-	//注册流体方块
+
+	// 注册流体方块
 	public static void registerFluid(Block block, String name) {
 		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
-		registerFluidModels(block,name);
+		registerFluidModels(block, name);
 	}
-	//注册流体贴图
+
+	// 注册流体贴图
 	@SideOnly(Side.CLIENT)
-	public static void registerFluidModels(Block block, String name){
-        ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
-            @Override
-            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                return new ModelResourceLocation(ExtraAlchemy.MODID+":fluid", name);
-            }
-        });
-    }
-    //注册方块贴图
-    @SideOnly(Side.CLIENT)
-    private static void registerRender(Block block)
-    {
-        registerRender(block, 0);
-    }
+	public static void registerFluidModels(Block block, String name) {
+		ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return new ModelResourceLocation(ExtraAlchemy.MODID + ":fluid", name);
+			}
+		});
+	}
+
+	// 注册方块贴图
 	@SideOnly(Side.CLIENT)
-    private static void registerRender(Block block, int meta)
-    {
-        ModelResourceLocation model = new ModelResourceLocation(block.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, model);
-    }
-	
-	
+	private static void registerRender(Block block) {
+		registerRender(block, 0);
+	}
+
+	@SideOnly(Side.CLIENT)
+	private static void registerRender(Block block, int meta) {
+		ModelResourceLocation model = new ModelResourceLocation(block.getRegistryName(), "inventory");
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, model);
+	}
+
 }

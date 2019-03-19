@@ -7,9 +7,5 @@ import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceFire;
 
 public class EntityLoader {
-	
-	
-	
-
 
 }
