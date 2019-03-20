@@ -49,7 +49,7 @@ public class ItemEssenceFire extends ItemDefault {
 					if (!player.capabilities.isCreativeMode)
 						player.getHeldItem(hand).shrink(8);
 					if (!world.isRemote)
-						world.setBlockState(newPos, Blocks.LAVA.getDefaultState());
+						world.setBlockState(newPos, Blocks.FLOWING_LAVA.getDefaultState());
 					return EnumActionResult.SUCCESS;
 				}
 			}
