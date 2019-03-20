@@ -1,28 +1,20 @@
 package yichen.extraalchemy.init;
 
-import java.util.List;
-import java.util.Objects;
-
-import com.google.common.collect.Lists;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.BlockFluidBase;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -33,26 +25,22 @@ import yichen.extraalchemy.base.blocks.alchemy_array.BlockAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.alchemy_array.rander.TESRAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent;
-import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent.FluidAlchemicalDissovent;
-import yichen.extraalchemy.base.items.ItemCoalDust;
 
 @Mod.EventBusSubscriber(modid = ExtraAlchemy.MODID)
-@GameRegistry.ObjectHolder(ExtraAlchemy.MODID)
 public class BlockLoader {
 
-	public static Block blockBloodstain = new BlockBloodstain().setUnlocalizedName(ExtraAlchemy.MODID + ".bloodstain");
-	public static Block blockAlchemyArrayTransmute = new BlockAlchemyArrayTransmute()
-			.setUnlocalizedName(ExtraAlchemy.MODID + ".alchemy_array_transmute");
+	public static final Block blockBloodstain = new BlockBloodstain();
+	public static final Block blockAlchemyArrayTransmute = new BlockAlchemyArrayTransmute();
 
 	// 调用注册方法
 	public BlockLoader(FMLPreInitializationEvent event) {
 
 		FluidRegistry.registerFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
 		FluidRegistry.addBucketForFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
-		registerFluid(new BlockAlchemicalDissovent(), "alchemical_dissovent");
+		registerFluid(new BlockAlchemicalDissovent());
 
-		register(blockBloodstain, "bloodstain");
-		registerItemBlock(blockAlchemyArrayTransmute, "alchemy_array_transmute");
+		register(blockBloodstain);
+		registerItemBlock(blockAlchemyArrayTransmute);
 		registerTileEntities();
 		registerTESR();
 	}
@@ -66,8 +54,7 @@ public class BlockLoader {
 
 	// 注册实体
 	private static void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileAlchemyArrayTransmute.class,
-				ExtraAlchemy.MODID + ":alchemy_array_transmute");
+		TileEntity.register(ExtraAlchemy.MODID+":alchemy_array_transmute", TileAlchemyArrayTransmute.class);
 	}
 
 	// 注册特殊渲染
@@ -77,29 +64,39 @@ public class BlockLoader {
 	}
 
 	// 注册方块
-	private static void register(Block block, String name) {
-		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
+	private static void register(Block block) {
+		ForgeRegistries.BLOCKS.register(block);
 	}
 
 	// 注册方块及物品
-	private static void registerItemBlock(Block block, String name) {
-		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
+	private static void registerItemBlock(Block block) {
+		ForgeRegistries.BLOCKS.register(block);
 		ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
 	// 注册流体方块
-	public static void registerFluid(Block block, String name) {
-		ForgeRegistries.BLOCKS.register(block.setRegistryName(name));
-		registerFluidModels(block, name);
+	public static void registerFluid(Block block) {
+		ForgeRegistries.BLOCKS.register(block);
+		registerFluidModels(block);
 	}
 
 	// 注册流体贴图
 	@SideOnly(Side.CLIENT)
-	public static void registerFluidModels(Block block, String name) {
+	public static void registerFluidModels(Block block) {
+		final ResourceLocation location = block.getRegistryName();
+		final Item item = Item.getItemFromBlock(block);
+		
+		ModelLoader.setCustomMeshDefinition(item, new ItemMeshDefinition() {
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return new ModelResourceLocation(location, "fluid");
+			}
+		});
+		
 		ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return new ModelResourceLocation(ExtraAlchemy.MODID + ":fluid", name);
+				return new ModelResourceLocation(location, "fluid");
 			}
 		});
 	}

@@ -11,7 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.profiler.ISnooperInfo;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -31,12 +30,10 @@ public class ItemEssenceFire extends ItemDefault {
 
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
-		tooltip.add(I18n.format("tooltip.extraalchemy.essence.mode"));
+		tooltip.add(I18n.format("tooltip.essence.mode"));
 		if (stack.hasTagCompound()) {
 			states = ItemHelper.getOrCreateCompound(stack).getString("states");
-			tooltip.add(I18n.format("tooltip.extraalchemy.essence_fire." + states));
-		} else {
-			tooltip.add(I18n.format("tooltip.extraalchemy.essence_fire.fire_ball"));
+			tooltip.add(I18n.format("tooltip.essence_fire." + (states.isEmpty() ? "fire_ball" : states)));
 		}
 	}
 
@@ -52,7 +49,7 @@ public class ItemEssenceFire extends ItemDefault {
 					if (!player.capabilities.isCreativeMode)
 						player.getHeldItem(hand).shrink(8);
 					if (!world.isRemote)
-						world.setBlockState(newPos, Blocks.FLOWING_LAVA.getDefaultState());
+						world.setBlockState(newPos, Blocks.LAVA.getDefaultState());
 					return EnumActionResult.SUCCESS;
 				}
 			}
@@ -62,6 +59,7 @@ public class ItemEssenceFire extends ItemDefault {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
+		states = ItemHelper.getOrCreateCompound(player.getHeldItem(hand)).getString("states");
 		if(!player.isSneaking()) {
 			if (states == "fire_ball" || states.isEmpty()) {
 				if (!player.capabilities.isCreativeMode)
@@ -74,7 +72,7 @@ public class ItemEssenceFire extends ItemDefault {
 					world.spawnEntity(fire);
 				}
 			}
-		} else if (player.isSneaking()) {
+		} else {
 			switch (states) {
 			case "lava":
 				states = "fire_ball";
@@ -89,7 +87,7 @@ public class ItemEssenceFire extends ItemDefault {
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
 			if (!world.isRemote) 
-				player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.extraalchemy.essence_fire." + states)));
+				player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.essence_fire." + states)));
 		}
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}

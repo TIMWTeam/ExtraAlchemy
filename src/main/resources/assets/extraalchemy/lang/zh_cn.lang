@@ -14,45 +14,46 @@ item.EssenceWater.name=水之本源
 item.EssenceFire.name=火之本源
 
 #方块
-tile.extraalchemy.bloodstain.name=血迹
-tile.extraalchemy.alchemy_circle.name=炼金法阵
-tile.extraalchemy.alchemy_array_transmute.name=嬗变炼金阵
+tile.Bloodstain.name=血迹
+tile.AlchemyCircle.name=炼金法阵
+tile.AlchemyArrayTransmute.name=嬗变炼金阵
 
 #流体
-tile.extraalchemy.fluid.alchemical_dissovent.name=炼金溶液
+fluid.AlchemicalDissovent.name=炼金溶液
 
 #炼金阵
-tile.extraalchemy.bloodstain.name=血迹
+tile.Bloodstain.name=血迹
 
 #工具提示
-tooltip.extraalchemy.blood_bottle=这才不是HP瓶（雾
-tooltip.extraalchemy.transmute_dust=右击地面构成炼金阵
-tooltip.extraalchemy.dagger1=并不是很锋利的匕首，仅能刺破自己的手指。
-tooltip.extraalchemy.dagger2=为了不浪费血液，最好准备些玻璃瓶来收集。
-tooltip.extraalchemy.alchemical_dissovent=俺寻思这玩意味道咋样……
+tooltip.coal_dust=Ashes used to draw an alchemy circle
+tooltip.blood_bottle=这才不是HP瓶（雾
+tooltip.transmute_dust=右击地面构成炼金阵
+tooltip.dagger.1=并不是很锋利的匕首，仅能刺破自己的手指。
+tooltip.dagger.2=为了不浪费血液，最好准备些玻璃瓶来收集。
+tooltip.alchemical_dissovent=俺寻思这玩意味道咋样……
 
-tooltip.extraalchemy.essence.mode=[潜行+右键] 切换模式
+tooltip.essence.mode=[潜行+右键] 切换模式
 
-tooltip.extraalchemy.essence_earth.stone=模式：石头 [消耗：1]
-tooltip.extraalchemy.essence_earth.cobblestone=模式：圆石 [消耗：1]
-tooltip.extraalchemy.essence_earth.dirt=模式：泥土 [消耗：1]
-tooltip.extraalchemy.essence_earth.sand=模式：沙子 [消耗：1]
+tooltip.essence_earth.stone=模式：石头 [消耗：1]
+tooltip.essence_earth.cobblestone=模式：圆石 [消耗：1]
+tooltip.essence_earth.dirt=模式：泥土 [消耗：1]
+tooltip.essence_earth.sand=模式：沙子 [消耗：1]
 
-tooltip.extraalchemy.essence_fire.fire_ball=模式：投掷火球 [消耗：1]
-tooltip.extraalchemy.essence_fire.lava=模式：放置熔岩 [消耗：8]
+tooltip.essence_fire.fire_ball=模式：投掷火球 [消耗：1]
+tooltip.essence_fire.lava=模式：放置熔岩 [消耗：8]
 
-tooltip.extraalchemy.essence_water.water_ball=模式：投掷水球 [消耗：1]
-tooltip.extraalchemy.essence_water.water=模式：放置水源 [消耗：8]
+tooltip.essence_water.water_ball=模式：投掷水球 [消耗：1]
+tooltip.essence_water.water=模式：放置水源 [消耗：8]
 
-tooltip.extraalchemy.essence_wind.wind_blade=模式：释放风刃 [消耗：1]
-tooltip.extraalchemy.essence_wind.wind_soar=模式：短暂悬浮 [消耗：1]
+tooltip.essence_wind.wind_blade=模式：释放风刃 [消耗：1]
+tooltip.essence_wind.wind_soar=模式：短暂悬浮 [消耗：1]
 
 
 
 #输出信息
-death.attack.extraalchemy.self_harm=%s 正在表演割腕自杀。来来来，再整个！
-death.attack.extraalchemy.dissolve=%s 在炼金时不慎被溶解了……
-death.attack.extraalchemy.dissolve_dring=%s 服下了炼金溶剂，从身体内部被溶解了。
+death.attack.self_harm=%s 正在表演割腕自杀。来来来，再整个！
+death.attack.dissolve=%s 在炼金时不慎被溶解了……
+death.attack.dissolve_dring=%s 服下了炼金溶剂，从身体内部被溶解了。
 
 #按键
 extraalchemy.key=更多炼金术

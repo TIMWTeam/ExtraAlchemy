@@ -36,7 +36,7 @@ public class ItemAlchemicalDissovent extends ItemDefault {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add(I18n.format("tooltip.extraalchemy.alchemical_dissovent"));
+		tooltip.add(I18n.format("tooltip.alchemical_dissovent"));
 	}
 
 	@Override
@@ -93,11 +93,11 @@ public class ItemAlchemicalDissovent extends ItemDefault {
 
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
-
-		living.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE_DRING, 0.001F);
-		living.onDeath(DamageSourceExtraAlchemy.DISSOLVE_DRING);
-		living.setHealth(0);
-		return new ItemStack(Items.GLASS_BOTTLE);
+		if(!world.isRemote) {
+			living.dropItem(Items.GLASS_BOTTLE, 1);
+			living.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE_DRING, Float.MAX_VALUE);
+		}
+		return ItemStack.EMPTY;
 	}
 
 	@Override

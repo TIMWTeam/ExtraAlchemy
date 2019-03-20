@@ -23,7 +23,7 @@ public class ItemEssenceLife extends ItemDefault {
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase living) {
 		living.heal(20);
-		stack.shrink(1);
+		if(!((EntityPlayer) living).capabilities.isCreativeMode) stack.shrink(1);
 		return stack;
 	}
 

@@ -20,12 +20,12 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.base.entity.EntityEssenceWater;
 import yichen.extraalchemy.base.entity.EntityEssenceWind;
 import yichen.extraalchemy.util.ItemHelper;
 
 public class ItemEssenceWind extends ItemDefault {
 	private String states = null;
+
 	public ItemEssenceWind() {
 		super("essence wind");
 	}
@@ -34,23 +34,20 @@ public class ItemEssenceWind extends ItemDefault {
 	@Override
 
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
-		tooltip.add(I18n.format("tooltip.extraalchemy.essence.mode"));
+		tooltip.add(I18n.format("tooltip.essence.mode"));
 		if (stack.hasTagCompound()) {
 			states = ItemHelper.getOrCreateCompound(stack).getString("states");
-			tooltip.add(I18n.format("tooltip.extraalchemy.essence_wind." + states));
-		} else {
-			tooltip.add(I18n.format("tooltip.extraalchemy.essence_wind.wind_blade"));
+			tooltip.add(I18n.format("tooltip.essence_wind." + (states.isEmpty() ? "wind_blade" : states)));
 		}
 	}
-
 
 	@Nonnull
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
 		states = ItemHelper.getOrCreateCompound(player.getHeldItem(hand)).getString("states");
-		if(!player.isSneaking()) {
+		if (!player.isSneaking()) {
 			if (states.equals("wind_blade") || states.isEmpty()) {
-				//风刃
+				// 风刃
 				if (!player.capabilities.isCreativeMode)
 					player.getHeldItem(hand).shrink(1);
 				world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ARROW_SHOOT,
@@ -61,7 +58,7 @@ public class ItemEssenceWind extends ItemDefault {
 					world.spawnEntity(wind);
 				}
 			} else if (states.equals("wind_soar")) {
-				//自身漂浮
+				// 自身漂浮
 				if (!player.capabilities.isCreativeMode)
 					player.getHeldItem(hand).shrink(1);
 				player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 160, 0, true, true));
@@ -80,10 +77,10 @@ public class ItemEssenceWind extends ItemDefault {
 			}
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
-			if (!world.isRemote) 
-				player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.extraalchemy.essence_wind." + states)));
+			if (!world.isRemote)
+				player.sendMessage(new TextComponentTranslation("tooltip.essence_wind." + states));
 		}
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
-	
+
 }

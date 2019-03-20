@@ -32,7 +32,7 @@ public class ItemBloodBottle extends ItemDefault {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add(I18n.format("tooltip.extraalchemy.blood_bottle"));
+		tooltip.add(I18n.format("tooltip.blood_bottle"));
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class ItemBloodBottle extends ItemDefault {
 	@Nonnull
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
-		living.setHealth(Math.max(living.getHealth() + (4 - stack.getItemDamage()), 0));
+		living.heal(4);
 		return new ItemStack(Items.GLASS_BOTTLE);
 	}
 

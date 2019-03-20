@@ -1,25 +1,11 @@
 package yichen.extraalchemy.util;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 
-public class DamageSourceExtraAlchemy extends DamageSource{
+public class DamageSourceExtraAlchemy {
+
+	public static final DamageSource SELF_HARM = new DamageSource("self_harm").setDamageBypassesArmor().setDamageIsAbsolute();
+	public static final DamageSource DISSOLVE = new DamageSource("dissolve").setDamageBypassesArmor().setDamageIsAbsolute();
+	public static final DamageSource DISSOLVE_DRING = new DamageSource("dissolve_dring").setDamageBypassesArmor().setDamageIsAbsolute().setDamageAllowedInCreativeMode();
 	
-
-
-	public static final DamageSource SELF_HARM =(new DamageSourceExtraAlchemy("self_harm")).setDamageBypassesArmor().setDamageIsAbsolute();
-	public static final DamageSource DISSOLVE =(new DamageSourceExtraAlchemy("dissolve")).setDamageBypassesArmor().setDamageIsAbsolute();
-	public static final DamageSource DISSOLVE_DRING =(new DamageSourceExtraAlchemy("dissolve_dring")).setDamageBypassesArmor().setDamageIsAbsolute();
-
-	private String damageType;
-	public DamageSourceExtraAlchemy(String damageTypeIn) {
-		super(damageTypeIn);
-		damageType=damageTypeIn;
-	}
-    @Override
-    public ITextComponent getDeathMessage(EntityLivingBase livingBase) {
-        return new TextComponentString(TextHelper.localizeEffect("death.attack.extraalchemy."+damageType, livingBase.getName()));
-    }
 }

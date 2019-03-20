@@ -19,26 +19,22 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import yichen.extraalchemy.base.entity.EntityEssenceFire;
 import yichen.extraalchemy.base.entity.EntityEssenceWater;
 import yichen.extraalchemy.util.ItemHelper;
 
 public class ItemEssenceWater extends ItemDefault {
 	private String states = null;
+
 	public ItemEssenceWater() {
 		super("essence water");
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
-		tooltip.add(I18n.format("tooltip.extraalchemy.essence.mode"));
+		tooltip.add(I18n.format("tooltip.essence.mode"));
 		if (stack.hasTagCompound()) {
 			states = ItemHelper.getOrCreateCompound(stack).getString("states");
-			tooltip.add(I18n.format("tooltip.extraalchemy.essence_water." + states));
-		} else {
-			tooltip.add(I18n.format("tooltip.extraalchemy.essence_water.water_ball"));
+			tooltip.add(I18n.format("tooltip.essence_water." + (states.isEmpty() ? "water_ball" : states)));
 		}
 	}
 
@@ -48,7 +44,7 @@ public class ItemEssenceWater extends ItemDefault {
 		states = ItemHelper.getOrCreateCompound(player.getHeldItem(hand)).getString("states");
 		ItemStack stack = player.getHeldItem(hand);
 		BlockPos newPos = blockPos.offset(side);
-		if(states.equals("water")) {
+		if (states.equals("water")) {
 			if (!player.isSneaking() && player.getHeldItem(hand).getCount() >= 8) {
 				if (world.isAirBlock(newPos)) {
 					if (!player.capabilities.isCreativeMode)
@@ -65,7 +61,7 @@ public class ItemEssenceWater extends ItemDefault {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
 		states = ItemHelper.getOrCreateCompound(player.getHeldItem(hand)).getString("states");
-		if(!player.isSneaking()) {
+		if (!player.isSneaking()) {
 			if (states.equals("water_ball") || states.isEmpty()) {
 				if (!player.capabilities.isCreativeMode)
 					player.getHeldItem(hand).shrink(1);
@@ -91,8 +87,9 @@ public class ItemEssenceWater extends ItemDefault {
 			}
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
-			if (!world.isRemote) 
-				player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.extraalchemy.essence_water." + states)));
+			if (!world.isRemote)
+				player.sendMessage(
+						new TextComponentTranslation(I18n.format("tooltip.essence_water." + states)));
 		}
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}

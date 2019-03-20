@@ -29,8 +29,8 @@ public class ItemDagger extends ItemDefault {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add(I18n.format("tooltip.extraalchemy.dagger1"));
-		tooltip.add(I18n.format("tooltip.extraalchemy.dagger2"));
+		tooltip.add(I18n.format("tooltip.dagger.1"));
+		tooltip.add(I18n.format("tooltip.dagger.2"));
 	}
 
 	@Override
@@ -42,12 +42,7 @@ public class ItemDagger extends ItemDefault {
 			if (!player.capabilities.isCreativeMode) {
 				stack.damageItem(1, player);
 				player.setActiveHand(hand);
-				player.attackEntityFrom(DamageSourceExtraAlchemy.SELF_HARM, 0.001F);
-				player.setHealth(Math.max(player.getHealth() - 4, 0.0001f));
-				if (player.getHealth() <= 0.001f) {
-					player.onDeath(DamageSourceExtraAlchemy.SELF_HARM);
-					player.setHealth(0);
-				}
+				player.attackEntityFrom(DamageSourceExtraAlchemy.SELF_HARM, 4F);
 			}
 			// 获取玩家背包
 			ItemStack itemstack = this.findAmmo(player);
