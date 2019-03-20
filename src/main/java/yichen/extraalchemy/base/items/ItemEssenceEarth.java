@@ -30,10 +30,8 @@ public class ItemEssenceEarth extends ItemDefault {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> list, ITooltipFlag flags) {
 		list.add(I18n.format("tooltip.essence.mode"));
-		if (stack.hasTagCompound()) {
-			states = ItemHelper.getOrCreateCompound(stack).getString("states");
-			list.add(I18n.format("tooltip.essence_earth." + (states.isEmpty() ? "stone" : states)));
-		}
+		states = ItemHelper.getOrCreateCompound(stack).getString("states");
+		list.add(I18n.format("tooltip.essence_earth." + (states.isEmpty() ? "stone" : states)));
 	}
 
 	@Override

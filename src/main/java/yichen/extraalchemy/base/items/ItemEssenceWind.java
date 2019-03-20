@@ -35,10 +35,8 @@ public class ItemEssenceWind extends ItemDefault {
 
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
 		tooltip.add(I18n.format("tooltip.essence.mode"));
-		if (stack.hasTagCompound()) {
-			states = ItemHelper.getOrCreateCompound(stack).getString("states");
-			tooltip.add(I18n.format("tooltip.essence_wind." + (states.isEmpty() ? "wind_blade" : states)));
-		}
+		states = ItemHelper.getOrCreateCompound(stack).getString("states");
+		tooltip.add(I18n.format("tooltip.essence_wind." + (states.isEmpty() ? "wind_blade" : states)));
 	}
 
 	@Nonnull

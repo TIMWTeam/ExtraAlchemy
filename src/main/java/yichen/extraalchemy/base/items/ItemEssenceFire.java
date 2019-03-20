@@ -31,10 +31,8 @@ public class ItemEssenceFire extends ItemDefault {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
 		tooltip.add(I18n.format("tooltip.essence.mode"));
-		if (stack.hasTagCompound()) {
-			states = ItemHelper.getOrCreateCompound(stack).getString("states");
-			tooltip.add(I18n.format("tooltip.essence_fire." + (states.isEmpty() ? "fire_ball" : states)));
-		}
+		states = ItemHelper.getOrCreateCompound(stack).getString("states");
+		tooltip.add(I18n.format("tooltip.essence_fire." + (states.isEmpty() ? "fire_ball" : states)));
 	}
 
 	@Override
