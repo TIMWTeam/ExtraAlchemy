@@ -1,4 +1,4 @@
-package yichen.extraalchemy.base.blocks.alchemy_array.rander;
+package yichen.extraalchemy.base.blocks.alchemy_array.tile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -12,7 +12,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.util.Counter;
 
@@ -21,7 +20,6 @@ import org.lwjgl.opengl.GL11;
 public class TESRAlchemyArrayTransmute extends TileEntitySpecialRenderer<TileAlchemyArrayTransmute> {
 
     private final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(ExtraAlchemy.MODID, "textures/models/alchemyarray/transmute.png");
-
     
     @Override
     public void render(TileAlchemyArrayTransmute aa, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {

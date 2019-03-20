@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.blocks.BlockBloodstain;
 import yichen.extraalchemy.base.blocks.alchemy_array.BlockAlchemyArrayTransmute;
-import yichen.extraalchemy.base.blocks.alchemy_array.rander.TESRAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.tile.TESRAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent;
 

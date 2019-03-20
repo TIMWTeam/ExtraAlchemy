@@ -94,7 +94,6 @@ public class ItemAlchemicalDissovent extends ItemDefault {
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
 		if(!world.isRemote) {
-			living.dropItem(Items.GLASS_BOTTLE, 1);
 			living.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE_DRING, Float.MAX_VALUE);
 		}
 		return ItemStack.EMPTY;

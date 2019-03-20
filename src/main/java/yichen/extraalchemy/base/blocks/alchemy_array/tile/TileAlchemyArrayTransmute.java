@@ -30,7 +30,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
 import yichen.extraalchemy.api.RecipeTransmute;
-import yichen.extraalchemy.base.blocks.alchemy_array.tile.base.TileEntityBase;
 import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.util.Counter;
 import yichen.extraalchemy.util.Vector3;
