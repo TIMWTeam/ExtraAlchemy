@@ -81,7 +81,7 @@ public class ItemLoader {
 		registerRender(itemEssenceFire);
 	}
 
-	// 注册实体投掷物贴图
+	// 注册实体投掷物
 	public static void registerItemAndEntity() {
 		int i = 0;
 		EntityRegistry.registerModEntity(makeName("essence_fire"), EntityEssenceFire.class,

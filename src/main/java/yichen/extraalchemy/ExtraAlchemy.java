@@ -34,7 +34,7 @@ public class ExtraAlchemy {
 	public static final CreativeTabs TAB_base = new CreativeTabs(MODID) {
 		@Override
 		public ItemStack getTabIconItem() {
-			return new ItemStack(ItemLoader.itemCoalDust);
+			return new ItemStack(ItemLoader.itemEssenceFire);
 		}
 	};
 
