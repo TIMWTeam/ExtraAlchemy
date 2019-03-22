@@ -29,7 +29,7 @@ public class DissoventRecipeCategory implements IRecipeCategory<DissoventRecipeW
 
     public DissoventRecipeCategory(IGuiHelper guiHelper) {
 		localizedName = I18n.format("extraalchemy.jei.dissovent");
-		background = guiHelper.drawableBuilder( new ResourceLocation(ExtraAlchemy.MODID, "textures/gui/recipetransmute.png"), 0, 0, 116, 54).build();
+		background = guiHelper.drawableBuilder( new ResourceLocation(ExtraAlchemy.MODID, "textures/gui/recipetransmute.png"), 0, 54, 90, 54).build();
     }
     @Nonnull
 	@Override
@@ -59,8 +59,8 @@ public class DissoventRecipeCategory implements IRecipeCategory<DissoventRecipeW
 	@Override
 	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull DissoventRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients) {
 		IGuiItemStackGroup group = recipeLayout.getItemStacks();
-        group.init(0, true, 18, 17);
-        group.init(1, false, 94, 17);
+        group.init(0, true, 25, 5);
+        group.init(1, false, 65, 38);
         group.set(ingredients);
 	}
 

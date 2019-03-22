@@ -35,7 +35,7 @@ public class BlockAlchemyArrayTransmute extends BlockDefault {
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0, 0, 0, 1, 0.1, 1);
 
 	public BlockAlchemyArrayTransmute() {
-		super("alchemy_array_transmute",Material.CLOTH);
+		super("alchemy array transmute",Material.CLOTH);
 		this.setHardness(0);
 		this.setLightOpacity(3);
 		this.setLightLevel(0.5F);

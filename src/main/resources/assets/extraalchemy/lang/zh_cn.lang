@@ -19,7 +19,7 @@ tile.extraalchemy.AlchemyCircle.name=炼金法阵
 tile.extraalchemy.AlchemyArrayTransmute.name=嬗变炼金阵
 
 #流体
-fluid.AlchemicalDissovent.name=炼金溶液
+fluid.AlchemicalDissovent=炼金溶液
 
 #炼金阵
 tile.Bloodstain.name=血迹
