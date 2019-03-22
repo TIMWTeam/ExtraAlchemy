@@ -20,8 +20,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
+import yichen.extraalchemy.base.blocks.BlockAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.BlockBloodstain;
-import yichen.extraalchemy.base.blocks.alchemy_array.BlockAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.alchemy_array.tile.TESRAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent;
@@ -84,19 +84,10 @@ public class BlockLoader {
 	@SideOnly(Side.CLIENT)
 	public static void registerFluidModels(Block block) {
 		final ResourceLocation location = block.getRegistryName();
-		final Item item = Item.getItemFromBlock(block);
-		
-		ModelLoader.setCustomMeshDefinition(item, new ItemMeshDefinition() {
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return new ModelResourceLocation(location, "fluid");
-			}
-		});
-		
 		ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return new ModelResourceLocation(location, "fluid");
+				return new ModelResourceLocation(ExtraAlchemy.MODID + ":fluid", location.getResourcePath());
 			}
 		});
 	}

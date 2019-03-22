@@ -19,7 +19,7 @@ public class ItemDefault extends Item {
 	
 	void init(String registry, String unlocalized) {
 		this.setRegistryName(registry);
-		this.setUnlocalizedName(unlocalized);
+		this.setUnlocalizedName(ExtraAlchemy.MODID+"."+unlocalized);
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 	

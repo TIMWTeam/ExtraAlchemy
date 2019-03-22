@@ -1,4 +1,4 @@
-package yichen.extraalchemy.base.blocks.alchemy_array;
+package yichen.extraalchemy.base.blocks;
 
 import java.util.Collection;
 import java.util.List;
@@ -31,17 +31,14 @@ import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransm
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
 
-public class BlockAlchemyArrayTransmute extends Block {
+public class BlockAlchemyArrayTransmute extends BlockDefault {
 	protected static final AxisAlignedBB AABB = new AxisAlignedBB(0, 0, 0, 1, 0.1, 1);
 
 	public BlockAlchemyArrayTransmute() {
-		super(Material.CLOTH);
-		this.setRegistryName("alchemy_array_transmute");
-		this.setUnlocalizedName("AlchemyArrayTransmute");
+		super("alchemy_array_transmute",Material.CLOTH);
 		this.setHardness(0);
 		this.setLightOpacity(3);
 		this.setLightLevel(0.5F);
-		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 
 	@Override

@@ -2,21 +2,21 @@
 itemGroup.extraalchemy=更多炼金术
 
 #物品
-item.CoalDust.name=碳粉
-item.Dagger.name=小匕首
-item.BloodBottle.name=血瓶
-item.TransmuteDust.name=嬗变炼金阵媒介
-item.AlchemicalDissovent.name=炼金溶剂
-item.EssenceLife.name=生命源质
-item.EssenceEarth.name=地之本源
-item.EssenceWind.name=风之本源
-item.EssenceWater.name=水之本源
-item.EssenceFire.name=火之本源
+item.extraalchemy.CoalDust.name=碳粉
+item.extraalchemy.Dagger.name=小匕首
+item.extraalchemy.BloodBottle.name=血瓶
+item.extraalchemy.TransmuteDust.name=嬗变炼金阵媒介
+item.extraalchemy.AlchemicalDissovent.name=炼金溶剂
+item.extraalchemy.EssenceLife.name=生命源质
+item.extraalchemy.EssenceEarth.name=地之本源
+item.extraalchemy.EssenceWind.name=风之本源
+item.extraalchemy.EssenceWater.name=水之本源
+item.extraalchemy.EssenceFire.name=火之本源
 
 #方块
-tile.Bloodstain.name=血迹
-tile.AlchemyCircle.name=炼金法阵
-tile.AlchemyArrayTransmute.name=嬗变炼金阵
+tile.extraalchemy.Bloodstain.name=血迹
+tile.extraalchemy.AlchemyCircle.name=炼金法阵
+tile.extraalchemy.AlchemyArrayTransmute.name=嬗变炼金阵
 
 #流体
 fluid.AlchemicalDissovent.name=炼金溶液
