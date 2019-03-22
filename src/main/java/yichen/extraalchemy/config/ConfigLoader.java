@@ -26,7 +26,7 @@ public class ConfigLoader {
 	{
 		logger.info("Started loading config.\n开始配置文件加载 ");
 
-		comment = "Alchemy array basic work efficiency. [range: 0.1 ~ 5.0, default: 1.0]\n炼金法阵基础工作效率。[范围：0.1 ~ 5.0，默认：1.0]";
+		comment = "Alchemy array basic work efficiency. \n炼金法阵基础工作效率。";
 		alchemyArrayEfficiency = config.getFloat("alchemyArrayEfficiency", Configuration.CATEGORY_GENERAL, 1.0f, 0.1f, 5.0f, comment);
 
 		comment = "Blood bottle drinking speed.\n血瓶饮用速度。";
