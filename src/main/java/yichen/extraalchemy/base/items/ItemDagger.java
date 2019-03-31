@@ -29,8 +29,8 @@ public class ItemDagger extends ItemDefault {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add(I18n.format("tooltip.dagger.1"));
-		tooltip.add(I18n.format("tooltip.dagger.2"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.dagger.1"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.dagger.2"));
 	}
 
 	@Override

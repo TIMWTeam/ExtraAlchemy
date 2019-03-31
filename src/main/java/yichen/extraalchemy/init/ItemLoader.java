@@ -23,6 +23,7 @@ import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.base.entity.EntityEssenceFire;
 import yichen.extraalchemy.base.entity.EntityEssenceWater;
 import yichen.extraalchemy.base.entity.EntityEssenceWind;
+import yichen.extraalchemy.base.items.ItemAirBottle;
 import yichen.extraalchemy.base.items.ItemAlchemicalDissovent;
 import yichen.extraalchemy.base.items.ItemBloodBottle;
 import yichen.extraalchemy.base.items.ItemCoalDust;
@@ -41,6 +42,7 @@ public class ItemLoader {
 	public static final Item itemCoalDust = new ItemCoalDust();
 	public static final Item itemDagger = new ItemDagger();
 	public static final Item itembloodbottle = new ItemBloodBottle();
+	public static final Item itemAirBottle = new ItemAirBottle();
 	public static final Item itemTransmuteDust = new ItemAlchemyArrayTransmute();
 	public static final Item itemAlchemicalDissovent = new ItemAlchemicalDissovent();
 	public static final Item itemEssenceLife = new ItemEssenceLife();
@@ -53,6 +55,7 @@ public class ItemLoader {
 		register(itemCoalDust);
 		register(itemDagger);
 		register(itembloodbottle);
+		register(itemAirBottle);
 		register(itemTransmuteDust);
 		register(itemAlchemicalDissovent);
 		register(itemEssenceLife);

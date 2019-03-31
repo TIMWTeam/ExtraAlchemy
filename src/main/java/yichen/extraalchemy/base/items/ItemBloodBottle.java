@@ -24,7 +24,7 @@ import yichen.extraalchemy.init.BlockLoader;
 
 public class ItemBloodBottle extends ItemDefault {
 	public ItemBloodBottle() {
-		super("blood bottle");
+		super("blood_bottle");
 		this.setMaxStackSize(1);
 		this.setMaxDamage(3);
 	}
@@ -32,7 +32,7 @@ public class ItemBloodBottle extends ItemDefault {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add(I18n.format("tooltip.blood_bottle"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.blood_bottle"));
 	}
 
 	@Override

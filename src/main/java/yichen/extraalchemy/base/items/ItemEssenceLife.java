@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class ItemEssenceLife extends ItemDefault {
 	public ItemEssenceLife() {
-		super("essence life");
+		super("essence_life");
 	}
 
 	@Override

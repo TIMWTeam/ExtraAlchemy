@@ -6,13 +6,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import yichen.extraalchemy.ExtraAlchemy;
 import yichen.extraalchemy.util.base.BlockDust;
 
 public class BlockBloodstain extends BlockDust {
 
 	public BlockBloodstain() {
 		this.setRegistryName("bloodstain");
-		this.setUnlocalizedName("Bloodstain");
+		this.setUnlocalizedName(ExtraAlchemy.MODID+"."+"bloodstain");
 		setHardness(0.0F);
 	}
 

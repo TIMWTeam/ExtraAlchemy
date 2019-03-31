@@ -9,20 +9,12 @@ public class BlockDefault extends Block {
 
 	public BlockDefault(String name, Material material) {
 		super(material);
-		String[] sp = name.split(" ");
-		String registry = StringUtils.mergeWithUnderline(sp);
-		String unlocalized = StringUtils.mergeWithUpper(sp);
-		init(registry, unlocalized);
+		init(name);
 	}
 	
-	public BlockDefault(String registry, String unlocalized, Material material) {
-		super(material);
-		init(registry, unlocalized);
-	}
-	
-	void init(String registry, String unlocalized) {
-		this.setRegistryName(registry);
-		this.setUnlocalizedName(ExtraAlchemy.MODID+"."+unlocalized);
+	void init(String name) {
+		this.setRegistryName(name);
+		this.setUnlocalizedName(ExtraAlchemy.MODID+"."+name);
 		this.setCreativeTab(ExtraAlchemy.TAB_base);
 	}
 	

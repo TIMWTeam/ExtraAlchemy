@@ -27,16 +27,16 @@ public class ItemEssenceWind extends ItemDefault {
 	private String states = null;
 
 	public ItemEssenceWind() {
-		super("essence wind");
+		super("essence_wind");
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
-		tooltip.add(I18n.format("tooltip.essence.mode"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.essence.mode"));
 		states = ItemHelper.getOrCreateCompound(stack).getString("states");
-		tooltip.add(I18n.format("tooltip.essence_wind." + (states.isEmpty() ? "wind_blade" : states)));
+		tooltip.add(I18n.format("tooltip.extraalchemy.essence_wind." + (states.isEmpty() ? "wind_blade" : states)));
 	}
 
 	@Nonnull
@@ -76,7 +76,7 @@ public class ItemEssenceWind extends ItemDefault {
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
 			if (!world.isRemote)
-				player.sendMessage(new TextComponentTranslation("tooltip.essence_wind." + states));
+				player.sendMessage(new TextComponentTranslation("tooltip.extraalchemy.essence_wind." + states));
 		}
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}

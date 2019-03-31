@@ -25,14 +25,14 @@ import yichen.extraalchemy.util.ItemHelper;
 public class ItemEssenceFire extends ItemDefault {
 	private String states = null;
 	public ItemEssenceFire() {
-		super("essence fire");
+		super("essence_fire");
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
-		tooltip.add(I18n.format("tooltip.essence.mode"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.essence.mode"));
 		states = ItemHelper.getOrCreateCompound(stack).getString("states");
-		tooltip.add(I18n.format("tooltip.essence_fire." + (states.isEmpty() ? "fire_ball" : states)));
+		tooltip.add(I18n.format("tooltip.extraalchemy.essence_fire." + (states.isEmpty() ? "fire_ball" : states)));
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class ItemEssenceFire extends ItemDefault {
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
 			if (!world.isRemote) 
-				player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.essence_fire." + states)));
+				player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.extraalchemy.essence_fire." + states)));
 		}
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}

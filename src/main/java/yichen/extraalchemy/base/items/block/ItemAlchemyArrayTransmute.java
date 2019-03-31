@@ -20,13 +20,13 @@ import yichen.extraalchemy.init.BlockLoader;
 
 public class ItemAlchemyArrayTransmute extends ItemDefault {
 	public ItemAlchemyArrayTransmute() {
-		super("transmute dust");
+		super("transmute_dust");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add(I18n.format("tooltip.transmute_dust"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.transmute_dust"));
 	}
 
 	@Override

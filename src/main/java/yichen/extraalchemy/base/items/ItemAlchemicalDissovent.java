@@ -28,7 +28,7 @@ import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
 
 public class ItemAlchemicalDissovent extends ItemDefault {
 	public ItemAlchemicalDissovent() {
-		super("alchemical dissovent");
+		super("alchemical_dissovent");
 		this.setMaxStackSize(1);
 		this.setMaxDamage(32);
 	}
@@ -36,7 +36,7 @@ public class ItemAlchemicalDissovent extends ItemDefault {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		tooltip.add(I18n.format("tooltip.alchemical_dissovent"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.alchemical_dissovent"));
 	}
 
 	@Override

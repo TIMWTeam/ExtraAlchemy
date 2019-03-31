@@ -24,14 +24,14 @@ public class ItemEssenceEarth extends ItemDefault {
 	private String states = null;
 
 	public ItemEssenceEarth() {
-		super("essence earth");
+		super("essence_earth");
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> list, ITooltipFlag flags) {
-		list.add(I18n.format("tooltip.essence.mode"));
+		list.add(I18n.format("tooltip.extraalchemy.essence.mode"));
 		states = ItemHelper.getOrCreateCompound(stack).getString("states");
-		list.add(I18n.format("tooltip.essence_earth." + (states.isEmpty() ? "stone" : states)));
+		list.add(I18n.format("tooltip.extraalchemy.essence_earth." + (states.isEmpty() ? "stone" : states)));
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class ItemEssenceEarth extends ItemDefault {
 				states = "cobblestone";
 				break;
 			}
-			player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.essence_earth." + states)));
+			player.sendMessage(new TextComponentTranslation(I18n.format("tooltip.extraalchemy.essence_earth." + states)));
 			NBTTagCompound compound = ItemHelper.getOrCreateCompound(player.getHeldItem(hand));
 			compound.setString("states", states);
 		}

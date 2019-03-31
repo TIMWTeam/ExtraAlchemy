@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -32,7 +33,7 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
 	public BlockAlchemicalDissovent() {
 		super(new FluidAlchemicalDissovent(), Material.WATER);
 		this.setRegistryName("alchemical_dissovent");
-		this.setUnlocalizedName("AlchemicalDissovent");
+		this.setUnlocalizedName("alchemical_dissovent");
 		getAlchemicalDissovent().setBlock(this);
 	}
 
@@ -43,43 +44,45 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
 	@Override
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 		super.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
-		if (counter.value() >= 10) {
-			double d = Math.random();
-			if (entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getHealth() >= 0.001f) {
-				EntityLivingBase entityliving = (EntityLivingBase) entityIn;
-				entityliving.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 10, 0, true, true));
-				entityliving.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 0, true, true));
-
-				// 受到伤害
-				// 玩家10%几率、生物0.5%几率掉落生命源质
-				if (entityIn instanceof EntityPlayer) {
-					if (!((EntityPlayer) entityIn).capabilities.isCreativeMode) causeDamages(entityliving);
-					if (d <= 0.1) entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
-				} else {
-					causeDamages(entityliving);
-					if (d <= 0.005) entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
-				}
-			} else if (entityIn instanceof EntityItem) {
-				((EntityItem) entityIn).setNoDespawn();
-				ItemStack itemStack = ((EntityItem) entityIn).getItem();
-				if (!itemStack.isEmpty()) {
-					if (entityIn.getEntityWorld().isRemote)
-						return;
-					RecipeDissovent recipe = matchRecipe((EntityItem) entityIn);
-					if (recipe != null) {
-						if (d <= recipe.getChance()) {
-							itemStack.shrink(1);
-							ItemStack tunedStack = recipe.getOutput().copy();
-							EntityItem outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5,
-									pos.getZ() + 0.5, tunedStack);
-							worldIn.spawnEntity(outputItem);
+		if (!worldIn.isRemote) {
+			if (counter.value() >= 10) {
+				double d = Math.random();
+				if (entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getHealth() >= 0.001f) {
+					EntityLivingBase entityliving = (EntityLivingBase) entityIn;
+					entityliving.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 10, 0, true, true));
+					entityliving.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 0, true, true));
+	
+					// 受到伤害
+					// 玩家10%几率、生物0.5%几率掉落生命源质
+					if (entityIn instanceof EntityPlayer) {
+						if (!((EntityPlayer) entityIn).capabilities.isCreativeMode) causeDamages(entityliving);
+						if (d <= 0.1) entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
+					} else {
+						causeDamages(entityliving);
+						if (d <= 0.005) entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
+					}
+				} else if (entityIn instanceof EntityItem) {
+					((EntityItem) entityIn).setNoDespawn();
+					ItemStack itemStack = ((EntityItem) entityIn).getItem();
+					if (!itemStack.isEmpty()) {
+						if (entityIn.getEntityWorld().isRemote)
+							return;
+						RecipeDissovent recipe = matchRecipe((EntityItem) entityIn);
+						if (recipe != null) {
+							if (d <= recipe.getChance()) {
+								itemStack.shrink(1);
+								ItemStack tunedStack = recipe.getOutput().copy();
+								EntityItem outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5,
+										pos.getZ() + 0.5, tunedStack);
+								worldIn.spawnEntity(outputItem);
+							}
 						}
 					}
 				}
+				counter.clear();
+			} else {
+				counter.increment();
 			}
-			counter.clear();
-		} else {
-			counter.increment();
 		}
 	}
 

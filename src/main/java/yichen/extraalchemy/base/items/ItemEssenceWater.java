@@ -26,14 +26,14 @@ public class ItemEssenceWater extends ItemDefault {
 	private String states = null;
 
 	public ItemEssenceWater() {
-		super("essence water");
+		super("essence_water");
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
-		tooltip.add(I18n.format("tooltip.essence.mode"));
+		tooltip.add(I18n.format("tooltip.extraalchemy.essence.mode"));
 		states = ItemHelper.getOrCreateCompound(stack).getString("states");
-		tooltip.add(I18n.format("tooltip.essence_water." + (states.isEmpty() ? "water_ball" : states)));
+		tooltip.add(I18n.format("tooltip.extraalchemy.essence_water." + (states.isEmpty() ? "water_ball" : states)));
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class ItemEssenceWater extends ItemDefault {
 			compound.setString("states", states);
 			if (!world.isRemote)
 				player.sendMessage(
-						new TextComponentTranslation(I18n.format("tooltip.essence_water." + states)));
+						new TextComponentTranslation(I18n.format("tooltip.extraalchemy.essence_water." + states)));
 		}
 		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
