@@ -72,6 +72,7 @@ public class ItemLoader {
 	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
 		registerRender(itemCoalDust);
+		registerRender(itemCoalDust);
 		registerRender(itemDagger);
 		registerRender(itembloodbottle);
 		registerRender(itemTransmuteDust);

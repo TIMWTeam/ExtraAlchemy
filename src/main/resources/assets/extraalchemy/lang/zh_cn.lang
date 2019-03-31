@@ -32,7 +32,8 @@ tooltip.extraalchemy.air_bottle=等会，瓶子里原来装的是什么？！
 tooltip.transmute_dust=右击地面构成炼金阵
 tooltip.extraalchemy.dagger.1=并不是很锋利的匕首，仅能刺破自己的手指。
 tooltip.extraalchemy.dagger.2=为了不浪费血液，最好准备些玻璃瓶来收集。
-tooltip.alchemical_dissovent=俺寻思这玩意味道咋样……
+tooltip.extraalchemy.alchemical_dissovent=俺寻思这玩意味道咋样……
+tooltip.extraalchemy.air_bottle=装有被捕获的风之元素
 
 tooltip.extraalchemy.essence.mode=[潜行+右键] 切换模式
 
