@@ -24,6 +24,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
 import yichen.extraalchemy.api.RecipeDissovent;
+import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
 
 public class ItemAlchemicalDissovent extends ItemDefault {
@@ -93,7 +94,10 @@ public class ItemAlchemicalDissovent extends ItemDefault {
 
 	@Override
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, World world, EntityLivingBase living) {
-		living.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE_DRING, Float.MAX_VALUE);
+		if (!world.isRemote) {
+			living.dropItem(ItemLoader.itemEssenceLife, 1);
+			living.attackEntityFrom(DamageSourceExtraAlchemy.DISSOLVE_DRING, Float.MAX_VALUE);
+		}
 		return ItemStack.EMPTY;
 	}
 

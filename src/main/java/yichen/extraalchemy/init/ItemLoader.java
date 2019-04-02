@@ -52,7 +52,6 @@ public class ItemLoader {
 	public static final Item itemEssenceFire = new ItemEssenceFire();
 
 	public ItemLoader(FMLPreInitializationEvent event) {
-		register(itemCoalDust);
 		register(itemDagger);
 		register(itembloodbottle);
 		register(itemAirBottle);
@@ -71,8 +70,7 @@ public class ItemLoader {
 	// 注册贴图
 	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
-		registerRender(itemCoalDust);
-		registerRender(itemCoalDust);
+		registerRender(itemAirBottle);
 		registerRender(itemDagger);
 		registerRender(itembloodbottle);
 		registerRender(itemTransmuteDust);

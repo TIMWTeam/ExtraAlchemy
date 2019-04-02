@@ -27,8 +27,8 @@ import yichen.extraalchemy.util.DamageSourceExtraAlchemy;
 
 public class BlockAlchemicalDissovent extends BlockFluidClassic {
 	private static final Fluid alchemicalDissovent = new FluidAlchemicalDissovent();
-
 	private Counter counter = new Counter();
+	private Counter CD = new Counter();
 
 	public BlockAlchemicalDissovent() {
 		super(new FluidAlchemicalDissovent(), Material.WATER);
@@ -45,12 +45,12 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 		super.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
 		if (!worldIn.isRemote) {
-			if (counter.value() >= 10) {
+			if (counter.value() >= 10 && CD.value() <= 0) {
 				double d = Math.random();
 				if (entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getHealth() >= 0.001f) {
 					EntityLivingBase entityliving = (EntityLivingBase) entityIn;
-					entityliving.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 10, 0, true, true));
-					entityliving.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 0, true, true));
+					entityliving.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 20, 0, true, true));
+					entityliving.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 0, true, true));
 	
 					// 受到伤害
 					// 玩家10%几率、生物0.5%几率掉落生命源质
@@ -61,6 +61,7 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
 						causeDamages(entityliving);
 						if (d <= 0.005) entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
 					}
+					CD.set(5);
 				} else if (entityIn instanceof EntityItem) {
 					((EntityItem) entityIn).setNoDespawn();
 					ItemStack itemStack = ((EntityItem) entityIn).getItem();
@@ -77,10 +78,12 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
 								worldIn.spawnEntity(outputItem);
 							}
 						}
+						CD.set(20);
 					}
 				}
 				counter.clear();
 			} else {
+				CD.decrement();
 				counter.increment();
 			}
 		}
