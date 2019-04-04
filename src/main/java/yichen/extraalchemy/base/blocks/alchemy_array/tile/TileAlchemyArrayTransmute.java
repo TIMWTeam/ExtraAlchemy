@@ -73,9 +73,9 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
      			this.status = 2;
      		}
      		//物品悬浮
-     		floatItem();
+     		floatItem(world);
  		}else if(status == 2) {
- 			if(floatItem()) {
+ 			if(floatItem(world)) {
      			counterWork.increment();
 				if(counterWork.value() % 4 == 0) {
 					markForUpdate();
@@ -124,7 +124,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 		}
     }
 	//浮动物品
-    private Boolean floatItem() {
+    private Boolean floatItem(World world) {
     	if(activeEntity == null) {
 			startWork(3, null);
 		}else {
@@ -135,7 +135,9 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 				itemHoverPos = new Vector3(this).add(0.5, 0, 0.5);
 				activeEntity.setPosition(itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ());
 				activeEntity.setRotationYawHead(this.getTicksExisted()/360);
-				((EntityItem) activeEntity).setNoDespawn();
+				if(!world.isRemote) {
+					((EntityItem) activeEntity).setNoDespawn();
+				}
 				return true;
 			}
 		} 
