@@ -100,7 +100,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 				}
 			}
 		}else if(status == 0) {
-			if (getTicksExisted() % 20 == 0) {
+			if (getTicksExisted() % 10 == 0) {
 				AxisAlignedBB box = new AxisAlignedBB(0.3, -0.2, 0.3, 0.7, 0.2, 0.7).grow(0.2).offset(getPos());
 				List<EntityItem> unfilteredItems = world.getEntitiesWithinAABB(EntityItem.class, box);
 		        if(unfilteredItems.size() > 0) {
@@ -132,7 +132,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 				startWork(3, null);
 			}else {
 				//(counter.value() / 720F)-0.3
-				itemHoverPos = new Vector3(this).add(0.5, 0, 0.5);
+				itemHoverPos = new Vector3(this).add(0.5, -0.18, 0.5);
 				activeEntity.setPosition(itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ());
 				activeEntity.setRotationYawHead(this.getTicksExisted()/360);
 				if(!world.isRemote) {
