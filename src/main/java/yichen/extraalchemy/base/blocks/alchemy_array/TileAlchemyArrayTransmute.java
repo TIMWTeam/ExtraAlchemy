@@ -1,4 +1,4 @@
-package yichen.extraalchemy.base.blocks.alchemy_array.tile;
+package yichen.extraalchemy.base.blocks.alchemy_array;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +101,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 			}
 		}else if(status == 0) {
 			if (getTicksExisted() % 10 == 0) {
-				AxisAlignedBB box = new AxisAlignedBB(0.3, -0.2, 0.3, 0.7, 0.2, 0.7).grow(0.2).offset(getPos());
+				AxisAlignedBB box = new AxisAlignedBB(0.3, -0.25, 0.3, 0.7, 0.25, 0.7).grow(0.2).offset(getPos());
 				List<EntityItem> unfilteredItems = world.getEntitiesWithinAABB(EntityItem.class, box);
 		        if(unfilteredItems.size() > 0) {
 		        	//验证是否有匹配配方
@@ -206,18 +206,11 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
     	compound.setInteger("status", this.status);
         return super.writeToNBT(compound);
     }
-
-    @Override
-    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
-    }
-    @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inventory)  : super.getCapability(capability, facing);
-    }
 	@Override
 	protected void onFirstTick() {
-
+		// TODO 自动生成的方法存根
+		
 	}
+
 
 }

@@ -20,10 +20,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import yichen.extraalchemy.ExtraAlchemy;
-import yichen.extraalchemy.base.blocks.BlockAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.BlockBloodstain;
-import yichen.extraalchemy.base.blocks.alchemy_array.tile.TESRAlchemyArrayTransmute;
-import yichen.extraalchemy.base.blocks.alchemy_array.tile.TileAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.BlockAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.TESRAlchemyArrayTransmute;
+import yichen.extraalchemy.base.blocks.alchemy_array.TileAlchemyArrayTransmute;
 import yichen.extraalchemy.base.blocks.fluid.BlockAlchemicalDissovent;
 
 @Mod.EventBusSubscriber(modid = ExtraAlchemy.MODID)

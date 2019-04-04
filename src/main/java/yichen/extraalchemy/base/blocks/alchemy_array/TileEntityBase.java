@@ -1,4 +1,4 @@
-package yichen.extraalchemy.base.blocks.alchemy_array.tile;
+package yichen.extraalchemy.base.blocks.alchemy_array;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
