@@ -587,7 +587,7 @@ public class Vector3 {
         }
 
         public void leftMultiply(Quat quat) {
-            double d = this.s * quat.s - this.i * quat.i - this.j * quat.j - this.k * quat.k;
+            double d =  this.s * quat.s - this.i * quat.i - this.j * quat.j - this.k * quat.k;
             double d1 = this.s * quat.i + this.i * quat.s - this.j * quat.k + this.k * quat.j;
             double d2 = this.s * quat.j + this.i * quat.k + this.j * quat.s - this.k * quat.i;
             double d3 = this.s * quat.k - this.i * quat.j + this.j * quat.i + this.k * quat.s;
@@ -598,7 +598,7 @@ public class Vector3 {
         }
 
         public void rightMultiply(Quat quat) {
-            double d = this.s * quat.s - this.i * quat.i - this.j * quat.j - this.k * quat.k;
+            double d =  this.s * quat.s - this.i * quat.i - this.j * quat.j - this.k * quat.k;
             double d1 = this.s * quat.i + this.i * quat.s + this.j * quat.k - this.k * quat.j;
             double d2 = this.s * quat.j - this.i * quat.k + this.j * quat.s + this.k * quat.i;
             double d3 = this.s * quat.k + this.i * quat.j - this.j * quat.i + this.k * quat.s;

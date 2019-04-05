@@ -6,9 +6,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
 
-public class ClientProxy extends CommonProxy {
-    @Override
-    public void preInit(FMLPreInitializationEvent event) {
+public class ClientProxy extends CommonProxy{
+	@Override
+    public void preInit(FMLPreInitializationEvent event)
+    {
         super.preInit(event);
         //注册渲染
         ItemLoader.registerRenders();
@@ -16,12 +17,14 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public void init(FMLInitializationEvent event) {
+    public void init(FMLInitializationEvent event)
+    {
         super.init(event);
     }
 
     @Override
-    public void postInit(FMLPostInitializationEvent event) {
+    public void postInit(FMLPostInitializationEvent event)
+    {
         super.postInit(event);
     }
 }

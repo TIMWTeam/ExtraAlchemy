@@ -7,7 +7,6 @@ public class Counter {
     public float increment() {
         return increment(1);
     }
-
     public float increment(int amount) {
         old = i;
         i += amount;
