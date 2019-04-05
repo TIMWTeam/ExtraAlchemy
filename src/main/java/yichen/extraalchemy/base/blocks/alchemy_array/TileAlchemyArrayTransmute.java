@@ -9,18 +9,13 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.oredict.OreDictionary;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
 import yichen.extraalchemy.api.RecipeTransmute;
-import yichen.extraalchemy.api.RecipeTransmute_ore;
 import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.util.Counter;
 import yichen.extraalchemy.util.Vector3;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static yichen.extraalchemy.ExtraAlchemy.log;
 
 public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickable {
 
@@ -45,10 +40,8 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
     public Entity activeEntity = null;
     //悬浮位置
     private Vector3 itemHoverPos;
-    //是否是矿辞物品
-    private boolean is_ore;
     //产出的物品
-    private ItemStack out_item=null;
+    private ItemStack out_item = null;
 
     public ItemStackHandler inventory;
 

@@ -10,7 +10,6 @@ import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.recipes.ModDissoventRecipes;
 import yichen.extraalchemy.recipes.ModDissoventRecipes_ore;
 import yichen.extraalchemy.recipes.ModTransmuteRecipes;
-import yichen.extraalchemy.recipes.ModTransmuteRecipes_ore;
 
 public class CommonProxy {
 
@@ -26,9 +25,7 @@ public class CommonProxy {
         new CraftingLoader();
         //注册合成表
         ModTransmuteRecipes.init();
-        ModTransmuteRecipes_ore.init();
         ModDissoventRecipes.init();
-        ModDissoventRecipes_ore.init();
     }
 
     public void postInit(FMLPostInitializationEvent event) {
