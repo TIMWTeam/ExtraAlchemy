@@ -30,27 +30,21 @@ public final class ExtraAlchemyAPI {
      * @param time   The amount of time required. Don't go over 100000!
      * @return The recipe created.
      */
-    public static RecipeTransmute registerTransmuteRecipe(ItemStack output, Object input, int time) {
+    public static RecipeTransmute registerTransmuteRecipe(Object output, Object input, int time) {
         Preconditions.checkArgument(time <= 10000);
-        RecipeTransmute recipe = new RecipeTransmute(output, input, time);
+        ItemStack out = null;
+        if(output instanceof String) {
+        	if(OreDictionary.doesOreNameExist((String)output)) {
+	        	out = OreDictionary.getOres((String)output).get(0);
+	            out.setCount(1);
+	        }else {
+				out = (ItemStack) output;
+			}
+        }
+	        
+        RecipeTransmute recipe = new RecipeTransmute(out, input, time);
         transmuteRecipes.add(recipe);
         return recipe;
-    }
-
-    /**
-     * Registers a Transmute Recipe
-     *
-     * @param out_ore The Output dictionary name
-     * @param in_ore  The Input ore dictionary entry String.
-     * @param time    The amount of time required. Don't go over 100000!
-     * @return The recipe created.
-     */
-    public static RecipeTransmute registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
-        if (haveore(out_ore) == true && haveore(in_ore) == true) {
-            ItemStack item = OreDictionary.getOres(out_ore).get(0);
-            item.setCount(1);
-            return registerTransmuteRecipe(item,in_ore,time);
-        }else return null;
     }
 
     /**

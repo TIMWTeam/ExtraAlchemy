@@ -30,6 +30,6 @@ public class ModTransmuteRecipes {
 
     public static void init_ore()
     {
-        ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe_ore("ingotGold", "ingotIron", 100));
+        ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe("ingotGold", "ingotIron", 100));
     }
 }
