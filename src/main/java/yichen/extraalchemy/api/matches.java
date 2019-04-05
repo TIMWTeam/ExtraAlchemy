@@ -18,12 +18,4 @@ public class matches {
         }
         return false;
     }
-
-    public static boolean matches_ore(ItemStack stack, String input) {
-        for (ItemStack ostack : OreDictionary.getOres(input, false)) {
-            if (OreDictionary.itemMatches(ostack, stack, false))
-                return true;
-        }
-        return false;
-    }
 }

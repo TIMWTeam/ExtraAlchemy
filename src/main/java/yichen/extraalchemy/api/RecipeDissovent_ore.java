@@ -20,7 +20,7 @@ public class RecipeDissovent_ore {
     }
 
     public boolean matches(ItemStack stack) {
-        return matches.matches_ore(stack, input);
+        return matches.matches(stack, input);
     }
 
     public String getInput() {

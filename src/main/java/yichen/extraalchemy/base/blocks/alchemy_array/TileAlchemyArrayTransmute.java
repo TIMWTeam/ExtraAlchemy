@@ -81,10 +81,10 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
                     if (is_ore == false)
                         tunedStack = RT.getOutput().copy();
                     else {
-                        if (OreDictionary.getOres(RT_ore.getOutput()).size() == 0)
+                        if (OreDictionary.getOres((String) RT_ore.getOutput()).size() == 0)
                             log.error("矿物词典" + RT_ore.getOutput() + "下没有物品");
                         else
-                            tunedStack = OreDictionary.getOres(RT_ore.getOutput()).get(0);
+                            tunedStack = OreDictionary.getOres((String) RT_ore.getOutput()).get(0);
                     }
 
                     dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), tunedStack);

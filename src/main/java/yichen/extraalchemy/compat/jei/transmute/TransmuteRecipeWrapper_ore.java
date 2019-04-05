@@ -38,10 +38,10 @@ public class TransmuteRecipeWrapper_ore implements IRecipeWrapper {
 
         ImmutableList.Builder<List<ItemStack>> builder = ImmutableList.builder();
 
-        builder.add(OreDictionary.getOres(recipe.getInput()));
+        builder.add(OreDictionary.getOres((String) recipe.getInput()));
 
         input = builder.build();
-        output = OreDictionary.getOres(recipe.getOutput()).get(0);
+        output = OreDictionary.getOres((String) recipe.getOutput()).get(0);
         time = recipe.getTime();
     }
 

@@ -18,7 +18,7 @@ public class ModTransmuteRecipes {
     public static RecipeTransmute coal;
 
     public static void init() {
-        //ironIngotRecipe = new ArrayList<>();
+        ironIngotRecipe = new ArrayList<>();
         //ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.IRON_INGOT), "ingotGlod", 200));
         //ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.GOLD_INGOT), 100));
 

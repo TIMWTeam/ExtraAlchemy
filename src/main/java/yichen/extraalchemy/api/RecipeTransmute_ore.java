@@ -7,25 +7,25 @@ import static yichen.extraalchemy.ExtraAlchemy.log;
 
 public class RecipeTransmute_ore {
 
-    private final String output;
-    private final String input;
+    private final Object output;
+    private final Object input;
     private final int time;
 
-    public RecipeTransmute_ore(String output_ore, String input_ore, int time) {
+    public RecipeTransmute_ore(Object output_ore, Object input_ore, int time) {
         this.output = output_ore;
         this.input = input_ore;
         this.time = time;
     }
 
     public boolean matches(ItemStack stack) {
-        return matches.matches_ore(stack, input);
+        return matches.matches(stack, input);
     }
 
-    public String getInput() {
+    public Object getInput() {
         return input;
     }
 
-    public String getOutput() {
+    public Object getOutput() {
         return output;
     }
 
