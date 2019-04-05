@@ -1,11 +1,7 @@
 package yichen.extraalchemy.api;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 import static yichen.extraalchemy.ExtraAlchemy.log;
 
@@ -22,14 +18,11 @@ public class RecipeTransmute_ore {
     }
 
     public boolean matches(ItemStack stack) {
-        if(OreDictionary.getOreID(output) == 0 && OreDictionary.getOreID(input) == 0)
-        {
+        if (OreDictionary.getOreID(output) == 0 && OreDictionary.getOreID(input) == 0) {
             log.error("错误的矿物词典，请检查");
-        }
-        else
-            {
-            for(ItemStack ostack : OreDictionary.getOres(input, false)) {
-                if(OreDictionary.itemMatches(ostack, stack, false))
+        } else {
+            for (ItemStack ostack : OreDictionary.getOres(input, false)) {
+                if (OreDictionary.itemMatches(ostack, stack, false))
                     return true;
             }
         }
