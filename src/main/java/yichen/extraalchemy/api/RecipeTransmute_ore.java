@@ -28,7 +28,7 @@ public class RecipeTransmute_ore {
         }
         else
             {
-            for(ItemStack ostack : OreDictionary.getOres((String) input, false)) {
+            for(ItemStack ostack : OreDictionary.getOres(input, false)) {
                 if(OreDictionary.itemMatches(ostack, stack, false))
                     return true;
             }

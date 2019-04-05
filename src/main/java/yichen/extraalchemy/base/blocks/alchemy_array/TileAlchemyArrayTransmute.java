@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import net.minecraftforge.oredict.OreDictionary;
 import org.apache.http.util.EntityUtils;
 
 import com.google.common.hash.BloomFilter;
@@ -30,6 +31,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
 import yichen.extraalchemy.api.RecipeTransmute;
+import yichen.extraalchemy.api.RecipeTransmute_ore;
 import yichen.extraalchemy.config.ConfigLoader;
 import yichen.extraalchemy.util.Counter;
 import yichen.extraalchemy.util.Vector3;
@@ -57,8 +59,11 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
     public Entity activeEntity = null;
     //配方
     private RecipeTransmute RT = null;
+	private RecipeTransmute_ore RT_ore = null;
     //悬浮位置
     private Vector3 itemHoverPos;
+    //是否是矿辞物品
+    private boolean is_ore;
     
     public ItemStackHandler inventory;
 
@@ -84,9 +89,15 @@ public class TileAlchemyArrayTransmute extends TileEntityBase  implements ITicka
 					//减少物品数量
 					ItemStack activeItem = ((EntityItem) activeEntity).getItem();
 					activeItem.shrink(1);
-					
+
+					ItemStack tunedStack = null;
 					//掉出加工物
-					ItemStack tunedStack = RT.getOutput().copy();
+					if(is_ore==false)
+						tunedStack = RT.getOutput().copy();
+					else{
+						tunedStack = OreDictionary.;
+					}
+
 					dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), tunedStack);
 					
 					//如果物品处理完毕则关闭炼金阵
