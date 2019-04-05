@@ -25,6 +25,11 @@ public class ModTransmuteRecipes {
         //clayball = ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.CLAY_BALL), new ItemStack(Blocks.DIRT), 100);
         //coal = ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.COAL, 1, 1), "logWood", 800);
         //coal = ExtraAlchemyAPI.registerTransmuteRecipe(new ItemStack(Items.COAL,1,1), "ingotAlubrass", 200);
+        init_ore();
+    }
 
+    public static void init_ore()
+    {
+        ironIngotRecipe.add(ExtraAlchemyAPI.registerTransmuteRecipe_ore("ingotGold", "ingotIron", 100));
     }
 }

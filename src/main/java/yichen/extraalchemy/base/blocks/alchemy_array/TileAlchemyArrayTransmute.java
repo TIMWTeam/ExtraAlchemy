@@ -40,8 +40,6 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
     public Entity activeEntity = null;
     //悬浮位置
     private Vector3 itemHoverPos;
-    //是否是矿辞物品
-    private boolean is_ore;
     //产出的物品
     private ItemStack out_item = null;
 

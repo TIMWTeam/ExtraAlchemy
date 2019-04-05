@@ -53,11 +53,10 @@ public final class ExtraAlchemyAPI {
      * @param time    The amount of time required. Don't go over 100000!
      * @return The recipe created.
      */
-    public static void registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
+    public static RecipeTransmute registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
         if (haveore(out_ore) == true && haveore(in_ore) == true) {
-            List<RecipeTransmute> ironIngotRecipe = new ArrayList<>();
-            ironIngotRecipe.add(new RecipeTransmute(OreDictionary.getOres(out_ore).get(0),in_ore,time));
-        }
+            return registerTransmuteRecipe(OreDictionary.getOres(out_ore).get(0),in_ore,time);
+        }else return null;
     }
 
     /**
