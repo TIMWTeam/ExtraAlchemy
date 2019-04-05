@@ -37,6 +37,7 @@ import java.util.Set;
 public final class ExtraAlchemyAPI {
 
 	public static final List<RecipeTransmute> transmuteRecipes = new ArrayList<>();
+	public static final List<RecipeTransmute_ore> transmuteRecipes_ore = new ArrayList<>();
 	public static final List<RecipeDissovent> dissoventRecipes = new ArrayList<>();
 	public static final List<RecipeDissovent_ore> RecipeDissovent_ore = new ArrayList<>();
 	
@@ -51,6 +52,20 @@ public final class ExtraAlchemyAPI {
 		Preconditions.checkArgument(time <= 10000);
 		RecipeTransmute recipe = new RecipeTransmute(output, input, time);
 		transmuteRecipes.add(recipe);
+		return recipe;
+	}
+
+	/**
+	 * Registers a Transmute Recipe
+	 * @param out_ore The Output dictionary name
+	 * @param in_ore The Input ore dictionary entry String.
+	 * @param time The amount of time required. Don't go over 100000!
+	 * @return The recipe created.
+	 */
+	public static RecipeTransmute_ore registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
+		Preconditions.checkArgument(time <= 10000);
+		RecipeTransmute_ore recipe = new RecipeTransmute_ore(out_ore, in_ore, time);
+		transmuteRecipes_ore.add(recipe);
 		return recipe;
 	}
 

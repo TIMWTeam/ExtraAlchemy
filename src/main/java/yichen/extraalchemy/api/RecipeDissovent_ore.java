@@ -32,6 +32,7 @@ public class RecipeDissovent_ore {
         if(OreDictionary.getOreID(input) == 0 && OreDictionary.getOreID(output) == 0)
         {
             log.error("错误的矿物词典，请检查");
+            return false;
         }
         else
         {
