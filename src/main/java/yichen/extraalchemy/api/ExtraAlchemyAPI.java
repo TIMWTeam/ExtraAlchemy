@@ -14,7 +14,7 @@ public final class ExtraAlchemyAPI {
     public static final List<RecipeTransmute> transmuteRecipes = new ArrayList<>();
     public static final List<RecipeTransmute_ore> transmuteRecipes_ore = new ArrayList<>();
     public static final List<RecipeDissovent> dissoventRecipes = new ArrayList<>();
-    public static final List<RecipeDissovent_ore> RecipeDissovent_ore = new ArrayList<>();
+    public static final List<RecipeDissovent_ore> dissoventRecipes_ore = new ArrayList<>();
 
     /**
      * Registers a Transmute Recipe
@@ -80,7 +80,7 @@ public final class ExtraAlchemyAPI {
     public static RecipeDissovent_ore registerDissoventRecipe_ore(String out_ore, String in_ore, float chance) {
         Preconditions.checkArgument(chance <= 1);
         RecipeDissovent_ore recipe = new RecipeDissovent_ore(out_ore, in_ore, chance);
-        RecipeDissovent_ore.add(recipe);
+        dissoventRecipes_ore.add(recipe);
         return recipe;
     }
 

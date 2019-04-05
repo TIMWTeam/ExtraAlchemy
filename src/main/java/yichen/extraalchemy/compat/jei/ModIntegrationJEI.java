@@ -8,13 +8,13 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import yichen.extraalchemy.api.ExtraAlchemyAPI;
-import yichen.extraalchemy.api.RecipeDissovent;
-import yichen.extraalchemy.api.RecipeTransmute;
+import yichen.extraalchemy.api.*;
 import yichen.extraalchemy.compat.jei.dissovent.DissoventRecipeCategory;
 import yichen.extraalchemy.compat.jei.dissovent.DissoventRecipeWrapper;
+import yichen.extraalchemy.compat.jei.dissovent.DissoventRecipeWrapper_ore;
 import yichen.extraalchemy.compat.jei.transmute.TransmuteRecipeCategory;
 import yichen.extraalchemy.compat.jei.transmute.TransmuteRecipeWrapper;
+import yichen.extraalchemy.compat.jei.transmute.TransmuteRecipeWrapper_ore;
 import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.ItemLoader;
 
@@ -42,10 +42,15 @@ public class ModIntegrationJEI implements IModPlugin {
         registry.handleRecipes(RecipeTransmute.class, TransmuteRecipeWrapper::new, TransmuteRecipeCategory.UID);
         registry.addRecipes(ExtraAlchemyAPI.transmuteRecipes, TransmuteRecipeCategory.UID);
         registry.addRecipeCatalyst(new ItemStack(BlockLoader.blockAlchemyArrayTransmute), TransmuteRecipeCategory.UID);
-
+        registry.handleRecipes(RecipeTransmute_ore.class, TransmuteRecipeWrapper_ore::new, TransmuteRecipeCategory.UID);
+        registry.addRecipes(ExtraAlchemyAPI.transmuteRecipes_ore, TransmuteRecipeCategory.UID);
+        registry.addRecipeCatalyst(new ItemStack(BlockLoader.blockAlchemyArrayTransmute), TransmuteRecipeCategory.UID);
 
         registry.handleRecipes(RecipeDissovent.class, DissoventRecipeWrapper::new, DissoventRecipeCategory.UID);
         registry.addRecipes(ExtraAlchemyAPI.dissoventRecipes, DissoventRecipeCategory.UID);
+        registry.addRecipeCatalyst(new ItemStack(ItemLoader.itemAlchemicalDissovent), DissoventRecipeCategory.UID);
+        registry.handleRecipes(RecipeDissovent_ore.class, DissoventRecipeWrapper_ore::new, DissoventRecipeCategory.UID);
+        registry.addRecipes(ExtraAlchemyAPI.dissoventRecipes_ore, DissoventRecipeCategory.UID);
         registry.addRecipeCatalyst(new ItemStack(ItemLoader.itemAlchemicalDissovent), DissoventRecipeCategory.UID);
 
 
