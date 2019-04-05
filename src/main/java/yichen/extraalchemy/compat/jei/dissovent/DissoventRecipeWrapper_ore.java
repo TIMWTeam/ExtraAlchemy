@@ -8,28 +8,25 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import yichen.extraalchemy.api.RecipeDissovent;
+import yichen.extraalchemy.api.RecipeDissovent_ore;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class DissoventRecipeWrapper implements IRecipeWrapper {
+public class DissoventRecipeWrapper_ore implements IRecipeWrapper {
 
     private final List<List<ItemStack>> input;
     private final ItemStack output;
     private final float chance;
 
-    public DissoventRecipeWrapper(RecipeDissovent recipe) {
+    public DissoventRecipeWrapper_ore(RecipeDissovent_ore recipe) {
 
         ImmutableList.Builder<List<ItemStack>> builder = ImmutableList.builder();
 
-        if (recipe.getInput() instanceof ItemStack) {
-            builder.add(ImmutableList.of((ItemStack) recipe.getInput()));
-        } else if (recipe.getInput() instanceof String) {
-            builder.add(OreDictionary.getOres((String) recipe.getInput()));
-        }
+        builder.add(OreDictionary.getOres(recipe.getInput()));
 
         input = builder.build();
-        output = recipe.getOutput();
+        output = OreDictionary.getOres(recipe.getOutput()).get(0);
         chance = recipe.getChance();
     }
 
