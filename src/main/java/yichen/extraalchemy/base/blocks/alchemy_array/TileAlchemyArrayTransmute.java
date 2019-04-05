@@ -43,9 +43,6 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
     private int entityIdActive = -1;
     //激活的物品
     public Entity activeEntity = null;
-    //配方
-    private RecipeTransmute RT = null;
-    private RecipeTransmute_ore RT_ore = null;
     //悬浮位置
     private Vector3 itemHoverPos;
     //是否是矿辞物品
@@ -79,7 +76,6 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
                     activeItem.shrink(1);
 
                     //掉出加工物
-
                     dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), out_item);
 
                     //如果物品处理完毕则关闭炼金阵
@@ -146,7 +142,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
             case 3:
                 this.entityIdActive = -1;
                 this.activeEntity = null;
-                this.RT = null;
+                this.out_item = null;
                 this.TICKS_TRANSMUTE = 100;
                 break;
             case 1:
@@ -164,22 +160,16 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
         if (item.isDead || item.getItem().isEmpty())
             return false;
 
-        List<RecipeTransmute> matchingRecipes = new ArrayList<>();
-        List<RecipeTransmute_ore> Recipes = new ArrayList<>();
         for (RecipeTransmute recipe : ExtraAlchemyAPI.transmuteRecipes) {
             if (recipe.matches(item.getItem())) {
-                RT = recipe;
                 TICKS_TRANSMUTE = recipe.getTime();
-                is_ore = false;
                 out_item = recipe.getOutput();
                 return true;
             }
         }
         for (RecipeTransmute_ore recipe : ExtraAlchemyAPI.transmuteRecipes_ore) {
             if (recipe.matches(item.getItem())) {
-                RT_ore = recipe;
                 TICKS_TRANSMUTE = recipe.getTime();
-                is_ore = true;
                 out_item= OreDictionary.getOres((String) recipe.getOutput()).get(0);
                 return true;
             }
