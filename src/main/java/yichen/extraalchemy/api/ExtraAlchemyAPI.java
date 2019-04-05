@@ -16,6 +16,14 @@ public final class ExtraAlchemyAPI {
     public static final List<RecipeDissovent> dissoventRecipes = new ArrayList<>();
     public static final List<RecipeDissovent_ore> dissoventRecipes_ore = new ArrayList<>();
 
+    private static boolean haveore(String a) {
+        if (!OreDictionary.doesOreNameExist(a)) {
+            log.error("没有矿物词典" + a);
+            return false;
+        } else
+            return true;
+    }
+
     /**
      * Registers a Transmute Recipe
      *
@@ -40,18 +48,12 @@ public final class ExtraAlchemyAPI {
      * @return The recipe created.
      */
     public static RecipeTransmute_ore registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
-        if(OreDictionary.getOreID(out_ore) == 0) {
-            log.error("没有矿物词典" + out_ore);
-            return null;
-        }
-        if(OreDictionary.getOreID(in_ore) == 0) {
-            log.error("没有矿物词典" + in_ore);
-            return null;
-        }
-        Preconditions.checkArgument(time <= 10000);
-        RecipeTransmute_ore recipe = new RecipeTransmute_ore(out_ore, in_ore, time);
-        transmuteRecipes_ore.add(recipe);
-        return recipe;
+        if (haveore(out_ore) == true && haveore(in_ore) == true) {
+            Preconditions.checkArgument(time <= 10000);
+            RecipeTransmute_ore recipe = new RecipeTransmute_ore(out_ore, in_ore, time);
+            transmuteRecipes_ore.add(recipe);
+            return recipe;
+        } else return null;
     }
 
     /**
@@ -78,11 +80,11 @@ public final class ExtraAlchemyAPI {
      * @return The recipe created.
      */
     public static RecipeDissovent_ore registerDissoventRecipe_ore(String out_ore, String in_ore, float chance) {
-        Preconditions.checkArgument(chance <= 1);
-        RecipeDissovent_ore recipe = new RecipeDissovent_ore(out_ore, in_ore, chance);
-        dissoventRecipes_ore.add(recipe);
-        return recipe;
+        if (haveore(out_ore) == true && haveore(in_ore) == true) {
+            Preconditions.checkArgument(chance <= 1);
+            RecipeDissovent_ore recipe = new RecipeDissovent_ore(out_ore, in_ore, chance);
+            dissoventRecipes_ore.add(recipe);
+            return recipe;
+        } else return null;
     }
-
-
 }

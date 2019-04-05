@@ -19,27 +19,8 @@ public class RecipeDissovent_ore {
         this.chance = chance;
     }
 
-    /**
-     * 咱不可用
-     *
-     * @param stack
-     * @return
-     */
     public boolean matches(ItemStack stack) {
-        if (OreDictionary.getOreID(input) == 0 && OreDictionary.getOreID(output) == 0) {
-            log.error("错误的矿物词典，请检查");
-            return false;
-        } else {
-            for (ItemStack outitem : OreDictionary.getOres(output, false)) {
-                if (OreDictionary.itemMatches(outitem, stack, false))
-                    return true;
-            }
-            for (ItemStack ostack : OreDictionary.getOres(input, false)) {
-                if (OreDictionary.itemMatches(ostack, stack, false))
-                    return true;
-            }
-        }
-        return false;
+        return matches.matches_ore(stack, input);
     }
 
     public String getInput() {

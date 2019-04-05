@@ -18,15 +18,7 @@ public class RecipeTransmute_ore {
     }
 
     public boolean matches(ItemStack stack) {
-        if (OreDictionary.getOreID(output) == 0 && OreDictionary.getOreID(input) == 0) {
-            log.error("错误的矿物词典，请检查");
-        } else {
-            for (ItemStack ostack : OreDictionary.getOres(input, false)) {
-                if (OreDictionary.itemMatches(ostack, stack, false))
-                    return true;
-            }
-        }
-        return false;
+        return matches.matches_ore(stack, input);
     }
 
     public String getInput() {

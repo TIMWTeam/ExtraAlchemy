@@ -17,7 +17,10 @@ public class ModTransmuteRecipes_ore {
         Recipe = new ArrayList<>();
         RecipeTransmute_ore test;
         test = ExtraAlchemyAPI.registerTransmuteRecipe_ore("ingotGlod", "ingotIron", 100);
-        if (test != null)
+
+        if (test != null) {
+            log.info("注册矿词"+test.getInput() +"->"+test.getOutput());
             Recipe.add(test);
+        }
     }
 }
