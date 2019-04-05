@@ -69,6 +69,8 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
                     activeItem.shrink(1);
 
                     //掉出加工物
+                    if(out_item.getCount() >1)
+                        out_item.setCount(1);
                     dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), out_item);
 
                     //如果物品处理完毕则关闭炼金阵
