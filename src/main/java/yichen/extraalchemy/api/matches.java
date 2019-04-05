@@ -3,8 +3,6 @@ package yichen.extraalchemy.api;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import static yichen.extraalchemy.ExtraAlchemy.log;
-
 public class matches {
     public static boolean matches(ItemStack stack, Object input) {
         if (input instanceof ItemStack) {
