@@ -12,9 +12,7 @@ import static yichen.extraalchemy.ExtraAlchemy.log;
 public final class ExtraAlchemyAPI {
 
     public static final List<RecipeTransmute> transmuteRecipes = new ArrayList<>();
-    public static final List<RecipeTransmute_ore> transmuteRecipes_ore = new ArrayList<>();
     public static final List<RecipeDissovent> dissoventRecipes = new ArrayList<>();
-    public static final List<RecipeDissovent_ore> dissoventRecipes_ore = new ArrayList<>();
 
     private static boolean haveore(String a) {
         if (!OreDictionary.doesOreNameExist(a)) {
@@ -47,15 +45,11 @@ public final class ExtraAlchemyAPI {
      * @param time    The amount of time required. Don't go over 100000!
      * @return The recipe created.
      */
-    public static RecipeTransmute_ore registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
+    public static void registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
         if (haveore(out_ore) == true && haveore(in_ore) == true) {
-            Preconditions.checkArgument(time <= 10000);
-            RecipeTransmute_ore recipe = new RecipeTransmute_ore(out_ore, in_ore, time);
-            transmuteRecipes_ore.add(recipe);
-            ItemStack test_item = OreDictionary.getOres(out_ore).get(0);
-            recipe.set_item(test_item);
-            return recipe;
-        } else return null;
+            List<RecipeTransmute> ironIngotRecipe = new ArrayList<>();
+            ironIngotRecipe.add(new RecipeTransmute(OreDictionary.getOres(out_ore).get(0),in_ore,time));
+        }
     }
 
     /**
@@ -80,7 +74,7 @@ public final class ExtraAlchemyAPI {
      * @param in_ore  The Input ore dictionary entry String.
      * @param chance  The chance of obtaining a output. Don't go over 1!
      * @return The recipe created.
-     */
+     *
     public static RecipeDissovent_ore registerDissoventRecipe_ore(String out_ore, String in_ore, float chance) {
         if (haveore(out_ore) == true && haveore(in_ore) == true) {
             Preconditions.checkArgument(chance <= 1);
@@ -89,4 +83,5 @@ public final class ExtraAlchemyAPI {
             return recipe;
         } else return null;
     }
+    */
 }
