@@ -1,6 +1,5 @@
 package yichen.extraalchemy.compat.jei;
 
-
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
@@ -20,7 +19,6 @@ import yichen.extraalchemy.init.ItemLoader;
 
 import javax.annotation.Nonnull;
 
-
 @JEIPlugin
 public class ModIntegrationJEI implements IModPlugin {
 
@@ -39,21 +37,28 @@ public class ModIntegrationJEI implements IModPlugin {
     @Override
     public void register(@Nonnull IModRegistry registry) {
 
-        registry.handleRecipes(RecipeTransmute.class, TransmuteRecipeWrapper::new, TransmuteRecipeCategory.UID);
-        registry.addRecipes(ExtraAlchemyAPI.transmuteRecipes, TransmuteRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(BlockLoader.blockAlchemyArrayTransmute), TransmuteRecipeCategory.UID);
-        registry.handleRecipes(RecipeTransmute_ore.class, TransmuteRecipeWrapper_ore::new, TransmuteRecipeCategory.UID);
-        registry.addRecipes(ExtraAlchemyAPI.transmuteRecipes_ore, TransmuteRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(BlockLoader.blockAlchemyArrayTransmute), TransmuteRecipeCategory.UID);
+        if(ExtraAlchemyAPI.transmuteRecipes.size()!=0) {
+            registry.handleRecipes(RecipeTransmute.class, TransmuteRecipeWrapper::new, TransmuteRecipeCategory.UID);
+            registry.addRecipes(ExtraAlchemyAPI.transmuteRecipes, TransmuteRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(BlockLoader.blockAlchemyArrayTransmute), TransmuteRecipeCategory.UID);
+        }
 
-        registry.handleRecipes(RecipeDissovent.class, DissoventRecipeWrapper::new, DissoventRecipeCategory.UID);
-        registry.addRecipes(ExtraAlchemyAPI.dissoventRecipes, DissoventRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(ItemLoader.itemAlchemicalDissovent), DissoventRecipeCategory.UID);
-        registry.handleRecipes(RecipeDissovent_ore.class, DissoventRecipeWrapper_ore::new, DissoventRecipeCategory.UID);
-        registry.addRecipes(ExtraAlchemyAPI.dissoventRecipes_ore, DissoventRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(ItemLoader.itemAlchemicalDissovent), DissoventRecipeCategory.UID);
+        if(ExtraAlchemyAPI.transmuteRecipes_ore.size()!=0) {
+            registry.handleRecipes(RecipeTransmute_ore.class, TransmuteRecipeWrapper_ore::new, TransmuteRecipeCategory.UID);
+            registry.addRecipes(ExtraAlchemyAPI.transmuteRecipes_ore, TransmuteRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(BlockLoader.blockAlchemyArrayTransmute), TransmuteRecipeCategory.UID);
+        }
 
+        if(ExtraAlchemyAPI.dissoventRecipes.size()!=0) {
+            registry.handleRecipes(RecipeDissovent.class, DissoventRecipeWrapper::new, DissoventRecipeCategory.UID);
+            registry.addRecipes(ExtraAlchemyAPI.dissoventRecipes, DissoventRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(ItemLoader.itemAlchemicalDissovent), DissoventRecipeCategory.UID);
+        }
 
+        if(ExtraAlchemyAPI.dissoventRecipes_ore.size()!=0) {
+            registry.handleRecipes(RecipeDissovent_ore.class, DissoventRecipeWrapper_ore::new, DissoventRecipeCategory.UID);
+            registry.addRecipes(ExtraAlchemyAPI.dissoventRecipes_ore, DissoventRecipeCategory.UID);
+            registry.addRecipeCatalyst(new ItemStack(ItemLoader.itemAlchemicalDissovent), DissoventRecipeCategory.UID);
+        }
     }
-
 }

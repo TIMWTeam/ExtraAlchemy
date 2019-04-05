@@ -23,7 +23,7 @@ public class TransmuteRecipeCategory implements IRecipeCategory<TransmuteRecipeW
 
     public TransmuteRecipeCategory(IGuiHelper guiHelper) {
         localizedName = I18n.format("extraalchemy.jei.transmute");
-        background = guiHelper.drawableBuilder(new ResourceLocation(ExtraAlchemy.MODID, "textures/gui/recipetransmute.png"), 0, 0, 116, 54).build();
+        background = guiHelper.drawableBuilder(new ResourceLocation(ExtraAlchemy.MODID, "textures/gui/recipeTransmute.png"), 0, 0, 116, 54).build();
         //overlay  = guiHelper.createDrawable(new ResourceLocation("extraalchemy", "textures/gui/recipeTransmute.png"), 0, 0, 116, 54);
     }
 
