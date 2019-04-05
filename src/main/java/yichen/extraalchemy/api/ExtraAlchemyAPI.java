@@ -20,6 +20,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Loader;
@@ -49,12 +50,19 @@ public final class ExtraAlchemyAPI {
 	public static RecipeTransmute registerTransmuteRecipe(Object output, Object input, int time) {
 		Preconditions.checkArgument(time <= 10000);
 		ItemStack out = null;
-        if(output instanceof String) {
+        if (output instanceof ItemStack){
+			out = (ItemStack) output;
+		}else if(output instanceof String) {
         	if(OreDictionary.doesOreNameExist((String)output)) {
 	        	out = OreDictionary.getOres((String)output).get(0);
 	        }else {
-				out = (ItemStack) output;
+				return null;
 			}
+        }
+        if(!(input instanceof ItemStack)) {
+        	if(!OreDictionary.doesOreNameExist((String)input)) {
+				return null;
+	        }
         }
 		RecipeTransmute recipe = new RecipeTransmute(out, input, time);
 		transmuteRecipes.add(recipe);
@@ -68,9 +76,28 @@ public final class ExtraAlchemyAPI {
 	 * @param chance The chance of obtaining a output. Don't go over 1!
 	 * @return The recipe created.
 	 */
-	public static RecipeDissovent registerDissoventRecipe(ItemStack output, Object input, float chance) {
+	public static RecipeDissovent registerDissoventRecipe(Object output, Object input, float chance) {
 		Preconditions.checkArgument(chance <= 1);
-		RecipeDissovent recipe = new RecipeDissovent(output, input, chance);
+		ItemStack out = null;
+        if (output instanceof ItemStack){
+			out = (ItemStack) output;
+		}else if(output instanceof String) {
+        	if(OreDictionary.doesOreNameExist((String)output)) {
+	        	NonNullList<ItemStack> a = OreDictionary.getOres((String)output);
+	        	if(a.isEmpty()) {
+	        		return null;
+	        	}
+	        	out = a.get(0);
+	        }else {
+				return null;
+			}
+        }
+        if(!(input instanceof ItemStack)) {
+        	if(!OreDictionary.doesOreNameExist((String)input)) {
+				return null;
+	        }
+        }
+		RecipeDissovent recipe = new RecipeDissovent(out, input, chance);
 		dissoventRecipes.add(recipe);
 		return recipe;
 	}
