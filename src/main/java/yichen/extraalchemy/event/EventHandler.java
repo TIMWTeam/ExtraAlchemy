@@ -5,8 +5,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHandler {
 
-	@SubscribeEvent
-	public static void onPortalSpawnEvent(PortalSpawnEvent event) {
-		event.setCanceled(false);
-	}
+    @SubscribeEvent
+    public static void onPortalSpawnEvent(PortalSpawnEvent event) {
+        event.setCanceled(false);
+    }
 }
