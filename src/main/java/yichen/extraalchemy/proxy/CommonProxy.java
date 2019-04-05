@@ -8,7 +8,6 @@ import yichen.extraalchemy.init.BlockLoader;
 import yichen.extraalchemy.init.CraftingLoader;
 import yichen.extraalchemy.init.ItemLoader;
 import yichen.extraalchemy.recipes.ModDissoventRecipes;
-import yichen.extraalchemy.recipes.ModDissoventRecipes_ore;
 import yichen.extraalchemy.recipes.ModTransmuteRecipes;
 
 public class CommonProxy {
