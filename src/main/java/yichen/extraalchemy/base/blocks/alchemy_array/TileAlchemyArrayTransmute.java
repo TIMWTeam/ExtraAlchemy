@@ -50,6 +50,8 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
     private Vector3 itemHoverPos;
     //是否是矿辞物品
     private boolean is_ore;
+    //产出的物品
+    private ItemStack out_item=null;
 
     public ItemStackHandler inventory;
 
@@ -76,18 +78,9 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
                     ItemStack activeItem = ((EntityItem) activeEntity).getItem();
                     activeItem.shrink(1);
 
-                    ItemStack tunedStack = null;
                     //掉出加工物
-                    if (is_ore == false)
-                        tunedStack = RT.getOutput().copy();
-                    else {
-                        if (OreDictionary.getOres((String) RT_ore.getOutput()).size() == 0)
-                            log.error("矿物词典" + RT_ore.getOutput() + "下没有物品");
-                        else
-                            tunedStack = OreDictionary.getOres((String) RT_ore.getOutput()).get(0);
-                    }
 
-                    dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), tunedStack);
+                    dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), out_item);
 
                     //如果物品处理完毕则关闭炼金阵
                     if (activeItem.getCount() == 0) {
@@ -178,6 +171,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
                 RT = recipe;
                 TICKS_TRANSMUTE = recipe.getTime();
                 is_ore = false;
+                out_item = recipe.getOutput();
                 return true;
             }
         }
@@ -186,6 +180,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
                 RT_ore = recipe;
                 TICKS_TRANSMUTE = recipe.getTime();
                 is_ore = true;
+                out_item= OreDictionary.getOres((String) recipe.getOutput()).get(0);
                 return true;
             }
         }
