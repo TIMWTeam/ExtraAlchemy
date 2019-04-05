@@ -47,7 +47,9 @@ public final class ExtraAlchemyAPI {
      */
     public static RecipeTransmute registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
         if (haveore(out_ore) == true && haveore(in_ore) == true) {
-            return registerTransmuteRecipe(OreDictionary.getOres(out_ore).get(0),in_ore,time);
+            ItemStack item = OreDictionary.getOres(out_ore).get(0);
+            item.setCount(1);
+            return registerTransmuteRecipe(item,in_ore,time);
         }else return null;
     }
 
