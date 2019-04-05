@@ -2,9 +2,12 @@ package yichen.extraalchemy.api;
 
 import com.google.common.base.Preconditions;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static yichen.extraalchemy.ExtraAlchemy.log;
 
 public final class ExtraAlchemyAPI {
 
@@ -37,6 +40,14 @@ public final class ExtraAlchemyAPI {
      * @return The recipe created.
      */
     public static RecipeTransmute_ore registerTransmuteRecipe_ore(String out_ore, String in_ore, int time) {
+        if(OreDictionary.getOreID(out_ore) == 0) {
+            log.error("没有矿物词典" + out_ore);
+            return null;
+        }
+        if(OreDictionary.getOreID(in_ore) == 0) {
+            log.error("没有矿物词典" + in_ore);
+            return null;
+        }
         Preconditions.checkArgument(time <= 10000);
         RecipeTransmute_ore recipe = new RecipeTransmute_ore(out_ore, in_ore, time);
         transmuteRecipes_ore.add(recipe);

@@ -20,6 +20,8 @@ import yichen.extraalchemy.util.Vector3;
 import java.util.ArrayList;
 import java.util.List;
 
+import static yichen.extraalchemy.ExtraAlchemy.log;
+
 public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickable {
 
     /*
@@ -79,7 +81,10 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
                     if (is_ore == false)
                         tunedStack = RT.getOutput().copy();
                     else {
-                        tunedStack = OreDictionary.getOres(RT_ore.getOutput()).get(0);
+                        if (OreDictionary.getOres(RT_ore.getOutput()).size() == 0)
+                            log.error("矿物词典" + RT_ore.getOutput() + "下没有物品");
+                        else
+                            tunedStack = OreDictionary.getOres(RT_ore.getOutput()).get(0);
                     }
 
                     dropItem(world, itemHoverPos.getX(), itemHoverPos.getY(), itemHoverPos.getZ(), tunedStack);
@@ -172,6 +177,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
             if (recipe.matches(item.getItem())) {
                 RT = recipe;
                 TICKS_TRANSMUTE = recipe.getTime();
+                is_ore = false;
                 return true;
             }
         }
@@ -179,6 +185,7 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
             if (recipe.matches(item.getItem())) {
                 RT_ore = recipe;
                 TICKS_TRANSMUTE = recipe.getTime();
+                is_ore = true;
                 return true;
             }
         }
