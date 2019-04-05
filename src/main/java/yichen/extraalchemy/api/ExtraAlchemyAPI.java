@@ -52,6 +52,8 @@ public final class ExtraAlchemyAPI {
             Preconditions.checkArgument(time <= 10000);
             RecipeTransmute_ore recipe = new RecipeTransmute_ore(out_ore, in_ore, time);
             transmuteRecipes_ore.add(recipe);
+            ItemStack test_item = OreDictionary.getOres(out_ore).get(0);
+            recipe.set_item(test_item);
             return recipe;
         } else return null;
     }
