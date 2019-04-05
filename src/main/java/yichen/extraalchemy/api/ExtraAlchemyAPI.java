@@ -32,7 +32,15 @@ public final class ExtraAlchemyAPI {
      */
     public static RecipeTransmute registerTransmuteRecipe(ItemStack output, Object input, int time) {
         Preconditions.checkArgument(time <= 10000);
-        RecipeTransmute recipe = new RecipeTransmute(output, input, time);
+        ItemStack in = null;
+        if(input instanceof String) {
+        	if (OreDictionary.doesOreNameExist((String) input)) {
+        		ItemStack a = OreDictionary.getOres((String) input).get(0);
+            }else {
+				in = (ItemStack) input;
+			}
+        }
+        RecipeTransmute recipe = new RecipeTransmute(output, in, time);
         transmuteRecipes.add(recipe);
         return recipe;
     }
