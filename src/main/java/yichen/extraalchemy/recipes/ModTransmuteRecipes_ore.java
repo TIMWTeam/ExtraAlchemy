@@ -1,5 +1,7 @@
 package yichen.extraalchemy.recipes;
 
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import yichen.extraalchemy.api.ExtraAlchemyAPI;
 import yichen.extraalchemy.api.RecipeTransmute_ore;
 

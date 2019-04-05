@@ -170,10 +170,11 @@ public class TileAlchemyArrayTransmute extends TileEntityBase implements ITickab
         for (RecipeTransmute_ore recipe : ExtraAlchemyAPI.transmuteRecipes_ore) {
             if (recipe.matches(item.getItem())) {
                 TICKS_TRANSMUTE = recipe.getTime();
-                out_item= OreDictionary.getOres((String) recipe.getOutput()).get(0);
+                out_item= recipe.get_item();
                 return true;
             }
         }
+        out_item.setCount(1);
         return false;
     }
 
