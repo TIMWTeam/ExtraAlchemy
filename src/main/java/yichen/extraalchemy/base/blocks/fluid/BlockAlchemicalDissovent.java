@@ -113,7 +113,7 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
 			super("alchemical_dissovent",
 					new ResourceLocation(ExtraAlchemy.MODID + ":blocks/fluid/alchemical_dissovent_still"),
 					new ResourceLocation(ExtraAlchemy.MODID + ":blocks/fluid/alchemical_dissovent_flow"));
-			this.setUnlocalizedName("AlchemicalDissovent");
+			this.setUnlocalizedName("alchemical_dissovent");
 			this.setDensity(13600);// 密度
 			this.setViscosity(5000);// 粘稠
 			this.setLuminosity(5);// 亮度

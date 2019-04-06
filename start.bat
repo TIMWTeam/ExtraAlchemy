@@ -1,1 +1,1 @@
-cmd /k "cd /d D:\游戏区\我的世界\Mod&&gradlew.bat runClient --offline"
+cmd /k "cd /d F:\Mod&&gradlew.bat runClient --offline"
