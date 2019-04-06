@@ -30,7 +30,7 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
     private Counter CD = new Counter();
 
     public BlockAlchemicalDissovent() {
-        super(new FluidAlchemicalDissovent(), Material.WATER);
+        super(alchemicalDissovent, Material.WATER);
         this.setRegistryName("alchemical_dissovent");
         this.setUnlocalizedName("alchemical_dissovent");
         getAlchemicalDissovent().setBlock(this);
@@ -44,7 +44,7 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         super.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
         if (!worldIn.isRemote) {
-            if (counter.value() >= 10 && CD.value() <= 0) {
+            if (counter.value() >= 10) {
                 double d = Math.random();
                 if (entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getHealth() >= 0.001f) {
                     EntityLivingBase entityliving = (EntityLivingBase) entityIn;
@@ -54,13 +54,19 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
                     // 受到伤害
                     // 玩家10%几率、生物0.5%几率掉落生命源质
                     if (entityIn instanceof EntityPlayer) {
-                        if (!((EntityPlayer) entityIn).capabilities.isCreativeMode) causeDamages(entityliving);
-                        if (d <= 0.1) entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
+                        if (!((EntityPlayer) entityIn).capabilities.isCreativeMode) 
+                        	causeDamages(entityliving);
+                        if (d <= 0.1 && CD.value() <= 0) {
+                        	entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
+                            CD.set(5);
+                        }
                     } else {
                         causeDamages(entityliving);
-                        if (d <= 0.005) entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
+                        if (d <= 0.005 && CD.value() <= 0) {
+                        	entityIn.dropItem(ItemLoader.itemEssenceLife, 1);
+                            CD.set(5);
+                        }
                     }
-                    CD.set(5);
                 } else if (entityIn instanceof EntityItem) {
                     ((EntityItem) entityIn).setNoDespawn();
                     ItemStack itemStack = ((EntityItem) entityIn).getItem();
@@ -69,15 +75,15 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
                             return;
                         RecipeDissovent recipe = matchRecipe((EntityItem) entityIn);
                         if (recipe != null) {
-                            if (d <= recipe.getChance()) {
+                            if (d <= recipe.getChance() && CD.value() <= 0) {
                                 itemStack.shrink(1);
                                 ItemStack tunedStack = recipe.getOutput().copy();
                                 EntityItem outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5,
                                         pos.getZ() + 0.5, tunedStack);
                                 worldIn.spawnEntity(outputItem);
+                                CD.set(20);
                             }
                         }
-                        CD.set(20);
                     }
                 }
                 counter.clear();
