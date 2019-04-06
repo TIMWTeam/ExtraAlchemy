@@ -8,11 +8,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -28,32 +31,37 @@ public class BlockLoader {
 
     public static final Block blockBloodstain = new BlockBloodstain();
     public static final Block blockAlchemyArrayTransmute = new BlockAlchemyArrayTransmute();
+    public static Block dissovent;
 
     // 调用注册方法
     public BlockLoader(FMLPreInitializationEvent event) {
-
-        FluidRegistry.registerFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
-        FluidRegistry.addBucketForFluid(BlockAlchemicalDissovent.getAlchemicalDissovent());
-        registerFluid(new BlockAlchemicalDissovent());
-
+    	Fluid dissovent_fluid = BlockAlchemicalDissovent.getAlchemicalDissovent();
+        FluidRegistry.registerFluid(dissovent_fluid);
+        dissovent = new BlockAlchemicalDissovent();
+        FluidRegistry.addBucketForFluid(FluidRegistry.getFluid(dissovent_fluid.getName()).setBlock(dissovent));
+        
+        //注册方块
+        register(dissovent);
         register(blockBloodstain);
+        //注册方块及物品
         registerItemBlock(blockAlchemyArrayTransmute);
+        //注册实体
         registerTileEntities();
-        registerTESR();
     }
-
     // 注册渲染贴图
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
         registerRender(blockBloodstain);
         registerRender(blockAlchemyArrayTransmute);
+
+        registerTESR();
+        registerFluidModels(dissovent);
     }
 
     // 注册实体
     private static void registerTileEntities() {
         TileEntity.register(ExtraAlchemy.MODID + ":alchemy_array_transmute", TileAlchemyArrayTransmute.class);
     }
-
     // 注册特殊渲染
     @SideOnly(Side.CLIENT)
     public static void registerTESR() {
@@ -71,11 +79,6 @@ public class BlockLoader {
         ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
     }
 
-    // 注册流体方块
-    public static void registerFluid(Block block) {
-        ForgeRegistries.BLOCKS.register(block);
-        registerFluidModels(block);
-    }
 
     // 注册流体贴图
     @SideOnly(Side.CLIENT)

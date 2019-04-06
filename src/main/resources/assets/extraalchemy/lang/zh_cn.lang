@@ -22,7 +22,7 @@ tile.extraalchemy.bloodstain.name=血迹
 tile.extraalchemy.alchemy_array_transmute.name=嬗变炼金阵
 
 #流体
-fluid.alchemical_dissovent.name=炼金溶液
+fluid.alchemical_dissovent=炼金溶液
 
 
 #工具提示

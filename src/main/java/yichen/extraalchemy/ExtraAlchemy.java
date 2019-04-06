@@ -2,6 +2,7 @@ package yichen.extraalchemy;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -27,16 +28,17 @@ public class ExtraAlchemy {
     @Instance(ExtraAlchemy.MODID)
     public static ExtraAlchemy instance;
 
+    static {
+        FluidRegistry.enableUniversalBucket();
+    }
     private Logger logger;
     public static Logger log = LogManager.getLogger(NAME);
-
     public static final CreativeTabs TAB_base = new CreativeTabs(MODID) {
         @Override
         public ItemStack getTabIconItem() {
             return new ItemStack(ItemLoader.itemEssenceFire);
         }
     };
-
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
