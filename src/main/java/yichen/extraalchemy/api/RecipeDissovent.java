@@ -5,14 +5,22 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeDissovent {
 
-    private final ItemStack output;
     private final Object input;
+    private final ItemStack output;
+    private final ItemStack secondary;
+    private final float secChance;
     private final float chance;
 
 
-    public RecipeDissovent(ItemStack output, Object input, float chance) {
-        this.output = output;
+    public RecipeDissovent(Object input,ItemStack output,int outNum,ItemStack secondary,int secNum,float secChance,  float chance) {
         this.input = input;
+        this.output = output;
+        this.secondary = secondary;
+        this.output.setCount(outNum);
+        if(secondary!=null) {
+        	this.secondary.setCount(secNum);
+        }
+        this.secChance = secChance;
         this.chance = chance;
     }
 
@@ -38,6 +46,14 @@ public class RecipeDissovent {
         return output;
     }
 
+    public ItemStack getSecondary() {
+        return secondary;
+    }
+
+    public float getSecChance() {
+        return secChance;
+    }
+    
     public float getChance() {
         return chance;
     }

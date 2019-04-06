@@ -78,9 +78,16 @@ public class BlockAlchemicalDissovent extends BlockFluidClassic {
                             if (d <= recipe.getChance() && CD.value() <= 0) {
                                 itemStack.shrink(1);
                                 ItemStack tunedStack = recipe.getOutput().copy();
-                                EntityItem outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5,
-                                        pos.getZ() + 0.5, tunedStack);
+                                EntityItem outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tunedStack);
                                 worldIn.spawnEntity(outputItem);
+                                if(recipe.getSecondary()!=null) {
+                                	double dd = Math.random();
+                                	if(recipe.getSecChance()>=dd) {
+                                		tunedStack = recipe.getSecondary().copy();
+                                        outputItem = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, tunedStack);
+                                        worldIn.spawnEntity(outputItem);
+                                	}
+                                }
                                 CD.set(20);
                             }
                         }

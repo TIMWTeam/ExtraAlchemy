@@ -16,6 +16,8 @@ public class DissoventRecipeWrapper implements IRecipeWrapper {
 
     private final List<List<ItemStack>> input;
     private final ItemStack output;
+    private final ItemStack secondary;
+    private final float secChance;
     private final float chance;
 
     public DissoventRecipeWrapper(RecipeDissovent recipe) {
@@ -30,6 +32,8 @@ public class DissoventRecipeWrapper implements IRecipeWrapper {
 
         input = builder.build();
         output = recipe.getOutput();
+        secondary = recipe.getSecondary();
+        secChance = recipe.getSecChance();
         chance = recipe.getChance();
     }
 

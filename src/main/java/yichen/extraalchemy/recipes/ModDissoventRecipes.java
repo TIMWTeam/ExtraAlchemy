@@ -21,16 +21,19 @@ public class ModDissoventRecipes {
     public static RecipeDissovent oreNickel;
 
     public static void init() {
-        //输出-输入-几率(每秒2次机会，有20tick间隔)
-        goldNuggetRecipe = ExtraAlchemyAPI.registerDissoventRecipe(new ItemStack(Items.GOLD_NUGGET), new ItemStack(Blocks.COBBLESTONE), 0.1f);
-        oreGold = ExtraAlchemyAPI.registerDissoventRecipe("dustGold", "oreGold", 0.1f);
-        oreIron = ExtraAlchemyAPI.registerDissoventRecipe("dustIron", "oreIron", 0.1f);
-        oreCopper = ExtraAlchemyAPI.registerDissoventRecipe("dustCopper", "oreCopper", 0.1f);
-        oreTin = ExtraAlchemyAPI.registerDissoventRecipe("dustTin", "oreTin", 0.1f);
-        orePlatinum = ExtraAlchemyAPI.registerDissoventRecipe("dustPlatinum", "orePlatinum", 0.1f);
-        oreSilver = ExtraAlchemyAPI.registerDissoventRecipe("dustSilver", "oreSilver", 0.1f);
-        oreLead = ExtraAlchemyAPI.registerDissoventRecipe("dustLead", "oreLead", 0.1f);
-        oreAluminium = ExtraAlchemyAPI.registerDissoventRecipe("dustAluminium", "oreAluminium", 0.1f);
-        oreNickel = ExtraAlchemyAPI.registerDissoventRecipe("dustNickel", "oreNickel", 0.1f);
+    	//工作几率:10tick/次
+        //输入-输出-工作几率
+        //输入-输出-输出数量-工作几率
+        //输入-输出-输出数量-副产物-副产物数量-副产物几率-工作几率
+        goldNuggetRecipe = ExtraAlchemyAPI.registerDissoventRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(Items.GOLD_NUGGET), 0.1f);
+        oreGold = ExtraAlchemyAPI.registerDissoventRecipe("oreGold", "dustGold",1,"dustGold",1,0.5f, 0.1f);
+        oreIron = ExtraAlchemyAPI.registerDissoventRecipe("oreIron", "dustIron",1,"dustIron",1,0.5f, 0.1f);
+        oreCopper = ExtraAlchemyAPI.registerDissoventRecipe("oreCopper", "dustCopper",1,"dustCopper",1,0.5f, 0.1f);
+        oreTin = ExtraAlchemyAPI.registerDissoventRecipe("oreTin", "dustTin",1,"dustTin",1,0.5f, 0.1f);
+        orePlatinum = ExtraAlchemyAPI.registerDissoventRecipe("orePlatinum", "dustPlatinum",1,"dustPlatinum",1,0.5f, 0.1f);
+        oreSilver = ExtraAlchemyAPI.registerDissoventRecipe("oreSilver", "dustSilver",1,"dustSilver",1,0.5f, 0.1f);
+        oreLead = ExtraAlchemyAPI.registerDissoventRecipe("oreLead", "dustLead",1,"dustLead",1,0.5f, 0.1f);
+        oreAluminium = ExtraAlchemyAPI.registerDissoventRecipe("oreAluminium", "dustAluminium",1,"dustAluminium",1,0.5f, 0.1f);
+        oreNickel = ExtraAlchemyAPI.registerDissoventRecipe("oreNickel", "dustNickel",1,"dustNickel",1,0.5f, 0.1f);
     }
 }
