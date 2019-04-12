@@ -1,10 +1,10 @@
-package yichen.extraalchemy.api;
+package yichen.extraalchemy.util;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class matches {
-    public static boolean matches(ItemStack stack, Object input) {
+public class Matches {
+    public static boolean itemStackMatches(ItemStack stack, Object input) {
         if (input instanceof ItemStack) {
             return OreDictionary.itemMatches((ItemStack) input, stack, false);
         }
