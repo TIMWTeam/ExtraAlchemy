@@ -2,51 +2,54 @@
 itemGroup.extraalchemy=更多炼金术
 
 #物品
-item.extraalchemy.CoalDust.name=碳粉
-item.extraalchemy.Dagger.name=小匕首
-item.extraalchemy.BloodBottle.name=血瓶
-item.extraalchemy.TransmuteDust.name=嬗变炼金阵媒介
-item.extraalchemy.AlchemicalDissovent.name=炼金溶剂
-item.extraalchemy.EssenceLife.name=生命源质
-item.extraalchemy.EssenceEarth.name=地之本源
-item.extraalchemy.EssenceWind.name=风之本源
-item.extraalchemy.EssenceWater.name=水之本源
-item.extraalchemy.EssenceFire.name=火之本源
+item.extraalchemy.coal_dust.name=碳粉
+item.extraalchemy.dagger.name=小匕首
+item.extraalchemy.blood_bottle.name=血瓶
+item.extraalchemy.air_bottle.name=魔封瓶
+item.extraalchemy.transmute_dust.name=嬗变炼金阵媒介
+item.extraalchemy.alchemical_dissovent.name=炼金溶剂
+item.extraalchemy.essence_life.name=生命源质
+item.extraalchemy.essence_earth.name=地之本源
+item.extraalchemy.essence_wind.name=风之本源
+item.extraalchemy.essence_water.name=水之本源
+item.extraalchemy.essence_fire.name=火之本源
 
 #方块
-tile.extraalchemy.Bloodstain.name=血迹
 tile.extraalchemy.AlchemyCircle.name=炼金法阵
-tile.extraalchemy.AlchemyArrayTransmute.name=嬗变炼金阵
-
-#流体
-fluid.AlchemicalDissovent=炼金溶液
+tile.extraalchemy.bloodstain.name=血迹
 
 #炼金阵
-tile.Bloodstain.name=血迹
+tile.extraalchemy.alchemy_array_transmute.name=嬗变炼金阵
+
+#流体
+fluid.alchemical_dissovent=炼金溶液
+
 
 #工具提示
-tooltip.coal_dust=Ashes used to draw an alchemy circle
-tooltip.blood_bottle=这才不是HP瓶（雾
+tooltip.extraalchemy.coal_dust=Ashes used to draw an alchemy circle
+tooltip.extraalchemy.blood_bottle=这才不是HP瓶（雾
+tooltip.extraalchemy.air_bottle=等会，瓶子里原来装的是什么？！
 tooltip.transmute_dust=右击地面构成炼金阵
-tooltip.dagger.1=并不是很锋利的匕首，仅能刺破自己的手指。
-tooltip.dagger.2=为了不浪费血液，最好准备些玻璃瓶来收集。
-tooltip.alchemical_dissovent=俺寻思这玩意味道咋样……
+tooltip.extraalchemy.dagger.1=并不是很锋利的匕首，仅能刺破自己的手指。
+tooltip.extraalchemy.dagger.2=为了不浪费血液，最好准备些玻璃瓶来收集。
+tooltip.extraalchemy.alchemical_dissovent=俺寻思这玩意味道咋样……
+tooltip.extraalchemy.air_bottle=装有被捕获的风之元素
 
-tooltip.essence.mode=[潜行+右键] 切换模式
+tooltip.extraalchemy.essence.mode=[潜行+右键] 切换模式
 
-tooltip.essence_earth.stone=模式：石头 [消耗：1]
-tooltip.essence_earth.cobblestone=模式：圆石 [消耗：1]
-tooltip.essence_earth.dirt=模式：泥土 [消耗：1]
-tooltip.essence_earth.sand=模式：沙子 [消耗：1]
+tooltip.extraalchemy.essence_earth.stone=模式：石头 [消耗：1]
+tooltip.extraalchemy.essence_earth.cobblestone=模式：圆石 [消耗：1]
+tooltip.extraalchemy.essence_earth.dirt=模式：泥土 [消耗：1]
+tooltip.extraalchemy.essence_earth.sand=模式：沙子 [消耗：1]
 
-tooltip.essence_fire.fire_ball=模式：投掷火球 [消耗：1]
-tooltip.essence_fire.lava=模式：放置熔岩 [消耗：8]
+tooltip.extraalchemy.essence_fire.fire_ball=模式：投掷火球 [消耗：1]
+tooltip.extraalchemy.essence_fire.lava=模式：放置熔岩 [消耗：8]
 
-tooltip.essence_water.water_ball=模式：投掷水球 [消耗：1]
-tooltip.essence_water.water=模式：放置水源 [消耗：8]
+tooltip.extraalchemy.essence_water.water_ball=模式：投掷水球 [消耗：1]
+tooltip.extraalchemy.essence_water.water=模式：放置水源 [消耗：8]
 
-tooltip.essence_wind.wind_blade=模式：释放风刃 [消耗：1]
-tooltip.essence_wind.wind_soar=模式：短暂悬浮 [消耗：1]
+tooltip.extraalchemy.essence_wind.wind_blade=模式：释放风刃 [消耗：1]
+tooltip.extraalchemy.essence_wind.wind_soar=模式：短暂悬浮 [消耗：1]
 
 
 
